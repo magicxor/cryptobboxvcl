@@ -4039,4 +4039,39 @@ object Form1: TForm1
     Left = 48
     Top = 80
   end
+  object ElMessageSigner1: TElMessageSigner
+    UsePSS = False
+    ExtraSpace = 0
+    Left = 328
+    Top = 248
+  end
+  object ElMessageEncryptor1: TElMessageEncryptor
+    Algorithm = 28675
+    BitsInKey = 0
+    UseOAEP = False
+    EncryptionOptions = [eoIgnoreSupportedWin32Algorithms]
+    UseImplicitContentEncoding = False
+    Left = 221
+    Top = 262
+  end
+  object ElMessageDecryptor1: TElMessageDecryptor
+    DecryptionOptions = []
+    Left = 133
+    Top = 230
+  end
+  object ElMessageVerifier1: TElMessageVerifier
+    VerifyCountersignatures = True
+    VerificationOptions = [voUseEmbeddedCerts, voUseLocalCerts, voVerifyMessageDigests, voVerifyTimestamps]
+    Left = 45
+    Top = 198
+  end
+  object ElMemoryCertStorage1: TElMemoryCertStorage
+    Options = [csoStrictChainBuilding]
+    Left = 29
+    Top = 278
+  end
+  object ElMessageTimestampVerifier1: TElMessageTimestampVerifier
+    Left = 125
+    Top = 166
+  end
 end

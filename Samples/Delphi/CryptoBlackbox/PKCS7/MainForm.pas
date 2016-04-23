@@ -17,10 +17,6 @@ uses
 
 type
   TForm1 = class(TForm)
-    ElMessageEncryptor1: TElMessageEncryptor;
-    ElMessageDecryptor1: TElMessageDecryptor;
-    ElMessageSigner1: TElMessageSigner;
-    ElMessageVerifier1: TElMessageVerifier;
     PageControl1: TPageControl;
     TabSheetSelectCertificates: TTabSheet;
     TabSheetEncrypt2: TTabSheet;
@@ -69,7 +65,6 @@ type
     Memo4: TMemo;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
-    ElMemoryCertStorage1: TElMemoryCertStorage;
     Panel3: TPanel;
     Bevel1: TBevel;
     Image1: TImage;
@@ -87,10 +82,14 @@ type
     rbtnVerifyTimestamp: TRadioButton;
     TabSheetSelectTSP: TTabSheet;
     Label9: TLabel;
-    ElMessageTimestamper1: TElMessageTimestamper;
-    ElMessageTimestampVerifier1: TElMessageTimestampVerifier;
     cbIsDetached: TCheckBox;
     memTSPServers: TMemo;
+    ElMessageSigner1: TElMessageSigner;
+    ElMessageEncryptor1: TElMessageEncryptor;
+    ElMessageDecryptor1: TElMessageDecryptor;
+    ElMessageVerifier1: TElMessageVerifier;
+    ElMemoryCertStorage1: TElMemoryCertStorage;
+    ElMessageTimestampVerifier1: TElMessageTimestampVerifier;
     procedure Button1Click(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnNextClick(Sender: TObject);
@@ -598,8 +597,9 @@ begin
   case Step of
     STEP_SELECT_CERTIFICATES :
     begin
-      while ElMemoryCertStorage1.Count > 0 do
-        ElMemoryCertStorage1.Remove(0);
+      if(Assigned(ElMemoryCertStorage1)) then
+        while ElMemoryCertStorage1.Count > 0 do
+          ElMemoryCertStorage1.Remove(0);
       ListBox1.Clear;
       LabelSelectCertificates.Caption := SSelectCertificatesForDecryption;
       PageControl1.ActivePageIndex := 1;

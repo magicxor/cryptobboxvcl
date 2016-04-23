@@ -17,3 +17,4 @@ begin
   Application.CreateForm(TfrmAbout, frmAbout);
   Application.Run;
 end.
+
