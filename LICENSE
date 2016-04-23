@@ -1,21 +1,127 @@
-The MIT License (MIT)
+CryptoBlackbox License Agreement version 6.2
 
-Copyright (c) 2016 Ilya Burakov
+CryptoBlackbox is a commercial product available for use in third-party software according to the terms of the License Agreement that is stated below.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+As the license agreement is written in legal language which is sometimes hard to understand, here's a brief explanation of its terms in plain text.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+    The rights are given by the License Agreement free of charge. You do not need to pay a fee use The Software, to which this license applies.
+    According to this license you have the right to use CryptoBlackbox without paying any fees in your end-user applications. Only the applications that are not distributed in complete source code are allowed to use CryptoBlackbox. The goal of this statement is to prevent distribution of SecureBlackbox source code. If the application uses CryptoBlackbox and is distributed in source code, the users must download CryptoBlackbox separately.
+    You have the right to distribute CryptoBlackbox in compiled form (or in a form of ActiveX object, DLL library, .NET Assembly etc. which were received from EldoS) with your end-user applications or web services. Distribution of CryptoBlackbox source code is strictly prohibited.
+    If you are a developer of an ActiveX object, shared object, dynamic-link library, Java bean, Delphi component or other similar library that is developed for use by third-parties external to your company, please note that use and distribution of CryptoBlackbox in Middleware is not covered by this license. If you want to use CryptoBlackbox in your Middleware (as named before), please read about re-use in development solutions.
+    CryptoBlackbox authors are not responsible for any damage caused by use or impossibility to use CryptoBlackbox in your applications. However we engage ourselves to fix the reported bugs if possible.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+CryptoBlackbox License Agreement
+8 December 2012
+
+EldoS Corporation is willing to license CryptoBlackbox to you only upon the condition that you accept all the terms of this license.
+1. Definitions.
+
+This license defines and uses the following terms:
+
+1.1. The Software - CryptoBlackbox source code, binary (machine-executable) code in electronic, printed or other form that can be distributed and/or used, accompanying documentation, graphical materials including diagrams, block-schemes, logos, graphic art, sample code in electronic or printed form, batch scripts and configuration files used to use and/or distribute CryptoBlackbox in parts or in whole.
+
+1.2. Licensee - a company or individual who is given the right to use and/or distribute The Software according to this license.
+
+1.3. Licensor - EldoS Corporation in whole represented by EldoS Corporation principal officer.
+
+1.4. Third-parties - companies and individuals that are separate legal entities and not part of the Licensee.
+
+1.5. Middleware - software products or services which are developed by the Licensee for use by third-parties for creation of third-party's software products and which are included as a part of third-party's software products or services. This includes, but is not limited to, Java classes, ActiveX objects, .NET assemblies, Delphi components, Dynamic-Link Libraries, Shared Objects, etc..
+
+1.6. In-house Web Services - software products or services which are developed and/or deployed by the Licensee, run on internal company (Intranet) servers and which are not exposed to third-parties.
+
+1.7. Public Web Services - software products or services which are developed and/or deployed by the Licensee, run on publicly-accessible Internet servers and whose public functions include exposure of functionality of The Software to third-parties.
+
+1.8. End-User Applications - software products or services that are not classified as Middleware or Web Services. End-User Applications include middleware, which is developed solely for in-house use in Licensee's End-User Applications.
+
+1.9. Hardware - any computer-based devices, embeddable modules and appliances, which include material modules for information processing and/or storage.
+
+1.10. Software Evaluation - testing of The Software, which is performed by the Licensee in order to determine fitness for use and compliance to the Licensee's requirements.
+
+1.11. Source Code - the human-readable form of the computer programming code and related system documentation including all comments and any procedural code such as job control language.
+
+1.12. Computer System - a hardware system that includes a single motherboard with one or more CPUs or a software system for hardware emulation or virtualization, which emulates or virtualizes a hardware system with one motherboard and one or more CPUs.
+
+1.13. Installed Copy - a group of computer files in electronic form used by one and only one software developer for development and testing of The Software on any number of Computer Systems.
+
+1.14. New Release - new subsequent releases of The Software bearing a new first numeral such as, but not limited to, 2.0 or 3.0.
+
+1.15. Updates - all successor upgrades, revisions, patches, enhancements, fixes modifications, copies, additions or maintenance releases of the Software which are not New Releases.
+
+1.16. License Key - block of information provided by the Licensor to the Licensee for evaluation ("evaluation license key" and "time-limited evaluation license key") or for production ("universal production license key", "time-limited license key", "EXE-bound license key") and identified by the Licensor as a License Key. The License Key contains data used by The Software and must be treated as a part of The Software binary code.
+2. Scope of use.
+
+2.1. This license is applied to use of The Software by any Licensee that has obtained a copy of The Software and agreed to the terms of this license.
+
+2.2. This license defines terms and conditions for use of The Software in the Licensee's End-User Applications or Public Paid Web Services.
+
+2.3. This license does not grant to the Licensee the right to use The Software in development of Middleware.
+
+2.4. The Software can include portions of source code and/or binary (machine-executable) code developed by third-party entities and distributed under different licenses. If such third-party code is included with the Software, the Software also includes the corresponding license texts that regulate the use of the included third-party code.
+3. Terms of use.
+
+3.1. This license grants the Licensee non-exclusive, non-transferable, royalty-free right to install and use The Software in software development, production and deployment according to the terms of this license.
+
+3.2. The Software is owned by the Licensor and is protected by copyright law, international copyright treaties, as well as other proprietary notices.
+
+3.3. The Licensee can install any number of copies of The Software given that The Software is used only according to this license.
+
+3.4. The Licensee has the right to create a reasonable number of machine-readable copies of The Software for backup and security purposes given that those copies are not used for development, production or deployment.
+
+3.5. Use of The Software by the Licensee's subcontractors requires a separate license issued to those subcontractors.
+
+3.6. Distribution of the binary code of The Software and, when applicable, of Production License Key is allowed when the binary code of The Software and Production License Key are included into End-User Applications or Public Paid Web Services, which are designed and / or developed by the Licensee. Binary code and Production License Key of The Software must be included as an integral part of the Licensee's software package and must not be used separately from this package.
+
+3.7. Distribution of the Source Code of The Software beyond the Computer Systems defined in paragraphs 3.3 and 3.4 is prohibited.
+
+3.8. The Licensee may make modifications, enhancements, derivative works and/or extensions to the licensed Source Code provided to the Licensee. Any modifications, enhancements, derivative works and/or extensions to the licensed Source Code become the property of the Licensee unless the Licensee transfers the property rights for such modifications to the Licensor and the Licensor accepts such transfer. The parts of The Software, which remained unchanged during creation of the modified or enhanced version, extension or the derivative work, remain the property of Licensor.
+
+3.9. This license grants the Licensee the right to get technical support according to Support Policy (published by the Licensor). Technical support is provided for the original Software only. Technical support is not provided for any modifications, enhancements, derivative works and/or extensions to the Software, the property rights for which were not transferred to the Licensor.
+
+3.10. This license grants the Licensee the right to use only the version of The Software, with which this License Agreement is enclosed. This license does not contain or assume any obligations of the Licensor to provide Updates or New Versions for The Software either for a fee or without payment.
+
+3.11. Only the individual or individuals who are the users of the Installed Copy or Installed Copies have the right to receive technical support and obtain New Releases and Updates.
+
+3.12. The Licensee may not reverse engineer, disassemble or in any other way analyze information contained in the License Key or generate and use License Keys other than the ones obtained from The Licensor.
+4. Termination and transfer.
+
+4.1. Rent, lease, sublicense or any other temporary transfer of the rights granted by section 3 (except paragraph 3.6) of this Agreement is prohibited. When the Software is included into End-User Applications, scope of rights regarding the enclosed Software provided by the Licensee to users of such End-User Applications must not exceed scope of rights defined for the Software in this License.
+
+4.2. Permanent transfer of the rights is allowed only after notifying the Licensor about such transfer and provided that the Licensee does not retain any copies of The Software received under terms of this license.
+
+4.3. The license becomes effective the day the Licensee agrees to its terms and conditions.
+
+4.4. The license terminates automatically if the Licensee fails to comply with the limitations described above.
+
+4.5. The license can be terminated by the Licensee at any time.
+
+4.6. Upon termination or permanent transfer of the license the Licensee must destroy all Installed Copies, backup copies created according to paragraph 3.4 of this Agreement, and any other copies of the Software received under terms of this license and stored on all systems and all types of media and in computer memory, which are under control of the Licensee.
+
+4.7. The term of this Agreement shall commence upon the Effective Date and shall continue in perpetuity thereafter unless sooner terminated in accordance with the provisions hereof.
+5. Warranty and Disclaimer.
+
+5.1. The Software is provided by the Licensor 'As Is'.
+
+5.2. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSOR DISCLAIMS ALL WARRANTIES AND CONDITIONS, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT, WITH REGARD TO THE SOFTWARE, AND THE PROVISION OF OR FAILURE TO PROVIDE SUPPORT SERVICES. THE LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR FREE OR WILL OPERATE WITHOUT INTERRUPTION. THE ENTIRE RISK ARISING OUT OF THE USE OR PERFORMANCE OF THE SOFTWARE AND ACCOMPANYING WRITTEN MATERIALS REMAINS WITH THE LICENSEE. THIS LIMITED WARRANTY GIVES THE LICENSEE SPECIFIC LEGAL RIGHTS. THE LICENSEE MAY HAVE OTHERS, WHICH VARY FROM STATE/JURISDICTION TO STATE/JURISDICTION.
+
+5.3. IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+6. Export restrictions.
+
+6.1. The Software must be imported, used, exported and re-exported according to export control regulations of the European Union and the Licensee's country of residence. Also the Software may not be imported, used, exported and re-exported, in whole or in parts, separately or as a part of another software product, to Russia.
+7. Governing law.
+
+7.1. This license will be governed by the laws of United Kingdom. Should you have any questions regarding this license, you may contact the Licensor by writing to EldoS Corporation, 20-22 Wenlock Road, London, N1 7GU, United Kingdom
+8. Compliance with the license.
+
+8.1. If the Licensee is a business or organization, the Licensee must provide, upon request from the Licensor, information concerning compliance of use of The Software to the license.
+
+8.2. All rights to use The Software are granted on condition that such rights are forfeited if the Licensee fails to comply with the terms of this license.
+9. General Provisions.
+
+9.1. If any part of this Agreement is found void and unenforceable, it will not affect the validity of the balance of the license, which shall remain valid and enforceable according to its terms.
+
+9.2. New Releases of The Software may be licensed to the Licensee by the Licensor under additional or different terms.
+
+9.3. By signing this agreement the Licensor certifies, that it is a legitimate owner of The Software and possesses all rights to use, modify, improve, copy, distribute, sublicense and market The Software and any new version identified above in object and source code form on and for any media and by any means or methods now known or known in the future.
+
+9.4. This is the entire agreement between the Licensor and the Licensee relating to The Software and it supersedes any prior representations, discussions, undertakings, communications or advertising relating to The Software.
