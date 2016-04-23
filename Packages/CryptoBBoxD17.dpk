@@ -1,0 +1,153 @@
+package CryptoBBoxD17;
+
+{$R 'secbbox.dcr'}
+{$R 'PlatformTargets.res'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS OFF}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$DEFINITIONINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'EldoS CryptoBlackbox'}
+{$IMPLICITBUILD ON}
+{$DEFINE SB_CRYPTOPKG}
+
+requires
+  rtl;
+
+contains
+  SBLicenseManager in '..\Sources\SBlicenseManager.pas',
+  SBAlgorithmIdentifier in '..\Sources\SBAlgorithmIdentifier.pas',
+  SBTypes in '..\Sources\SBTypes.pas',
+  SBUtils in '..\Sources\SBUtils.pas',
+  SBStrUtils in '..\Sources\SBStrUtils.pas',
+  SBStreams in '..\Sources\SBStreams.pas',
+  SBEncoding in '..\Sources\SBEncoding.pas',
+  SBDES in '..\Sources\SBDES.pas',
+  SBMD in '..\Sources\SBMD.pas',
+  SBSHA in '..\Sources\SBSHA.pas',
+  SBSHA2 in '..\Sources\SBSHA2.pas',
+  SBHMAC in '..\Sources\SBHMAC.pas',
+  SBMath in '..\Sources\SBMath.pas',
+  SBRC2 in '..\Sources\SBRC2.pas',
+  SBRC4 in '..\Sources\SBRC4.pas',
+  SBAES in '..\Sources\SBAES.pas',
+  SBASN1 in '..\Sources\SBASN1.pas',
+  SBASN1Tree in '..\Sources\SBASN1Tree.pas',
+  SBPEM in '..\Sources\SBPEM.pas',
+  SBRandom in '..\Sources\SBRandom.pas',
+  SBRDN in '..\Sources\SBRDN.pas',
+  SBWinCrypt in '..\Sources\SBWinCrypt.pas',
+  SBRIPEMD in '..\Sources\SBRIPEMD.pas',
+  SBConstants in '..\Sources\SBConstants.pas',
+  SBBlowfish in '..\Sources\SBBlowfish.pas',
+  SBTwofish in '..\Sources\SBTwofish.pas',
+  SBCAST128 in '..\Sources\SBCAST128.pas',
+  SBCamellia in '..\Sources\SBCamellia.pas',
+  SBCRC in '..\Sources\SBCRC.pas',
+  SBSerpent in '..\Sources\SBSerpent.pas',
+  SBSocket in '..\Sources\SBSocket.pas',
+  SBElGamal in '..\Sources\SBElGamal.pas',
+  SBSharedResource in '..\Sources\SBSharedResource.pas',
+  SBCustomCrypto in '..\Sources\SBCustomCrypto.pas',
+  SBZCommonunit in '..\Sources\SBzcommonunit.pas',
+  SBZCompressUnit in '..\Sources\SBZCompressUnit.pas',
+  SBZUncompressUnit in '..\Sources\SBZUncompressUnit.pas',
+  SBZlib in '..\Sources\SBZlib.pas',
+  SBRabbit in '..\Sources\SBRabbit.pas',
+  SBSeed in '..\Sources\SBSeed.pas',
+  SBTimer in '..\Sources\SBTimer.pas',
+
+  SBCMSUtils in '..\Sources\SBCMSUtils.pas', 
+  SBCryptoProv in '..\Sources\SBCryptoProv.pas', 
+  SBCryptoProvRS in '..\Sources\SBCryptoProvRS.pas', 
+  SBCryptoProvUtils in '..\Sources\SBCryptoProvUtils.pas',
+  SBCryptoProvDefault in '..\Sources\SBCryptoProvDefault.pas',
+  SBCryptoProvBuiltIn in '..\Sources\SBCryptoProvBuiltIn.pas',
+  SBCryptoProvBuiltInHash in '..\Sources\SBCryptoProvBuiltInHash.pas', 
+  SBCryptoProvBuiltInPKI in '..\Sources\SBCryptoProvBuiltInPKI.pas',
+  SBCryptoProvBuiltInSym in '..\Sources\SBCryptoProvBuiltInSym.pas', 
+  SBCryptoProvWin32 in '..\Sources\SBCryptoProvWin32.pas', 
+  SBCryptoProvManager in '..\Sources\SBCryptoProvManager.pas',
+
+  SBMSKeyBlob in '..\Sources\SBMSKeyBlob.pas',
+  SBRSA in '..\Sources\SBRSA.pas',
+  SBDSA in '..\Sources\SBDSA.pas',
+  SBHashFunction in '..\Sources\SBHashFunction.pas',
+
+  SBPKCS8 in '..\Sources\SBPKCS8.pas',
+  SBPKCS5 in '..\Sources\SBPKCS5.pas',
+  SBX509 in '..\Sources\SBX509.pas',
+  SBX509Ext in '..\Sources\SBX509Ext.pas',
+  SBCRL in '..\Sources\SBCRL.pas',
+  SBCRLStorage in '..\Sources\SBCRLStorage.pas',
+  SBCertRetriever in '..\Sources\SBCertRetriever.pas',
+  SBCertValidator in '..\Sources\SBCertValidator.pas',
+
+  SBJKS in '..\Sources\SBJKS.pas',
+  SBPublicKeyCrypto in '..\Sources\SBPublicKeyCrypto.pas',
+  SBSymmetricCrypto in '..\Sources\SBSymmetricCrypto.pas',
+  SBOCSPCommon in '..\Sources\SBOCSPCommon.pas',
+  SBOCSPClient in '..\Sources\SBOCSPClient.pas',
+  SBOCSPStorage in '..\Sources\SBOCSPStorage.pas',
+  SBPKIAsync in '..\Sources\SBPKIAsync.pas',
+  SBPKICommon in '..\Sources\SBPKICommon.pas',
+  SBTSPCommon in '..\Sources\SBTSPCommon.pas',
+  SBTSPClient in '..\Sources\SBTSPClient.pas',
+  SBSocketTSPClient in '..\Sources\SBSocketTSPClient.pas',
+  SBPKCS7 in '..\Sources\SBPKCS7.pas',
+  SBPKCS7Utils in '..\Sources\SBPKCS7Utils.pas',
+  SBPKCS12 in '..\Sources\SBPKCS12.pas',
+  SBMessages in '..\Sources\SBMessages.pas',
+  SBCustomCertStorage in '..\Sources\SBCustomCertStorage.pas',
+  SBWinCertStorage in '..\Sources\SBWinCertStorage.pas',
+  SBSRP in '..\Sources\SBSRP.pas',
+  SBSMIMESignatures in '..\Sources\SBSMIMESignatures.pas',
+  SBUMAC in '..\Sources\SBUMAC.pas',
+  SBStringList in '..\Sources\SBStringList.pas',
+  SBECCommon in '..\Sources\SBECCommon.pas', 
+  SBECMath in '..\Sources\SBECMath.pas', 
+  SBECDSA in '..\Sources\SBECDSA.pas',
+  SBGOSTCommon in '..\Sources\SBGOSTCommon.pas',
+  SBGOST341194 in '..\Sources\SBGOST341194.pas',
+  SBGOST341094 in '..\Sources\SBGOST341094.pas',
+  SBGOST341001 in '..\Sources\SBGOST341001.pas',
+  SBGOST2814789 in '..\Sources\SBGOST2814789.pas',
+
+  SBPunycode in '..\Sources\SBPunycode.pas',
+  SBSASL in '..\Sources\SBSASL.pas',
+  SBHTTPSConstants in '..\Sources\SBHTTPSConstants.pas',
+  SBHTTPAuth in '..\Sources\SBHTTPAuth.pas',
+
+  SBCryptoProvBuiltInEx in '..\Sources\SBCryptoProvBuiltInEx.pas',
+  SBIDEA in '..\Sources\SBIDEA.pas',
+  SBBCrypt in '..\Sources\SBBCrypt.pas',
+  SBWhirlpool in '..\Sources\SBWhirlpool.pas',
+
+  SBUnicode in '..\Sources\SBUnicode.pas',  
+
+  SBChSClasses in '..\Sources\SBChSClasses.pas', 
+  SBChSConv in '..\Sources\SBChSConv.pas',
+  SBChSConvBase in '..\Sources\SBChSConvBase.pas', 
+  SBChSConvCharsets in '..\Sources\SBChSConvCharsets.pas',
+  SBChSConvConsts in '..\Sources\SBChSConvConsts.pas'
+;
+
+end.

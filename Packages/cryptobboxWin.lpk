@@ -1,0 +1,488 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="CryptoBBox"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="..\Sources"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <SyntaxMode Value="Delphi"/>
+        </SyntaxOptions>
+      </Parsing>
+      <Linking>
+        <Debugging>
+          <GenerateDebugInfo Value="False"/>
+        </Debugging>
+      </Linking>
+      <Other>
+        <CompilerMessages>
+          <MsgFileName Value=""/>
+        </CompilerMessages>
+        <CompilerPath Value="$(CompPath)"/>
+      </Other>
+    </CompilerOptions>
+    <Files Count="221">
+      <Item95>
+        <Filename Value="..\Sources\SBAES.pas"/>
+        <UnitName Value="SBAES"/>
+      </Item95>
+      <Item96>
+        <Filename Value="..\Sources\SBAlgorithmIdentifier.pas"/>
+        <UnitName Value="SBAlgorithmIdentifier"/>
+      </Item96>
+      <Item97>
+        <Filename Value="..\Sources\SBASN1.pas"/>
+        <UnitName Value="SBASN1"/>
+      </Item97>
+      <Item98>
+        <Filename Value="..\Sources\SBASN1Tree.pas"/>
+        <UnitName Value="SBASN1Tree"/>
+      </Item98>
+      <Item99>
+        <Filename Value="..\Sources\SBBlowfish.pas"/>
+        <UnitName Value="SBBlowfish"/>
+      </Item99>
+      <Item100>
+        <Filename Value="..\Sources\SBBzip2.pas"/>
+        <UnitName Value="SBBzip2"/>
+      </Item100>
+      <Item101>
+        <Filename Value="..\Sources\SBBzip2BaseTypes.pas"/>
+        <UnitName Value="SBBzip2BaseTypes"/>
+      </Item101>
+      <Item102>
+        <Filename Value="..\Sources\SBBzip2Common.pas"/>
+        <UnitName Value="SBBzip2Common"/>
+      </Item102>
+      <Item103>
+        <Filename Value="..\Sources\SBBzip2Types.pas"/>
+        <UnitName Value="SBBzip2Types"/>
+      </Item103>
+      <Item104>
+        <Filename Value="..\Sources\SBBzip2Utils.pas"/>
+        <UnitName Value="SBBzip2Utils"/>
+      </Item104>
+      <Item105>
+        <Filename Value="..\Sources\SBBzlib.pas"/>
+        <UnitName Value="SBBzlib"/>
+      </Item105>
+      <Item106>
+        <Filename Value="..\Sources\SBCAST128.pas"/>
+        <UnitName Value="SBCAST128"/>
+      </Item106>
+      <Item107>
+        <Filename Value="..\Sources\SBCertRetriever.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBCertRetriever"/>
+      </Item107>
+      <Item108>
+        <Filename Value="..\Sources\SBCertValidator.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBCertValidator"/>
+      </Item108>
+      <Item111>
+        <Filename Value="..\Sources\SBChSClasses.pas"/>
+        <UnitName Value="SBChSClasses"/>
+      </Item111>
+      <Item112>
+        <Filename Value="..\Sources\SBChSConv.pas"/>
+        <UnitName Value="SBChSConv"/>
+      </Item112>
+      <Item113>
+        <Filename Value="..\Sources\SBChSConvBase.pas"/>
+        <UnitName Value="SBChSConvBase"/>
+      </Item113>
+      <Item114>
+        <Filename Value="..\Sources\SBChSConvCharsets.pas"/>
+        <UnitName Value="SBChSConvCharsets"/>
+      </Item114>
+      <Item115>
+        <Filename Value="..\Sources\SBChSConvConsts.pas"/>
+        <UnitName Value="SBChSConvConsts"/>
+      </Item115>
+      <Item118>
+        <Filename Value="..\Sources\SBConstants.pas"/>
+        <UnitName Value="SBConstants"/>
+      </Item118>
+      <Item119>
+        <Filename Value="..\Sources\SBCRC.pas"/>
+        <UnitName Value="SBCRC"/>
+      </Item119>
+      <Item120>
+        <Filename Value="..\Sources\SBCRL.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBCRL"/>
+      </Item120>
+      <Item121>
+        <Filename Value="..\Sources\SBCRLStorage.pas"/>
+        <UnitName Value="SBCRLStorage"/>
+      </Item121>
+      <Item122>
+        <Filename Value="..\Sources\SBCryptoProv.pas"/>
+        <UnitName Value="SBCryptoProv"/>
+      </Item122>
+      <Item123>
+        <Filename Value="..\Sources\SBCryptoProvBuiltIn.pas"/>
+        <UnitName Value="SBCryptoProvBuiltIn"/>
+      </Item123>
+      <Item124>
+        <Filename Value="..\Sources\SBCryptoProvBuiltInEx.pas"/>
+        <UnitName Value="SBCryptoProvBuiltInEx"/>
+      </Item124>
+      <Item125>
+        <Filename Value="..\Sources\SBCryptoProvBuiltInHash.pas"/>
+        <UnitName Value="SBCryptoProvBuiltInHash"/>
+      </Item125>
+      <Item126>
+        <Filename Value="..\Sources\SBCryptoProvBuiltInPKI.pas"/>
+        <UnitName Value="SBCryptoProvBuiltInPKI"/>
+      </Item126>
+      <Item127>
+        <Filename Value="..\Sources\SBCryptoProvBuiltInSym.pas"/>
+        <UnitName Value="SBCryptoProvBuiltInSym"/>
+      </Item127>
+      <Item128>
+        <Filename Value="..\Sources\SBCryptoProvDefault.pas"/>
+        <UnitName Value="SBCryptoProvDefault"/>
+      </Item128>
+      <Item129>
+        <Filename Value="..\Sources\SBCryptoProvManager.pas"/>
+        <UnitName Value="SBCryptoProvManager"/>
+      </Item129>
+      <Item130>
+        <Filename Value="..\Sources\SBCryptoProvRS.pas"/>
+        <UnitName Value="SBCryptoProvRS"/>
+      </Item130>
+      <Item131>
+        <Filename Value="..\Sources\SBCryptoProvUtils.pas"/>
+        <UnitName Value="SBCryptoProvUtils"/>
+      </Item131>
+      <Item132>
+        <Filename Value="..\Sources\SBCryptoProvWin32.pas"/>
+        <UnitName Value="SBCryptoProvWin32"/>
+      </Item132>
+      <Item133>
+        <Filename Value="..\Sources\SBCustomCertStorage.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBCustomCertStorage"/>
+      </Item133>
+      <Item134>
+        <Filename Value="..\Sources\SBCustomCrypto.pas"/>
+        <UnitName Value="SBCustomCrypto"/>
+      </Item134>
+      <Item140>
+        <Filename Value="..\Sources\SBDES.pas"/>
+        <UnitName Value="SBDES"/>
+      </Item140>
+      <Item146>
+        <Filename Value="..\Sources\SBDSA.pas"/>
+        <UnitName Value="SBDSA"/>
+      </Item146>
+      <Item147>
+        <Filename Value="..\Sources\SBECCommon.pas"/>
+        <UnitName Value="SBECCommon"/>
+      </Item147>
+      <Item148>
+        <Filename Value="..\Sources\SBECDSA.pas"/>
+        <UnitName Value="SBECDSA"/>
+      </Item148>
+      <Item149>
+        <Filename Value="..\Sources\SBECMath.pas"/>
+        <UnitName Value="SBECMath"/>
+      </Item149>
+      <Item150>
+        <Filename Value="..\Sources\SBElgamal.pas"/>
+        <UnitName Value="SBElgamal"/>
+      </Item150>
+      <Item151>
+        <Filename Value="..\Sources\SBEncoding.pas"/>
+        <UnitName Value="SBEncoding"/>
+      </Item151>
+      <Item152>
+        <Filename Value="..\Sources\SBGOST2814789.pas"/>
+        <UnitName Value="SBGOST2814789"/>
+      </Item152>
+      <Item153>
+        <Filename Value="..\Sources\SBGOST341001.pas"/>
+        <UnitName Value="SBGOST341001"/>
+      </Item153>
+      <Item154>
+        <Filename Value="..\Sources\SBGOST341094.pas"/>
+        <UnitName Value="SBGOST341094"/>
+      </Item154>
+      <Item155>
+        <Filename Value="..\Sources\SBGOST341194.pas"/>
+        <UnitName Value="SBGOST341194"/>
+      </Item155>
+      <Item156>
+        <Filename Value="..\Sources\SBGOSTCommon.pas"/>
+        <UnitName Value="SBGOSTCommon"/>
+      </Item156>
+      <Item160>
+        <Filename Value="..\Sources\SBHashFunction.pas"/>
+        <UnitName Value="SBHashFunction"/>
+      </Item160>
+      <Item161>
+        <Filename Value="..\Sources\SBHMAC.pas"/>
+        <UnitName Value="SBHMAC"/>
+      </Item161>
+      <Item162>
+        <Filename Value="..\Sources\SBHTTPAuth.pas"/>
+        <UnitName Value="SBHTTPAuth"/>
+      </Item162>
+      <Item163>
+        <Filename Value="..\Sources\SBHTTPSConstants.pas"/>
+        <UnitName Value="SBHTTPSConstants"/>
+      </Item163>
+      <Item164>
+        <Filename Value="..\Sources\SBIDEA.pas"/>
+        <UnitName Value="SBIDEA"/>
+      </Item164>
+      <Item165>
+        <Filename Value="..\Sources\SBJKS.pas"/>
+        <UnitName Value="SBJKS"/>
+      </Item165>
+      <Item167>
+        <Filename Value="..\Sources\SBLicenseManager.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBLicenseManager"/>
+      </Item167>
+      <Item168>
+        <Filename Value="..\Sources\SBMath.pas"/>
+        <UnitName Value="SBMath"/>
+      </Item168>
+      <Item169>
+        <Filename Value="..\Sources\SBMD.pas"/>
+        <UnitName Value="SBMD"/>
+      </Item169>
+      <Item170>
+        <Filename Value="..\Sources\SBMessages.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBMessages"/>
+      </Item170>
+      <Item171>
+        <Filename Value="..\Sources\SBMSKeyBlob.pas"/>
+        <UnitName Value="SBMSKeyBlob"/>
+      </Item171>
+      <Item172>
+        <Filename Value="..\Sources\SBOCSPClient.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBOCSPClient"/>
+      </Item172>
+      <Item173>
+        <Filename Value="..\Sources\SBOCSPCommon.pas"/>
+        <UnitName Value="SBOCSPCommon"/>
+      </Item173>
+      <Item174>
+        <Filename Value="..\Sources\SBPEM.pas"/>
+        <UnitName Value="SBPEM"/>
+      </Item174>
+      <Item175>
+        <Filename Value="..\Sources\SBPKCS12.pas"/>
+        <UnitName Value="SBPKCS12"/>
+      </Item175>
+      <Item176>
+        <Filename Value="..\Sources\SBPKCS7.pas"/>
+        <UnitName Value="SBPKCS7"/>
+      </Item176>
+      <Item177>
+        <Filename Value="..\Sources\SBPKCS7Utils.pas"/>
+        <UnitName Value="SBPKCS7Utils"/>
+      </Item177>
+      <Item178>
+        <Filename Value="..\Sources\SBPKCS8.pas"/>
+        <UnitName Value="SBPKCS8"/>
+      </Item178>
+      <Item179>
+        <Filename Value="..\Sources\SBPKIAsync.pas"/>
+        <UnitName Value="SBPKIAsync"/>
+      </Item179>
+      <Item180>
+        <Filename Value="..\Sources\SBPKICommon.pas"/>
+        <UnitName Value="SBPKICommon"/>
+      </Item180>
+      <Item181>
+        <Filename Value="..\Sources\SBPublicKeyCrypto.pas"/>
+        <UnitName Value="SBPublicKeyCrypto"/>
+      </Item181>
+      <Item182>
+        <Filename Value="..\Sources\SBPunycode.pas"/>
+        <UnitName Value="SBPunycode"/>
+      </Item182>
+      <Item183>
+        <Filename Value="..\Sources\SBRabbit.pas"/>
+        <UnitName Value="SBRabbit"/>
+      </Item183>
+      <Item184>
+        <Filename Value="..\Sources\SBRandom.pas"/>
+        <UnitName Value="SBRandom"/>
+      </Item184>
+      <Item185>
+        <Filename Value="..\Sources\SBRC2.pas"/>
+        <UnitName Value="SBRC2"/>
+      </Item185>
+      <Item186>
+        <Filename Value="..\Sources\SBRC4.pas"/>
+        <UnitName Value="SBRC4"/>
+      </Item186>
+      <Item187>
+        <Filename Value="..\Sources\SBRDN.pas"/>
+        <UnitName Value="SBRDN"/>
+      </Item187>
+      <Item188>
+        <Filename Value="..\Sources\SBRIPEMD.pas"/>
+        <UnitName Value="SBRIPEMD"/>
+      </Item188>
+      <Item189>
+        <Filename Value="..\Sources\SBRSA.pas"/>
+        <UnitName Value="SBRSA"/>
+      </Item189>
+      <Item190>
+        <Filename Value="..\Sources\SBSASL.pas"/>
+        <UnitName Value="SBSASL"/>
+      </Item190>
+      <Item191>
+        <Filename Value="..\Sources\SBSeed.pas"/>
+        <UnitName Value="SBSeed"/>
+      </Item191>
+      <Item192>
+        <Filename Value="..\Sources\SBSerpent.pas"/>
+        <UnitName Value="SBSerpent"/>
+      </Item192>
+      <Item193>
+        <Filename Value="..\Sources\SBSHA.pas"/>
+        <UnitName Value="SBSHA"/>
+      </Item193>
+      <Item194>
+        <Filename Value="..\Sources\SBSHA2.pas"/>
+        <UnitName Value="SBSHA2"/>
+      </Item194>
+      <Item195>
+        <Filename Value="..\Sources\SBSharedResource.pas"/>
+        <UnitName Value="SBSharedResource"/>
+      </Item195>
+      <Item196>
+        <Filename Value="..\Sources\SBSMIMESignatures.pas"/>
+        <UnitName Value="SBSMIMESignatures"/>
+      </Item196>
+      <Item197>
+        <Filename Value="..\Sources\SBSocket.pas"/>
+        <UnitName Value="SBSocket"/>
+      </Item197>
+      <Item198>
+        <Filename Value="..\Sources\SBSRP.pas"/>
+        <UnitName Value="SBSRP"/>
+      </Item198>
+      <Item200>
+        <Filename Value="..\Sources\SBStreams.pas"/>
+        <UnitName Value="SBStreams"/>
+      </Item200>
+      <Item201>
+        <Filename Value="..\Sources\SBStringList.pas"/>
+        <UnitName Value="SBStringList"/>
+      </Item201>
+      <Item202>
+        <Filename Value="..\Sources\SBStrUtils.pas"/>
+        <UnitName Value="SBStrUtils"/>
+      </Item202>
+      <Item203>
+        <Filename Value="..\Sources\SBSymmetricCrypto.pas"/>
+        <UnitName Value="SBSymmetricCrypto"/>
+      </Item203>
+      <Item205>
+        <Filename Value="..\Sources\SBTimer.pas"/>
+        <UnitName Value="SBTimer"/>
+      </Item205>
+      <Item206>
+        <Filename Value="..\Sources\SBTSPClient.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBTSPClient"/>
+      </Item206>
+      <Item207>
+        <Filename Value="..\Sources\SBTSPCommon.pas"/>
+        <UnitName Value="SBTSPCommon"/>
+      </Item207>
+      <Item208>
+        <Filename Value="..\Sources\SBTwofish.pas"/>
+        <UnitName Value="SBTwofish"/>
+      </Item208>
+      <Item209>
+        <Filename Value="..\Sources\SBTypes.pas"/>
+        <UnitName Value="SBTypes"/>
+      </Item209>
+      <Item210>
+        <Filename Value="..\Sources\SBUMAC.pas"/>
+        <UnitName Value="SBUMAC"/>
+      </Item210>
+      <Item211>
+        <Filename Value="..\Sources\SBUnicode.pas"/>
+        <UnitName Value="SBUnicode"/>
+      </Item211>
+      <Item212>
+        <Filename Value="..\Sources\SBUtils.pas"/>
+        <UnitName Value="SBUtils"/>
+      </Item212>
+      <Item213>
+        <Filename Value="..\Sources\SBWinCertStorage.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBWinCertStorage"/>
+      </Item213>
+      <Item214>
+        <Filename Value="..\Sources\SBWinCrypt.pas"/>
+        <UnitName Value="SBWinCrypt"/>
+      </Item214>
+      <Item215>
+        <Filename Value="..\Sources\SBX509.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBX509"/>
+      </Item215>
+      <Item216>
+        <Filename Value="..\Sources\SBX509Ext.pas"/>
+        <UnitName Value="SBX509Ext"/>
+      </Item216>
+      <Item217>
+        <Filename Value="..\Sources\SBZCommonUnit.pas"/>
+        <UnitName Value="SBZCommonUnit"/>
+      </Item217>
+      <Item218>
+        <Filename Value="..\Sources\SBZCompressUnit.pas"/>
+        <UnitName Value="SBZCompressUnit"/>
+      </Item218>
+      <Item219>
+        <Filename Value="..\Sources\SBZlib.pas"/>
+        <UnitName Value="SBZlib"/>
+      </Item219>
+      <Item220>
+        <Filename Value="..\Sources\SBZUncompressUnit.pas"/>
+        <UnitName Value="SBZUncompressUnit"/>
+      </Item220>
+      <Item221>
+        <Filename Value="..\Sources\SBWhirlpool.pas"/>
+        <UnitName Value="SBWhirlpool"/>
+      </Item221>
+      <Item222>
+        <Filename Value="..\Sources\SBOCSPStorage.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="SBOCSPStorage"/>
+      </Item222>
+    </Files>
+    <Type Value="RunAndDesignTime"/>
+    <RequiredPkgs Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

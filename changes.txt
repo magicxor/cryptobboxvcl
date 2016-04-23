@@ -1,0 +1,3294 @@
+       SecureBlackbox - version 12.0.258 - Released August 15, 2014
+---------------------------------------------------------------------------
+
+What's new:
+
+                              [           Legend:          ]
+                              [ + Added feature            ]
+                              [ * Improved/changed feature ]
+                              [ - Bug fixed                ]
+
+
+^^^^^^^^^^^^^^^^^^^^
+^^^ Version 12.0 ^^^
+^^^              ^^^
+^^^^^^^^^^^^^^^^^^^^
+
+---
+August 15, 2014
+Version 12.0.258. Maintenance update
+
++ [All] (FTPS) TElSimpleFTPSServer now supports wildcards for NLST command. This allows "mget *.*" command to work. 
+
++ [Java] (PDF) TinySignerPKCS11 sample added.
+
+- [All] (Base) TElCustomCertStorage.LoadFromBufferJKS method fixed to report error if wrong password provided.
+- [All] (Base) FileSystemAdapter incorrectly processed UNC paths. Fixed.
+- [All] (PKI) TElMessageTimestamper.Timestamp produced invalid timestamps. Fixed.
+
+- [VCL] (LDAP) Fixed a bug when search operation failed. The bug was introduced in first 12th version builds.
+
+---
+August 2, 2014
+Version 12.0.257. Maintenance update
+
+- [All] (Base) PEM decoding fixed.
+- [All] (DC) Fixed URL composing which is used to post back signature results in ActiveX control
+- [All] (HTTP) Digest authentication fixed.
+- [All] (SSL) Server was incorrectly choosing a session certificate in certain ciphersuite configurations, leading to handshake failures. Fixed.
+- [All] (SSL) Fixed occasional GCM cipher failures in SSL/TLS client
+
+- [VCL] Due to a bug in C++Builder compiler certain parts of SecureBlackbox code were unusable. Workaround has been added.
+- [.NET, Java] (FTPS) foPreallocateStorage in TElSimpleFTPSClient didn't work due a typo error. Fixed. 
+- [.NET] (Base) When using a workaround in UNC path handling, the error code was not reset. Fixed.
+
+---
+July 23, 2014
+Version 12.0.256. Maintenance update
+
+* [All] Documentation updated to reflect the replacement of BufferType with ByteArray.
+
+* [.NET] (Base) The mechanism to open files behind a UNC path has been improved.
+
+- [All] (HTTPS) URL with parameters (the part after ?) were passed by TElHTTPSClient to the server with an extra question mark. The issue appeared in build 255 due to last-minute changes. Fixed.
+
+---
+July 19, 2014
+Version 12.0.255. Official release
+
+! [All]	BufferType type has been replaced with ByteArray.
+! [VCL] Delphi 5 (yes, that old one) support dropped
+
++ [VCL] RAD Studio XE6 support added
+
++ [All] (PKI) Added support for trusted timestamps (TSP protocol) to Authenticode
++ [All] (HTTPS) Added handling of response code 308 as per RFC 7238
++ [All] (FTPS) TElSimpleFTPSServer.OnBeforeSendReply event added.
++ [All] (SSH) InactivityPeriod property added for forwarding classes that tells the component to close the forward if there were no activity for some time.
++ [All] (SSL) Added support for signaling ciphersuite value (SCSV), a compatible method for indicating support for renegotiation info extension.
++ [All] (PKI) Added SHA2 support to PKCS#5
++ [All] (MIME) Added AlignEncryptedKey property that allows to fix a compatibility issue with old software in encrypted mail messages
+
+* [All] (Base) TElMessageEncryptor/TElMessageDecryptor improved to support RSA-OAEP with non SHA-1 MGF1 functions.
+* [All] (Base) TElMessageEncryptor and .NET EnvelopedCms compatibility improved.
+* [All] (Base) Processing of X.509 CRL Distribution Points and Name Constraints extensions significantly reworked and improved.
+* [All] (Base) TElDSAKeyMaterial.LoadPublic improved to load PEM-encoded keys in OpenSSL format.
+* [All] (PKI) TElCertificatePoliciesExtension improved to handle policies with multiple qualifiers correctly.
+* [All] (XML) Added workaround for parsing TSP info if a data contains TSP reply.
+* [All] (FTPS) TElSimpleFTPSServer changed to return 550 code in case of file absence on DELE request.
+* [All] (SFTP) Improved upload speed with Bitvise WinSSHD server.
+* [All] (PKI) TElTSPServer class improved to clear AuthenticatedAttributes on subsequent requests.
+* [All] (MIME) Removed the Offset parameter in the TElMessageHeader.Parse method
+* [All] (Base) TElMessageEncryptor/TElMessageDecryptor improved to support RSA-OAEP with non SHA-1 MGF1 functions.
+* [All] (Base) TElMessageEncryptor and .NET EnvelopedCms compatibility improved.
+* [All] (Base) Processing of X.509 CRL Distribution Points and Name Constraints extensions significantly reworked and improved.
+
+* [All] (SSL) Server name extension is now automatically sent on TLS 1.0-1.2, which aims to improve compatibility with newer SSL and HTTPS servers.
+
+* [.NET] (Base) Improved cryptographic code efficiency with regard to garbage collection
+
+* [.NET, C++, VCL] (Base) Improved error reporting in DiskFileSystemAdapter - now the error code is [attempted to be] returned more precisely and not just "Access Denied" as before.
+* [Java] (XML) Optimized xml canonicalization and saving.
+
+- [All] (XML) Fixed NullPointerException in TElXAdESVerifier.ExtractAllCertificates method.
+- [All] (Cloud) A minor fix to shared access signatures calculation in debug mode
+- [All] (HTTPS) When sending the request using the inherited methods of TElRESTClient, output stream was not cleared before the second request.
+- [All] (HTTPS) Multiple cookies put to HTTPClient.RequestParameters.Cookies were sent not correctly. Fixed.
+- [All] (HTTPS) 204, 205 and 304 response codes were not handled right  if connection was kept and not closed by the server. Fixed.
+- [All] (PKI) Fixed CompleteChainValidation parameter in TElX509CertificateValidator.Validate method.
+- [All] (PDF) Fixed extra newline in signature widget for numeric OID values generated by TElPDFPublicKeySecurityHandler.GetSignatureInfo method.
+- [All] (Charsets) Fixed charset conversion.
+- [All] (XML) Fixed XPath processing.
+- [All] (SOAP) Ensures that a Header element is always created before Body element.
+- [All] (SSL) The TLSv1.2-only client did not reject servers rolling back to TLSv1.0 or TLSv1.1. Fixed.
+- [All] (MIME) Fixed a bug in parsing mail headers with empty field bodies
+
+- [VCL] (Base) Fixed TElRandom.Randomize implementation.
+- [VCL] (Base) Fixed import and export of keys to Windows system stores, broken in one of SBBv12 betas.
+- [VCL] (PDF) Fixed decryption with TElPDFPublicKeySecurityHandler.
+- [.NET] (SSL) Fixed broken SSLv2 implementation.
+- [.NET, Java] (SSL) TElSSLServer didn't work with some TLS1.2 ciphersuites. Fixed.
+- [.NET] (Office) Fixed constructor visibility for some encryption handlers.
+- [Java] (Base) Fixed JNI.java not to include the JNI native library extension - Java doesn't expect the extension by default and doens't work in some cases when the extension is specified.
+
+- [All] (Office) Fixed RC4 decryption for binary documents.
+- [C++] (Office) Fixed signing of .docx, .xps documents for Mac/iOS
+
+---
+May 28, 2014
+Version 12.0.253. Release candidate 2
+
+! [All] (PKI) PKCS#11 constants and types have been renamed from CK?_ (eg. CK_LONG, CK_RV) to SB_CK?_ (SB_CK_LONG etc.) 
+! [All] (HTTPS) NewURL parameter in OnRedirection event of TElHTTPSClient can now be changed by the event handler. 
+
++ [All] (FTPS) TElSimpleFTPSServer.OutgoingLocalBinding property added that allows to set outgoing address and port for active transfer mode.
++ [All] (FTPS) Added support for EPRT and EPSV commands to FTPS server.
++ [All] (FTPS) Added support for SITE command in FTPS server.
+
++ [All] (SSH) Added port knocking functionality to SSH forwarding components.
+
++ [.NET] (PKI) PKCS#11 is now available for Windows CE
++ [C++] (PKI) PKCS#11 is now available for static PKCS#11 libraries on iOS.
++ [Java] (PKI) PKCS#11 via JNI is now available for Android.
+
+* [All] (FTPS) FTPS server now reports error code to a client in case of exception inside OnTransferCompleted event handler.
+
+- [Java] (Base) Fixed a bug in JCE cryptoprovider that caused invalid signatures generation.
+- [Java] (Office) Fixed signing/verification using CryptoAPI signature handler for some binary documents.
+
+
+---
+May 4, 2014
+Version 12.0.251. Release candidate 1
+
+! [All] (Cloud) SkyDrive component has been renamed to OneDrive
+! [C++] Static libraries for iOS and MacOS requires compiler and library support for the ISO C++ 2011 standard.
+
+! [.NET] (FTPS) RemoteCharset property has been removed from TElSimpleFTPSClient
+
++ [All] (PKI) Added HMAC-Based One-Time Password and Time-based One Time Password
++ [All] (Cloud) Added support for Box.com cloud storage
++ [All] (FTPS) Added support for HOST command.
++ [All] (FTPS) Added QuoteParameters property to the client component which specifies, when to wrap the parameter of the FTP command with QuoteParamChar property
++ [All] (FTPS) TElSimpleFTPSServer.OnCommandUnhandled event added.
++ [All] (XML) Added TElXMLSOAPClient component.
+
++ [Java] (PKI) JNI module and code improved to allow usage of PKCS#11 devices on Linux x86/x64/Mac OS X. 
+
+
+* [All] (OpenPGP) Code improved to use the latest keys expiration date for malformed keys with wrong packets sequence.
+* [All] (SSH) Added support for global (non-channel-wise) keep-alive signals.
+* [All] (PKI) Added csoUseGenericSigAlgorithmOIDs flag for better control over signature algorithm written down to the CMS structure.
+* [All] (PDF) Improved invisible signature to conform to PDF/A requirements.
+* [All] (SSL) Added support for client-side authentication with EC certificates.
+* [All] (FTPS) FTP server improved to accept "MODE S" command.
+
+* [NG] (iOS, MacOS) Fixed a memory management issue caused by a revised implementation of core TList class on NG platform. The problem led to occasional memory access errors (AV's etc.) on iOS and MacOS platforms. 
+* [VCL, .NET] (SSH) TElSSHServer closed connection after EOF packet was received from a client. Now this behaviour can be controled using TElSSHTunnelConnection.OnEOF event. 
+* [VCL, .NET] (SSH) TElShellSSHSubsystemHandler worked incorrectly when input data was sent from a client using pipe. Improved.
+* [VCL] (Base) Optimized UTF-16 to UTF-8 conversion for non-Win32 platforms.
+* [C++] Improved/fixed wide char/wide string handling for Linux, MacOS and iOS platforms.
+* [VCL] (SSH) GSS-API can now be used under Linux and MacOS X.
+
+- [All] (Base) Fixed a bug when certificate policies extension of TElX509Certificate was read incorrectly.
+- [All] (SSL) Fixed a bug in TElSessionPool.Remove that may cause a deadlock.
+- [All] (ZIP) Fixed bugs with adding a directory into the archive for non Windows systems and with uncleaned list of directory signatures after archive has been closed
+- [All] (Office) Fixed loading of xml signatures if ManifestHashAlgorithm element is not present in the signature info.
+- [All] (PKI) Fixed occasional 'Invalid key length' exception thrown by TElMessageEncryptor and Cloud components.
+- [All] (SSH) TElSSHServer.OnAuthFailed was not fired. Fixed.
+- [All] (XML) Minor fix in decryption transform.
+- [All] (FTPS) FTP server errroneously returned 225 code instead of 226 for ABOR command. Fixed.
+
+- [VCL, C++] (Charsets) Fixed charsets initialization on POSIX systems, if cwstring unit initialized after charsets.
+
+- [Java] (XML) Possible "[B cannot be cast to..." exceptions fixed in XAdES classes.
+- [Java] (XML) Fixed saving of serial number in IssuerSerial element, if zero is present in decimal representation at position multiple of 9.
+- [Java] (ZIP) Fixed StringIndexOutOfBoundsException exception on file open.
+
+- [NG] (Base) Calling wrong iOS pthread library fixed. Fixed incrementing of GlobalLockCSFlag.
+
+---
+March 10, 2014
+Version 12.0.247. Beta version.
+
++ [All] (PKI) RSA computations involving private keys are now protected from timing attacks
++ [All] (XML) Added support for AES-GCM authenticated encryption algorithm in XML encryption.
+
++ [Java] (Base) Added DNSSEC support for Android target.
++ [Java] (PKI) TElJavaCertStorage added that allows to manage certificates in MY and ROOT stores on Windows and AndroidKeyStore on Android.
++ [Java] (PKI) TElCustomCertStorage enhanced with LoadFrom*BKS methods that allow to load certificates from BKS storages.
+
+* [All] (Base) Socket shutdown sequence changed from proper to compatible with buggy servers which don't handle partial socket shutdown properly.
+* [All] (FTPS) Some servers respond to Delete command with wrong response code 200 (while 250 is required by specification). The client component now accepts such response.
+* [All] (FTPS) TElSimpleFTPSClient.ParseFileListEntry parsed time in Windows file listings incorrectly. Fixed.
+* [All] (Mail) SMTP client changed to use the most secure authentication scheme first on login.
+* [All] (SOAP) Added TElXMLSOAPBaseSignatureHandler.ReferencesDigestMethod property that specifies default digest method for newly added references.
+* [All] (PDF) Added workaround that fix error in the document structure when 'endstream' keyword is absent.
+
+* [Java] (Base) TElX509Certificate.FromX509Certificate/GetPrivateKey improved to work with non-exportable keys.
+
+- [All] (FTPS) TElSimpleFTPSServer didn't take into account return codes of underlying file system adapter on file open operations. Fixed.
+- [All] (PDF) An empty signature field widget was overridden incorrectly when signing the field in IgnoreExistingAppearance mode, causing the old widget to be prioritized over the new one by some readers.
+- [All] (SSH) Fixed a bug in TElSimpleSSHClient.ExecuteCommand() which erroneously made the component discard STDERR output.
+
+- [.NET] (HTTPS) A bug in TElCookieManager resulted in NullReferenceException's in TElHTTPSClient. Fixed.
+- [.NET] (PKI) Fixed a recently introduced glitch in TElPKCS11CertStorage that was 'hiding' the contents of the device from the user (x64 platforms only).
+- [VCL, .NET] (Mail) NTLM authentication for SMTP fixed.
+- [VCL] (Charsets) Fixed memory leak in ASCII charset.
+
+---
+January 31, 2014
+Version 12.0.245. Alpha Version
+
+![All] All code has been reworked for more efficient memory management and better speed.
+
+! [All] (HTTPS) TElHTTPSClient.Post overload for web forms renamed to PostWebForm.
+! [Java] Methods names changed to lowerCamelCase.
+
++ [All] (PKI) Added support for CAdES baseline profiles and Archival Timestamp V3
++ [All] (SSH) TElSSHServer.SSHAuthOrder/AuthTypePriorities properties added to control authentication types priority.
+
+
+^^^^^^^^^^^^^^^^^^^^
+^^^ Version 11.0 ^^^
+^^^              ^^^
+^^^^^^^^^^^^^^^^^^^^
+
+---
+June 3, 2014
+Version 11.0.252. Maintenance update
+
+- [.NET] (Cloud) A minor fix to shared access signatures calculation in debug mode
+- [.NET] An issue in charset initialization routine indirectly led to a variety of string conversion problems on .NET CF platform. Fixed.
+- [.NET] Fixed a charset resource processing issue on WP8 platform
+
+---
+April 26, 2014
+Version 11.0.250. Maintenance update
+
++ [All] (EDI) Added support for SHA-2 (SHA-224, SHA-256, SHA-384, SHA-512) digests in AS2/AS3 signed messages and signed receipts
++ [All] (PKI) An external CAdES signer (e.g. TElCAdESSignatureProcessor) can now be attached to ASiC signatures for automated creation of compliant ASiC/CAdES signatures
+
+* [All] (FTPS) FTP server errroneously returned 225 code instead of 226 for ABOR command. Fixed.
+* [All] (FTPS) FTP server improved to accept "MODE S" command.
+* [All] (MIME) Removed checking for "micalg" parameter in multipart/signed messages. Now this parameter is optional.
+
+- [All] (Base) Fixed a bug when certificate policies extension of TElX509Certificate was read incorrectly.
+- [All] (Cloud) Shared access signatures were calculated incorrectly after a change in Amazon's algorithms. Fixed.
+
+---
+March 30, 2014
+Version 11.0.248. Maintenance update
+
+! [C++] Static libraries for iOS and MacOS requires compiler and library support for the ISO C++ 2011 standard.
+
++ [All] (EDI) Added ability to turn on/off usage of indefinite lengths in encrypted and signed AS2/AS3 messages.
++ [All] (MIME) Added ability for each mail message part to have its own charset specified on message assembling.
++ [All] (SSH) Added TElShellSSHSubsystemHandler.SendEOF/IgnoreClientSessionClosure properties.
+
+* [All] (SSH) Added support for global (non-channel-wise) keep-alive signals.
+* [All] (PKI) Added csoUseGenericSigAlgorithmOIDs flag for better control over signature algorithm written down to the CMS structure.
+* [All] (PDF) Improved invisible signature to conform to PDF/A requirements.
+* [All] (SSL) Added support for client-side authentication with EC certificates.
+* [VCL, .NET] TElSSHServer closed connection after EOF packet was received from a client. Now this behaviour can be controled using TElSSHTunnelConnection.OnEOF event. 
+* [VCL, .NET] TElShellSSHSubsystemHandler worked incorrectly when input data was sent from a client using pipe. Improved.
+* [VCL] (Base) Optimized UTF-16 to UTF-8 conversion for non-Win32 platforms.
+* [C++] Improved/fixed wide char/wide string handling for Linux, MacOS and iOS platforms.
+
+
+- [All] (MIME) Fixed quoting of header fields parameters in e-mail messages
+- [All] (SSL) Fixed a bug in TElSessionPool.Remove that could cause a deadlock.
+- [All] (ZIP) Fixed bugs with adding a directory into the archive for non Windows systems and with uncleaned list of directory signatures after archive has been closed.
+- [All] (MIME) Fixed quoting of header fields parameters in e-mail messages.
+- [All] (Office) Fixed loading of xml signatures if ManifestHashAlgorithm element is not present in the signature info.
+- [All] (PKI) Fixed occasional 'Invalid key length' exception thrown by TElMessageEncryptor and Cloud components.
+- [All] (SSH) TElSSHServer.OnAuthFailed was not fired. Fixed.
+- [All] (XML) Minor fix in decryption transform.
+- [FPC] (Charsets) Fixed charsets initialization on POSIX systems, if cwstring unit initialized after charsets.
+- [Java] (XML) Possible "[B cannot be cast to..." exceptions fixed in XAdES classes.
+- [Java] (XML) Fixed saving of serial number in IssuerSerial element, if zero is present in decimal representation at position multiple of 9.
+
+---
+March 1, 2014
+Version 11.0.246. Maintenance update
+
+! [C++] (Base, SFTP) Renamed SBSftpCommon.fmCreate constant to sfmCreate and SBSystem.fmCreate to filemodeCreate
+
++ [All] (PKI) RSA computations involving private keys are now protected from timing attacks
++ [All] (XML) Added support for AES-GCM authenticated encryption algorithm in XML encryption.
+
++ [Java] (Base) Added DNSSEC support for Android target.
+
+* [All] (FTPS) Some servers respond to Delete command with wrong response code 200 (while 250 is required by specification). The client component now accepts such response.
+* [All] (FTPS) TElSimpleFTPSClient.ParseFileListEntry parsed time in Windows file listings incorrectly. Fixed.
+* [All] (Mail) SMTP client changed to use the most secure authentication scheme first on login.
+* [All] (SOAP) Added TElXMLSOAPBaseSignatureHandler.ReferencesDigestMethod property that specifies default digest method for newly added references.
+* [All] (PDF) Added workaround that fix error in the document structure when 'endstream' keyword is absent.
+
+* [C++] (Base) Fixed string values for some constants in sbconstants header.
+
+- [All] (PDF) An empty signature field widget was overridden incorrectly when signing the field in IgnoreExistingAppearance mode, causing the old widget to be prioritized over the new one by some readers.
+- [All] (SSH) Fixed a bug in TElSimpleSSHClient.ExecuteCommand() which erroneously made the component discard STDERR output.
+- [.NET] (HTTPS) A bug in TElCookieManager resulted in NullReferenceException's in TElHTTPSClient. Fixed.
+- [.NET] (PKI) Fixed a recently introduced glitch in TElPKCS11CertStorage that was 'hiding' the contents of the device from the user (x64 platforms only).
+- [VCL, .NET] (Mail) NTLM authentication for SMTP fixed.
+- [VCL] (Charsets) Fixed memory leak in ASCII charset.
+
+---
+February 15, 2014
+Version 11.0.245. Maintenance update
+
++ [All] (MIME) Added TElMessageHeader.ParseAddresses property which allows to disable message addresses parsing in order to process them as other header fields.
+
+* [.NET] (Base) Changed TElDiskFileSystemAdapter to be able to use UNC path as a base path.
+
+- [All] (EDI) Fixed the bug with disabled receipt request in loaded AS2/AS3 messages even if a receipt is actually requested.
+- [Java] (Base) Fixed a bug with uninitialized parameters in TElX509CertificateValidator.OnAfterCertificateValidation event.
+- [.NET] (HTTP) Exception was thrown inside TElCookieManager.ValidateCookie on some conditions. Fixed.
+
+
+---
+January 27, 2014
+Version 11.0.244. Maintenance update
+
++ [All] (Mail) Added AllowAuthentication property to the SMTP component.
++ [All] (PDF} Added TElPDFSignatureInfo.FieldFlags property that returns field flags common to all field types.
+
+* [All] (Base) SB_OID_SHA1_RSAENCRYPTION2 was not taken into account in some places. Fixed.
+* [All] (FTPS) TElSimpleFTPSClient.ListDirectory improved to skip CWD command if its Path parameter is empty.
+* [All] (OpenPGP) Decryption and signing operations by a particular key are now thread safe, allowing the same key to be used for several concurrent decryption/signing operations
+* [All] (PKI) TElPKCS11CertStorage.OnSlotEvent can now return Slot=nil/null/Nothing to map reports from drivers that indicate card reader removal in this way
+* [All] (PKI) TElCRLManager.UseCache property is enabled by default now (as it was before build 243). 
+* [All] (PDF) Page number for newly created signature is set based on empty signature field page number.
+* [All] (PAdES) On load all certificates from CMS signature added into TElPDFAdvancedPublicKeySecurityHandler.Certificates property.
+
+* [.NET] (Base) Minor improvement to FromX509Certificate2 method that eliminates the need to manually attach the win32 cryptoprovider to the certificate object
+
+- [All] (Base) TElPublicKeyCrypto.VerifyDetached() incorrectly tried to decode the plaintext from base64 when InputEncoding was set to pkeBase64
+- [All] (FTPS) TElSimpleFTPSServer fixed to process multiple files downloads with resumption correctly.
+- [All] (PDF) Fixed adding of attachments for specifically formatted pdf documents.
+- [All] (XML) Fixed detecting of TElXMLVerifier.SignatureType property when reference URI is empty string.
+- [All] (XML) Fixed enveloped signature transform of the document element when the xml document contains processing instructions.
+- [All] (SSH) TElSSHServer improved to work with buggy JSch client.
+- [All] (MIME) Added equal sign to the specials list that require a string to be enclosed in double quotes.
+- [All] (Mail) Changed behavior of authentication in SMTP component to not use SASL if no mechnism is configured.
+
+- [.NET] (FTPS) TElSimpleFTPSClient.GetFileSize didn't work correctly in some conditions. Fixed.
+
+- [VCL] (Base) Fixed UnixTimeToDateTime method in FreePascal. 
+- [VCL] (Office) Fixed signing/verifying using CryptoAPI signature handler for some binary documents.
+
+- [C++] (Base) Fixed setting datetime properties for non Win32 platforms.
+
+---
+December 31, 2013
+Version 11.0.243. Maintenance update
+
++ [All] (PKI) Added possibility to turn off the cache in CRLManager. Disabling the cache can be used if you want to implement your own cache based on CRL locations (URLs) rather than on Issuer property.
+
++ [All] (XML) Added ExclusiveCanonicalizationPrefix property for TElXMLC14NTransform and TElXMLSignedInfo classes.
+
+* [All] (Base) TElMessageEncryptor used default key lengths for symmetric algorithms. Now variable key length can be set using its BitsInKey property.
+* [All] (Base) EElSocketError exception instances didn't include error code is some cases. Fixed.
+* [All] (Base) Improved loading of EC private keys to conform to recent RFCs
+
+* [All] (HTTPS) TElHTTPSClient: improved DELETE response handling.
+
+* [All] (PKI) Minor compatibility enhancements in CAdES signature processing
+* [All] (PKI) Added TElX509CertificateEx.PreferredHashAlgorithm property to allow the user choose the desired certificate signature hash algorithm
+
+- [All] (PKI) Fixed a bug when distribution point reason flags in CRLDistributionPoints extension were written and read incorrectly.  
+
+- [All] (HTTPS) Fixed a bug when incoming data was not decompressed when TElHTTPSClient.Use100Continue property was on.
+- [All] (HTTPS) Subsequent requests with one instance of TElHTTPSClient failed on some conditions. Fixed.
+
+- [All] (LDAP) LDAP CRL retriever fixed to work correctly with URLs that contain slash character in DN part.
+
+- [All] (XML) Fixed AV in enveloped signature transform when binary data is passed.
+
+- [All] (FTPS) TElSimpleFTPSClient.UploadStream fixed to work in ftmAppendToEnd mode.
+
+- [All] (Mail) Fixed a bug in SMTP with sending an invalid message end mark if a message is not ended with CRLF
+- [All] (Mail) Fixed a bug in SMTP with sending lines with leading dots
+- [All] (Mail) Fixed usage of TElSimpleMIMEMessage class with SMTP component; address aliases have been sending to SMTP servers in MAIL FROM and RCPT TO commands
+
+- [VCL] (Base) TElClientIndySSLIOHandlerSocket didn't work with Socks proxies. Fixed.
+- [VCL] (Base) TElX509Certificate.LoadFromBuffer freezed on some specific conditions. Fixed.
+- [VCL] (Base) TElDiskFileSystemAdapter.DirectoryExists did't work correctly for root directories on Windows XP. Fixed.
+
+- [MacOS] (Base) Fixed setting socket timeout on Mac OS.
+- [iOS] (Base) Fixed to not loose accuracy in timestamp conversion on iOS/arm
+
+
+---
+November 22, 2013
+Version 11.0.242. Maintenance update
+
+! [.NET] Assemblies for different platforms are now signed with different strong name keys
+
++ [All] (Mail) Added support for Sender message field. Now if a message contains Sender field, the address from this field will be used in MAIL FROM command.
+
+* [.NET] (Base) Socket.Listen backlog value was set to 1 which could cause some connections to be refused in TElSimpleFTPSServer class. 
+* [Java] (Base) Improved TElCustomFSAdapter to detect path separators correctly.
+
+* [All] (XML) Improved exclusive canonicalization. Added TElXMLSigner/TElXMLVerifier.InclusiveNamespacesPrefixList property.
+* [All] (PDF) Workaround that fix error in the document structure when indirect object 'obj' keyword not followed by an EOL marker.
+* [All] (SSL) TElSessionPool is now capable of storing user session-related information
+
+* [VCL] (PKI) Added workaround for PKCS#11 drivers that return invalid procedure addresses via C_GetFunctionList.
+
+- [All] (Base) X.509 certificates reading procedure went into infinite loop in some conditions. Fixed.
+- [All] (Base) Fixed a bug when Digest WebTunnel proxy authentication didn't work in some conditions.
+- [All] (Cloud) Fixed TElGoogleDriveDataStorage.List method with one parameter.
+- [All] (MIME) Fixed mail addresses corruption on message reassembly.
+- [All] (MIME) Fixed bug in quoting and unquoting strings in e-mail addresses.
+- [All] (HTTPS) Cookies without specified path are accepted correctly now
+- [All] (PKI) OtherExtensions were not written in PKCS#10 request if there were no "known" extensions set. Fixed.
+- [All] (PKI) Fixed generation of X.509 certificates carrying EC keys in PreserveKeyMaterial mode
+
+- [.NET] (Base) Fixed a build issue in Windows Phone 8 assemblies that caused occasional field access exceptions
+- [.NET] (HTTPS) TElHTTPSClient didn't work correctly with longer TLS buffers in Windows Phone 8 , which resulted in connectivity problems with certain HTTPS servers. Fixed.
+
+- [Java] (Base) TElSymmetricCrypto.Encrypt/Decrypt methods could throw ArrayIndexOutOfBoundsException in some cases. Fixed.
+
+- [C++] Compilation fixes for Visual Studio 6.0 (1998) 
+
+---
+October 25, 2013
+Version 11.0.241. Maintenance update
+                                   
++ [All] (PKI) TElX509CertificateValidator got new event (OnOCSPResponseSignerValid) related to check of the signer of an OCSP response
++ [All] (FTPS) TElFTPSServer/TElSimpleFTPSServer now reports upload progress correctly if a client sends ALLO command before file transfer.
+
+* [All] (Base) TElX509CertificateValidator improved to report vrCRLNotVerified validity reason in all cases.
+* [All] (Base) 3DES keys are now generated with parity bit set (this bit is checked by certain outdated hardware)
+
+* [All] (PKI) TElX509CertificateValidator improved to follow new wording of RFC 6960 (paragraph 4.2.2.2,  related to check of applicability of OCSP signing certificate)
+* [All] (FTPS) Data socket is now properly disposed of in Active mode if an error happens. 
+* [All] (FTPS, SFTP) Improved cleanup of RegexProcessor variable.
+* [All] (Mail) TElSMTPClient.Send speed optimized.
+
+* [CPP] Fixed threading support for unix systems
+
+- [All] (Base) Fixed a bug when TElMessageVerifier.Verify processed detached signatures as valid.
+- [All] (Cloud) Fixed several security-related bugs.
+- [All] (Mail) Fixed a bug in TElPOP3Client.GetMessageSize method.
+- [All] (PKI) Fixed memory leaks in TElFullPKIRequest.GetControlAttribute and TElFullPKIResponse.GetControlAttribute methods.
+
+- [All] (Office) Fixed distributed signing of a secondary,... n-ary signatures using binary xml signature handler.
+- [All] (XML) Fixed issue with not flushing data in TElXMLDOMDocument.SaveToStream overloaded method that accept TElXMLCodec as parameter.
+
+- [.NET] (PKI) TElPKCS11CertStorage destructor threw exception in .NET 4.5 due to security attribute missing. Fixed.
+- [.NET] (SSH) AuthAgent authentication type didn't work in .NET 4.0 and 4.5 due to security attribute missing. Fixed.
+- [.NET] (HTTP) TSP and OCSP clients didn't work correctly when Turkish locale was set on Windows. Fixed.
+
+- [VCL] (FTPS) Use of the regular expression in ListDirectory caused an AV due to unnatural design of RegularExpressions RTL unit. Fixed.
+
+---
+October 6, 2013
+Version 11.0.240. Official Release
+
++ [All] (Cloud) Certificate-based signing is now available for embedded metadata mode.
+
++ [All] (EDI) Added overloaded Save methods in TElASMessage and TElASReceipt to allow to store headers and bodies of  messages and receipts to separate streams.
++ [All] (SSH) Added a set of overloads of TElSimpleSSHClient.ExecuteCommand() methods that allow to re-use the established SSH connection
++ [All] (XML) TElXMLSigner now supports easy-to-use external signing with OnRemoteSign event
+
++ [CPP] Added auto detection of platform/OS
+
+* [CPP] Fixed name collision in C headers with zlib library and others.
+* [.NET] Updated the set of WinRT samples 
+
+- [All] (ZIP) Fixed a bug that caused 'Invalid type cast' exception for some kind of archives.
+- [All] (Cloud) A couple of minor bug fixes 
+
+- [All] (Charsets) Fixed UTF-7 encoding (when special character '-' is a last character in the buffer).
+- [All] (SOAP) Fixed reference Id generation for WSS signature handler.
+
+- [VCL] (Base) Fixed memory leak in SBRSA, SBASN1, EUC charset.
+- [VCL] (HTTP) Fixed memory leak in TElHTTPCompressedProcessor.
+- [Java] (Base, SSL) TElX509Certificate.Chain was not assigned correctly in some conditions. Fixed.
+- [.NET] (FTPS) Fixed a bug when TElSimpleFTPSClient.RemoteCharset/RemoteCodepage properties didn't work correctly when set in design time.
+
+---
+September 17, 2013
+Version 11.0.239. Release Candidate 2
+
++ [VCL] Added RAD Studio XE5 support.
+
++ [All] (Cloud) Added data storage components for SkyDrive and Google Drive
++ [All] (Cloud) Added support for in-object metadata storing. Dropbox component now uses this mode by default. SkyDrive and GoogleDrive components use only this mode.
+
+* [All] (Base) TElWin32CryptoProvider improved to process ERROR_CANCELLED correctly.
+* [All] (Office) Added workaround for binary and encrypted OOXML documents with invalid root directory entry's name.
+
+- [All] (Mail) Separator space between RCPT TO command and parameters was missing. Fixed.
+
+- [.NET] (Base) Fixed a bug when TElWinCertStorage worked incorrectly on Windows 8 x64 with .NET 4.5.
+
+- [.NET, Java] (PKI) TElX509Certificate could lose a character of Issuer ID and Subject ID in some rare cases. Fixed.
+
+- [Java] (Base) Fixed Access Violation error in JNI module that occured during signing operations using CNG keys from Windows stores.
+
+- [VCL] (PDF) Fixed compliance with the PDF/A standard if a document was reassembled.
+
+- [.NET, Java] (SSH) Some types of requests didn't work in SSH 1 (obsolete and not recommended for use). Fixed.
+- [.NET, Java] (SSH) Window Change request didn't work in SSH 2. Fixed.
+
+- [Java] (SSH) Publickey-Agent authentication didn't work in SSH2.
+
+
+---
+August 24, 2013
+Version 11.0.238. Release Candidate 1
+
+! [All] (All) We are moving to new evaluation restrictions mechanisms. Evaluation delays are no longer in force. Instead, limited numbers of operations for each component are allowed (with exceptions thrown once a particular limit is exceeded).
+
+! [.NET] .NET CF support has been returned. 
+
++ [All] Added support for ASiC (Associated Signature Container, ETSI TS 102 918). ASiC support requires SecureBlackbox Data Security or SecureBlackbox Professional package. 
++ [All] (XML) Added ECDSA and RSASSA-PSS signature algorithms support in XMLDSig (see RFC 6931)
++ [All] (PKI) Added support for multipart ASN.1 content in PKCS#7 SignedData
++ [All] (FTPS) Added keep-alive to prevent command channel from being closed by NATs during long data transfer. Keep-alive is enabled by setting new TransferKeepAliveInterval property to non-zero value (300 000 is a great value for keep-alives). Note, that not all servers handle keep-alives correctly.
+
++ [.NET] Added Xamarin.iOS assemblies
+
+* [All] (SSH) Added workaround for server that identifies it-self as "f7u12".
+* [All] Socket-based components are now more tolerant to extra spaces in addresses and URLs. Previously an extra typed space caused an error to happen, now those spaces are trimmed.
+* [All] (FTPS, SFTP, WebDAV, OpenPGP, ZIP) When filesystem error happens in components that access local filesystem via FileSystemAdapter, error message now contains the path (file name or directory path) for which the error happened.
+* [All] (SSH) AuthenticationTypes property value changed in all components to a combination of SSH_AUTH_TYPE_PUBLICKEY, SSH_AUTH_TYPE_KEYBOARD and SSH_AUTH_TYPE_PASSWORD.
+* [All] (DAV) Added TElWebDAVClient.List method overload that allows to specify depth parameter.
+* [All] (Office) Added UpdateSignature method that allows to extend XAdES info after signing.
+* [All] (XML) Optimized memory usage of TElXMLDOMNode class on 20-30%
+* [All] (EDI) Improved usage of UseFolding property value when composing AS2/AS3 receipts (MDNs) bodies
+
+* [Java] (Base) ESecureBlackboxError parent class changed from java.lang.Throwable to java.lang.Exception. 
+* [Java] (Base) TElSocket incoming connections backlog increased to improve server behavior under heavy load.
+* [Java] (Base) Minor performance optimizations.
+
+* [.NET] .NET CF assemblies are now compiled with Constrained Device option enabled, thus consuming less memory for various buffers.
+
+- [All] (Base) Fixed a bug when WebTunnel proxy authentication failed if server sent responses longer than 2KB.
+- [All] (SSH) Updated SimpleSSHClient to correctly send keepalives during command execution
+- [All] (Office) Fixed signing issues with some kind OOXML and ODF documents.
+- [All] (PDF) Fixed document decryption with owner password for AES/128 bits encryption algorithm.
+
+- [Java] (Base) TElJCECryptoProvider generated invalid signatures in some cases (e.g. when used with PDFBlackbox). Fixed.
+- [Java] (FTPS) Some fixes in FTPSServer code and sample
+- [Java] (SSL) Fixed a bug when TElSimpleSSLClient.SetUseInternalSocket caused stack overflow.
+
+- [.NET] (Base) Fixed a bug when turning Nagle algorithm on for UDP sockets (mainly for DNS client) resulted in exception.
+- [.NET] (SSH) The components behaved incorrectly with servers offering different sets of ciphers for inbound and outbound directions (NET 4.5 only). Fixed.
+
+
+---
+July 4, 2013
+Version 11.0.237. Beta version
+
+! [All] (FTPS) OnFileOperation and OnFileOperationResult events (types and parameters) of TElSimpleFTPSClient class have been changed to include operation type (Upload, Download, Deletion). 
+
++ [All] (Base) Added OnTSPError event to TElTSPClient class. The event is triggered by Timestamp method when the result is non-zero. 
++ [All] (Base) Added Whirlpool hash algorithm implementation and RSA-Whirlpool signature scheme
++ [All] (XML) Added DSA-SHA256 signature algorithm (see XMLDSIG-CORE-11)
++ [All] (FTPS, SFTP) Added CopyMode parameter to DownloadFiles and UploadFiles methods. This parameter tells the component to delete the source files after they have been successfully transferred. 
++ [All] (FTPS, SFTP) Added ftmOverwriteIfDiffSize transfer mode for DownloadFile/UploadFile and DownloadFiles/UploadFiles method. This mode is a conditional overwrite which is performed only when size is different. NOTE: file size is determined using chosen transfer type (ascii/binary). If you are using ASCII mode, file size can be determined not correctly and you should not use conditional overwrite then.
++ [All] (FTPS) Added RemoveFiles method for recursive deletion of files and directories
++ [All] (PKI) Added OnBeforeSign, OnBeforeAddTimestamp, OnBeforeAddValidationTimestamp events to TElCAdESSignatureProcessor to allow more flexible tune-up.
++ [All] (PKI) Added RevocationCheckPreference property to TElX509CertificateValidator, allowing to choose between revocation source types to use.
+
++ [Java] (Base) TElJCECryptoProvider implemented that uses native JCE crypto for certificates and keys which can not be imported.
++ [.NET] (Office) Added distributed signing sample.
+
+* [All] (HTTP) TElHTTPSServer improved to write GZip footer for compressed responses.
+* [All] (PKI) TElPKCS11Manager improved to work with PKCS#11 drivers that require initialized template parameter for C_FindObjectsInit.
+* [All] (Office) Improved distributed signing (automatically embed signing certificate and XAdES changes).
+* [All] (XML) Improved distributed signing for XAdES.
+* [All] (Cloud) Added MultipartUploadThreshold property to TElAWSS3DataStorage
+* [All] (SSL) Implemented proper countermeasures for Lucky Thirteen and, more generally, Oracle padding attacks.
+
+* [VCL] (Base) DirectoryMake function of DiskVirtualFileSystemAdapter didn't create parent directories in the path (i.e. for the path of c:\d1\d2\d3\d4, if you wanted to create it. d1..d3 were required to exist). Now it does. 
+
+- [All] (Base) SplitPath function of VirtualFileSystem adapter didn't work (though was never used). Fixed.
+- [All] (Base) Fixed loading of ISO-8859-9 charset.
+- [All] (SSL) Handshake was not completed right when SSL2 was enabled (issue introduced in build 236). Fixed.
+- [All] (FTPS, SFTP) Fixed some minor mistakes related to use of FileSystemAdapter in UploadFile*() and DownloadFile*() methods.
+- [All] (HTTP) 307 redirection code was not returning data streams (for POST, PUT, custom commands) to the outgoing queue to be sent, so redirected resource was called with no data. Fixed.
+- [All] (PDF) Fixed loading of document timestamp signature for encrypted documents.
+- [All] (XML) Fixed CounterSignature loading for further processing
+- [All] (XML) Fixed issue with timestamping in XAdES.
+
+- [.NET] (SSL) Fixed a bug when "aObject is nil in call to SetLength" exception occurred in TElSSLServer and components based on it.
+
+
+---
+June 10, 2013
+Version 11.0.236. Beta version
+
+
+! [All] (SSL) The default set of enabled versions was extended with TLS1.1 and TLS1.2 (except TElSimpleFTPSClient that still defaults to SSL3.0 + TLS1.0)
+
++ [All] (Base) Added support for IPv6 addresses in Subject Alternative Name extension for X.509 certificates
++ [All] (Base) Added support for IPv6 addresses in certificate validator when checking on SSL handshake
++ [All] (Base) TElX509Certificate.SaveKeyTo*PKCS8 methods implemented.
++ [All] (EDI) Added Features property in AS2/AS3 message classes which represents EDIINT-Features header field according to RFC 6017
++ [All] (FTPS) Added foPreallocateStorage option to TElSimpleFTPSClient.Options property that makes the client announce the size of the data being uploaded to the server before upload takes place.
++ [All] (FTPS) Added TElSimpleFTPSClient.ExtOPTSUTF8Supported property which can be used to check whether server supports OPTS UTF8 ON command
++ [All] (SSH) Added TElSSHKey.FingerprintMD5String and TElSSHKey.FingerprintSHA1String properties that return a fingerprint formatted into a string. 
++ [All] (HTTP) TElRESTClient component added that implements a standard REST client.
++ [All] (Office) Added OnBeforeSign, OnAfterSign and OnPrepareSignature events for XML signature handlers of binary, OOXML, XPS and ODF documents.
++ [All] (XML) Added TElXMLWSUTimestamp class.
+
++ [Java] (Base) TElX509Certificate.FromX509Certificate/ToX509Certificate/GetPrivateKey methods added to simplify certificates import and export.
+
+* [All] (EDI) Improved handling of version 1.2 for AS2/AS3 protocols
+* [All] (FTPS) Some servers report that they don't support ASCII mode even for listings. Workaround has been added for such servers. 
+* [All] (FTPS) Improved parsers for Unix and Windows listings to better handle listings with mistakes (eg. TAB instead of spaces as separator).
+* [All] (SSL) Improved SSL/TLS compatibility with GnuTLS
+* [All] (DAV) TElWebDAVServer fixed to process XML special characters in file names correctly.
+* [All] (DAV) TElWebDAVClient improved to accept 'creationdate' attribute in RFC1123 format. E.g. this format is erroneously used by SabreDAV.
+* [All] (PKI) Improved compatibility with Italian DigitPA DSS CAdES service
+* [All] (PDF) Added a collection of properties for better control over signature widget appearance
+* [All] (PDF) Improved decryption of documents that contains encrypted object streams.
+* [All] (Office) Workaround that ignores an empty encrypted summary stream. Such documents are created by MS Office 2003 when RC4 encryption handler is used.
+
+* [VCL, .NET] (SSH) TElShellSSHSubsystemHandler improved to allow to use CurrentDirectory and Command together.
+
+- [All] (HTTPS) Cookies without specified domain are accepted correctly now
+- [All] (MIME) Fixed Base64 decoding; when the last decoding block contained only padding symbols, the data was truncated to the last fully decoded part.
+- [All] (PKI) Fixed a bug when exception was thrown if a PKCS#11 compliant token doesn't support C_GetObjectSize() function.
+- [All] (PDF) Fixed SignerInfo value auto-generation in signature widget appearance for non-common RDNs.
+- [All] (Office) Fixed reading info (like: suggested signer) from a signature line for OOXML documents.
+
+- [.NET] (Base) Fixed a socket issue that was causing [fairly rare] 'Internal Error' errors during SSL communications
+- [.NET] (Office) Fixed Reset method for Agile encryption handler.
+
+---
+May 21, 2013
+Version 11.0.235. Beta version
+
+! [All] All code has been reworked for more efficient memory management. 
+
+! [VCL] VCL edition is now compiled with FPC 2.6.2 (previously FPC 2.6.0 was used). FPC 2.6.2 includes certain minor changes in syntax parser. 
+
+! [.NET] .NET CF support has been dropped. Use SecureBlackbox 10 if you need .NET CF. 
+
+
++ [All] (Base) Added TElPortKnock component which can be used together with socket-based client components to "knock" to the server before connection and after disconnection. For more information about port knocking see http://www.zeroflux.org/projects/knock/
+
++ [All] (HTTP) WebSockets (RFC 6455) support added. Both client and server components for WebSockets are available.
+
++ [All] (SSH) Added support for SSH key exchange obfuscation, as defined in https://github.com/brl/obfuscated-openssh
+
++ [All] (EDI) Added UseFolding properties to AS2/AS3 message and receipt classes. By default, folding is not used anymore.
++ [All] (EDI) Added content digests calculation on AS2/AS3 message saving. See GetContentDigest(Algorithm) method.
+
++ [All] (ZIP) Added property ElZipReader.CaseSensitiveFilenames and overloads for ElZipArchiveDirectoryEntry.EntryWithName/EntryWithPath/RemoveEntry to allow case-insensitive operations
+
++ [All] (PDF) Added support of 256-bit AES encryption revision 6 (Acrobat X) for password encryption handler.
++ [All] (PDF) Added possibility to add images into the signature widget.
++ [All] (PDF) Added possibility to lock signature fields on signing.
++ [All] (PDF) Added FontResourceName property to TElPDFSignatureWidgetText class.
+
++ [All] (Office) Added support of hardened encryption key generation for binary RC4 CryptoAPI encryption handler.
+
++ [VCL] VCL edition of SecureBlackbox can now be used with FreePascal for Android. Precompiled units are included.
+
++ [Java] Trusted-Library attribute is now added to JAR manifests to be compatible with the latest Java 7 version.
+
+* [All] (Base) TElPKCS7Message improved to parse malformed messages generated by Comodo timestamp server.
+* [All] Added smExplicitManual SSL/TLS mode in TElSimpleFTPSClient, TElPOP3Client and TElSMTPClient. In new mode TLS is not activated by Login automatically and your code needs to do this by calling EstablishSSLSession method which is to be called before Login method. You can catch SSL/TLS exceptions that happen during execution of EstablishSSLSession method and handle them as needed.
+* [All] (EDI) Messages and receipts classes now do not convert time from local to universal.
+* [All] (Mail) Changed TElSMTPClient.OnProgress event to show message transfer progress in bytes, not in lines.
+* [All] (Cloud) File data storage functionality significantly extended and optimized
+* [All] (Cloud) WinAzure data storage now supports locking and awaitable copying
+* [All] (SSH) Simple forwarding components are now capable of opening shell tunnel before setting up the forwarding (needed by certain server implementations)
+
+* [Java] (Base) JNI.initialize() methods improved to load JNI library from applets correctly.
+* [Java] (SSL) Code optimized to speed-up SSL handshake on Android.
+
+- [All] (Base) Fixed charsets initialization issue in mutithreaded environments.
+- [All] (EDI) Fixed hanging up if encrypted data does not contain a MIME-header.
+- [All] (HTTP) Fixed a bug when response content was supressed in some conditions when TElHTTPSClient.UseDigestAuth was on.
+- [All] (SMIME) Fixed TElMessagePartHandlerSMime.EncoderSignRootHeader property.
+- [All] (Cloud) Fixed handling of non-ascii names of folders and files in Dropbox data storage.
+- [All] (Cloud) Fixed handling of spaces in folder and file names in Dropbox data storage.
+- [All] (SSH, SFTP) When Close(Silent = true) was called and internal socket was used, socket shutdown was still performed (which could close delay in closing a socket with some buggy servers). Fixed - now Silent flag is respected when the underlying socket is closed.
+- [All] (XML) Minor fix in canonicalization (when XPath element dsig prefix differs from the Signature element prefix).
+
+- [Java] (Base) TElSocket.Close() method fixed to close listening socket correctly.
+- [Java] (Base) Fixed a bug in TElSocket that caused SSH dynamic port forwarding to work incorrectly.
+- [Java] (PDF) Fixed a bug when PDF document version was parsed incorrectly.
+
+- [VCL] (Base) Punycode ToASCII routine worked incorrectly when the user specified the domain with unicode characters not of current system charset (eg. Cyrillic characters on Chinese Windows) in non-Unicode Delphi only. Fixed. 
+- [VCL] (HTTP) TElCookieManager could not be placed on the form in designer. Fixed. 
+
+- [NET] (DAV) Fixed a bug when paths with spaces were processed incorrectly by TElWebDAVServer intergrated into IIS.
+
+
+^^^^^^^^^^^^^^^^^^^^
+^^^ Version 10.0 ^^^
+^^^              ^^^
+^^^^^^^^^^^^^^^^^^^^
+
+---
+February 28, 2013
+Version 10.0.233. Maintenance update
+
+! [Java] FreePascal for JVM compiler upgraded. This resulted in some getter and setter name changes.
+
++ [All] (Cloud) Added parsing for Dropbox account information.
++ [All] (PDF) Added TElPDFSignature.IsDocumentSigned() method that checks if a signature covers the entire document.
++ [All] (PDF) Added TElPDFDocument.OwnActivatedSecurityHandlers property that controls if a component should free auto activated security handlers.
++ [All] (PDF) Added TElPDFAdvancedPublicKeySecurityHandler.DocumentTimestamp property that gives access to timestamp object of DocumentTimestamp signature.
+
++ [Java] (DAV) Added possibility to intergrate TElWebDAVServer into servlets (Java EE).
+
+* [All] (Base) Relative paths were not handled (were blocked instead) by TElDiskFileSystemAdapter. The component was improved to allow relative paths usage.
+* [All] (PDF) AuthorName signature dictionary key can now be suppressed
+
+* [Java] (Office) TElOfficeDocument improved to work with Java native streams.
+* [.NET] (FTPS) Removed occasional one-minute hangup at the end of file transfer in Silverlight
+
+- [All] (MIME) Including of certain header fields into signed/encrypted data of S/MIME messages caused thouse fields to be duplicated by some mail client applications on messages decrypting.
+- [All] (MIME) Removed data conversion for text attachments on message parsing.
+- [All] (HTTP) Digest and NTLM authentication didn't work for HTTP proxies. Fixed.
+- [All] (HTTP) Calling TElHTTPSServer.Send100Continue() didn't work properly and caused AV/Exception. Fixed.
+- [All] (HTTP) Fixed a bug when TElHTTPSServer didn't process subsequent requests correctly after a previous one was rejected.
+
+- [All] (FTPS) UseSIZECmd was ignored when GetFileSize method was called explicitly. Fixed.
+
+- [.NET] (FTPS) AdjustPasvAddress property didn't work in Silverlight, Windows Phone and Windows RT. Fixed. 
+- [.NET] (Cloud) Parameters encoding in Dropbox component worked incorrectly.
+
+- [VCL] (PDF) Fixed memory leak in TElPDFSignature.
+- [VCL] (PKI) TElPKCS11Manager could not be placed to the form. Fixed. 
+
+
+---
+February 5, 2013
+Version 10.0.232. Maintenance update
+
+
++ [All] (PKI) Added TElPKCS11CertStorage.Sessions and TElPKCS11CertStorage.SessionCount properties. 
+
+* [All] (PDF) Improved encryption of malformed documents with missing objects.
+
+- [All] (Base) If the document with specified charset contained a character not valid for this charset, in some cases loading of such document was stopped. Fixed.
+- [All] (MIME) Fixed handling of Subject fields when their values were formatted like headers
+
+- [Java] (Base) Fixed a bug in charsets loading procedure.
+
+- [.NET] (OpenPGP) Improved memory management, making the components consume less memory when protecting and unprotecting documents
+
+---
+January 27, 2013
+Version 10.0.231. Maintenance update
+
+! [All] (PDF) Replaced TElPDFSignatureWidgetText.FontSize property with FontSizeX and FontSizeY properties.
+
++ [All] (PKI) Added support for loading/saving multiple PEM-encoded certificates to certificate storages.
+
+* [All] (PKI) TElCAdESSignatureProcessor now supports 'base' CAdES-XL signatures (containing whole sets of validation values but no validation timestamps)
+* [All] (PKI) Added pcsoNoImplicitSlotInfoUpdates PKCS#11 storage option to omit refreshing slot details for the sake of increased performance
+* [All] (PKI) Added OperationPIN PKCS#11 cryptoprovider option to allow passing per-operation PINs to the HSM for CKA_ALWAYS_AUTHENTICATE keys
+* [All] (FTPS) Implemented a workaround for a buggy IBM FTPS server (exact version unknown) that stops responding after a period of inactivity on control channel
+* [All] (SSL) Added SessionID property to TElSSLServer
+* [All] (PDF) Added TElPDFDocument.SignatureCustomDataName property that specifies a custom dictionary key name for TElPDFSignature.CustomData
+* [All] (XML) Added TElXAdESSigner.SigningCertificatesDigestMethod property that specifies the digest algorithm in CertID element.
+* [All] (XML) Added TElXAdESProcessor.TimestampCanonicalizationMethod property that specifies canonicalization method for newly created timestamps.
+
+- [All] (FTPS) Fixed parsing of unix file list entries without the year specified.
+- [All] (SSL) Fixed ECDHE-RSA key exchange algorithm
+
+- [Java] (Base) Fixed a bug in charsets loading procedure that caused malfunction of the dependent components.
+- [Java] (Office) Fixed a bug that caused invalid signatures generation.
+
+- [VCL] (All) TElSharedResource refactored for Linux target, eliminating occasional deadlocks in client-side SSH components
+
+
+---
+December 16, 2012
+Version 10.0.230. Maintenance update
+
++ [All] (XML) Added support for encryption using SEED algorithm, and for key wrapping using Camellia and SEED algorithms.
+
++ [.NET, VCL, ActiveX, Library] (SSH) Added Pageant and ssh-agent authentication mechanism.
+
+* [All] (PDF) Optimized processing of pdf documents that consist from many small objects.
+* [All] (PKI) Minor compatibility improvements in PKCS#11 cryptoprovider (optional alignment of encrypted value to match the key length; primarily addresses SafeNet LunaSA HSM decryption specifics)
+
+* [.NET] (Base) Fixed a bug when security exception appered when NTLM authentication was used in .NET 4.0.
+* [.NET] (Base) Win32 cryptoprovider can now be created with specific set of options
+
+- [All] (PDF) Fixed memory leak for MDP signature. Fixed sign and encrypt issue with MDP signature. 
+- [VCL] (SFTP) Fixed memory leak in TElSimpleSFTPClient.DownloadFiles method.
+- [.NET] (Base) Static methods of TElWinCertStorage class (GetSystemStores() in particular) incorrectly threw SecurityException on .NET 4 and above. Fixed.
+- [ActiveX] (All) A lot of fixes for compiler change originating memory management issues that might have resulted in unstable work of the components
+
+
+---
+December 2, 2012
+Version 10.0.229. Maintenance update
+
+! [.NET] Separate assembly set is now available for use in Windows Store applications. Such applications are not allowed to use external DLLs so this assembly set doesn't include Windows Certificate Storage, PKCS#11, NTLM and SSPI/GSS-API functionality.
+
++ [All] (Cloud) Dropbox components added.
++ [All] (WebDAV) TElWebDAVClient.ReadProperty method added that allows to read a single object property easily.
+
++ [.NET] Classes in Windows RT assemblies have got Async variants for most methods. 
+
+* [.NET] Built-in sockets didn't work in Windows RT assemblies due to compiler glitches. Now the compiler has been fixed, so sockets work. 
+* [All] (HTTP) TElHTTPTSPClient improved to be compatible with servers that send standard incompatible responses.
+
+- [All] (FTPS) RestartFrom parameter in methods, which upload data (Send() and Upload*()), was in fact 32-bit. Now it's 64-bit. 
+
+- [Java] (SSL) Fixed a bug when SSL connection to our server component failed when SSL2 was enabled on client side.
+- [Java] (SSL) Fixed a bug when TLS1 connections failed with some ciphersuites.
+- [Library] (VC++) Fixed AV in debug mode for properties that returns pointer to a class instance.
+
+
+---
+November 15, 2012
+Version 10.0.228. Maintenance update
+
+* [All] (PDF) Improved signature blob size estimation for huge timestamp cases
+* [.NET] (All) Added automatic switch off of Win32 cryptoprovider in non-elevated Silverlight environments
+
+* [.NET] (All) Added automatic switch off of Win32 cryptoprovider in non-elevated Silverlight environments
+* [.NET] (Charsets) InitCharsets method made thread safe.
+
+- [All] (PAdES) Fixed signature size estimation in async mode for TElPDFAdvancedPublicKeySecurityHandler.
+- [All] (HTTP) One of the previous changes to TElHTTPSClient caused its slowdown in some conditions. Fixed.
+- [All] (HTTP) Fixed upload issue on 2Gb+ files. The issue affected HTTPBlackbox and CloudBlackbox components.
+
+
+---
+October 29, 2012
+Version 10.0.227. Maintenance update
+
+* [All] (DC) Java applet is compiled with JDK 1.5 and can be used with Java 1.5 and later (previously it required Java 1.7)
+* [ActiveX] (SSH) Added support for encrypted SSH keys
+
+- [All] (PKI) 'Shortened' TElX509CertificateValidator.Validate() method was defaulting to local times when checking certificate validities instead of UTC. Fixed.
+- [All] (PKI) TElCAdESProcessor's UpgradeToC() methods ocassionally corrupted existing signature timestamps. Fixed.
+- [All] (HTTPS) "Accept" parameter in TElHTTPSServer.OnRequestHeadersReceived event didn't work properly. Fixed.
+- [All] (MIME) TElMultipartList.AddPart method didn't make a copy of the part despite the value of Copy parameter set to true. Fixed.
+
+- [ActiveX] (Base) Fixed error with PEM encryption/decryption
+- [VCL/MacOS] (Base) Fixed error with @rpath/c import in Delphi XE2/XE3 for MacOS X
+- [VCL] (SSH) Fixed rare error with SSH.COM private keys loading 
+- [.NET] Fixed a bug where web tunneling didn't work in Silverlight environment
+- [.NET] Fixed a ZIP issue which led to 'verification exceptions' in different components on Windows Phone platforms
+- [All] (XML) Fixed saving a text with a special characters created by CreateTextNode method.
+
+---
+October 10, 2012
+Version 10.0.226. Official release
+
++ [All] (HTTPS) HTTPS client now supports non-HTTP URLs when HTTP Proxy is enabled (UseHTTPProxy = true). 
+  This allows to use TElHTTPSClient to retrieve FTP URLs via HTTP proxies.  
+
+* [All] (Base) TElX509Certificate.View method improved to show certificates that are not stored in Windows stores.
+* [Library] Added "SB_" prefix to all constant defines.
+
+- [All] (Base) TElWinCertStorage fixed to work with memory stores properly.
+- [All] (XML) Fixed XPath transform processing when the transform chain has several XPath transforms and/or signature enveloped transforms.
+
+- [Java] (Base) Fixed a bug when some TElX509Certificate extensions were not processed properly.
+
+---
+September-October, 2012
+Versions 10.0.223-225. Internal builds
+
+---
+September 27, 2012
+Version 10.0.222. Release Candidate 3
+
++ [VCL] Added Delphi XE3 and C++Builder XE3 packages. 
+
++ [All] (PKI) Added support for Certificate Management over CMS (CMC) protocol (RFC 5272)
++ [All] (XML) Added SOAP signing components. SOAP Security Extension and Web Service Security (WSS) are supported.
++ [All] (PDF) Added TElPDFSignature.DisableDocMDPTransformDigestValue and DisableFieldMDPTransformDigestValue properties
+
+* [All] (PDF) Speed of PDF document loading significantly increased (doubled for managed components and increased by 20 per cent for native code components)
+* [All] (PDF) Added workaround for correct processing of signatures not referenced from AcroForm
+
+- [All] (HTTPS) Fixed a bug introduced in build 9.1.215 where TElHTTPSClient generated malformed POST requests when posting both a web form and file(s) (trailing multipart boundary was inserted before the end of data)
+- [All] (LDAP) Fixed a bug that caused infinite loop during SASL authentication 
+- [AX] (PGP) Fixed AV occurring in ElPGPReaderX if OnTemporaryStream/OnTemporaryFile event handlers are not assigned
+- [Java] (ZIP) Fixed a bug causing java.lang.VerifyError to be thrown in the internals of TElZipProcessor
+- [.NET] (PKI) Fixed a bug in PKCS11 driver that resulted in 'PKCS#11 error CKR_ARGUMENTS_BAD in function C_GetSlotList' error when loading PKCS#11 storage
+- [.NET] Added a fix for intermittent VerificationException in assemblies targeting WinRT framework
+
+---
+September 3, 2012
+Version 10.0.221. Release Candidate 2
+
+! [.NET] Dropped .NET 1.1, .NET CF 1.0, Silverlight 3.0, Windows Phone 7.0, Mono 1.0 support. Users who need to target these platforms can use SecureBlackbox 9.1 which will remain available for download. 
+
+! [VCL] Dropped Delphi 4 support.
+
++ [.NET] Added assemblies for .NET 4.5/WinRT.
+
++ [All] (FTPS) Added DataPortRangeFrom/To properties to SimpleFTPSSever, to limit port range for incoming data connections.
++ [All] (PGP) Added ElPGPReader.ProcessedLength property, so user can know how much data was processed in multi-message PGP file.
+
+- [Java] Pascal-to-Java compiler fixed to generate byte-code that is compatible with Eclipse's built-in Java compiler. 
+  This change fixes the problem when "Illegal class modifiers in class Main: 0x209" exception occured with our samples.
+- [Java] Fixed a bug when license keys with lifetime upgrade option were reported as incorrect.
+
+---
+August 3, 2012
+Version 10.0.220. Release Candidate 1
+
++ [All] (Base) Added ShutdownSocket method to TElSocket and also improved socket closing procedure. ShutdownSocket method is optional (it's called internally by Close if it has not been called before).
++ [All] (Base) Added TElSASLDigestMD5Client to SBSASL unit/namespace.
++ [All] (Base) Added BCrypt password hashing algorithm
+
++ [All] (ZIP) Added ability to process somehow corrupted zip files
++ [All] (ZIP) Added option to restore file attributes on unpack/save attributes on packing
++ [All] (ZIP) Added support for Unix file attributes
++ [All] (PGP) Added support for Elliptic Curve algorithms (ECDSA/ECDH)
++ [All] (SSH) Added support for HMAC-SHA2 schemes (RFC 6668) for better security of SSH communications.
++ [All] (SSL) Added support for Heartbeat extension (RFC 6520). SendKeepAlive method and OnKeepAliveResponse event added to both TElSSLClient/TElSimpleSSLClient and TElSSLServer.
++ [All] (Office) Added XAdES support for binary and OOXML documents (XAdESProcessor property and GenerateXAdES method in TElOfficeBinaryXMLSignatureHandler and TElOfficeOpenXMLBaseSignatureHandler classes).
+
++ [.NET, VCL, Java] (Base) TElWinCertStorage.Select/ImportWizard and TElX509Certificate.View methods added to simplify CryptUI usage.
++ [.NET, VCL, Java] (Base) TElHashFunction.Hash() methods added for quick hashing of data.
++ [.NET, VCL, Java] (Base) TElSymmetricCrypto.Encrypt() and TElSymmetricCrypto.Decrypt() methods added for quick encryption and decryption of data.
++ [.NET, VCL, Java] (PDF) TElPDFSignature.CustomData property added that allows to attach custom data to a signature.
++ [.NET, VCL, Java] (PDF) TElPDFSignatureInfo enhanced with the next properties: Height, Width, OffsetX, OffsetY, Page, Invisible that allow to get width, height and location of an empty signature area.
++ [.NET, VCL, Java] (HTTPS) TElHTTPSServer enhanced with ParseMultipartFormData methods that allow to parse multipart/form-data contents.
+
+* [.NET, VCL, Java] (Base) TElSocket.Bind now accepts optional second parameter named ReuseAddress which tells the socket to set SO_REUSEADDR option on the socket. 
+
+- [All] (LDAP) Fixed a bug when TElLDAPSClient failed to connect to Active Directory servers and assembled wrong search requests.
+- [All] (ZIP) Fixed hang with corrupted zip file
+
+- [Java] (Base) Fixed a bug when some charsets didn't work properly.
+- [.Net] (Office) Fixed bug in TElOfficeBinaryXMLSignatureHandler class for specific binary documents.
+
+
+---
+June 24, 2012
+Version 10.0.219a. Beta version
+
++ Library edition Preview added.
+
+---
+June 18, 2012
+Version 10.0.219. Beta version
+
+! [.NET, VCL, Java] Refactoring of SBUtils unit / namespace has been conducted. Constants have been moved to SBConstants unit/namespace, and basic type declarations have been moved to SBTypes. 
+  Most string-related functions have been moved to SBStrUtils unit / namespace.
+
+! [.NET, VCL, Java] SSL-related constants have been moved from SBConstants unit/namespace to SBSSLConstants. 
+
++ [All] (Base) Added CertificateRetriever helper classes for Certificate Validator. Those classes download CA certificate if the one can not be found by TElX509CertificateValidator during validation of certificates. 
++ [All] (PDF) Added support for Adober Reader X 'locking' signatures
++ [All] (PDF) Added accurate signature blob size estimation to PAdES signatures
++ [.NET, VCL, Java] (Base) Added TElMessageTimestamper and TElMessageTimestampVerifier classes which let you timestamp the data without signing as defined in RFC 5544. 
+
++ [Java] (Base, PKI) Added PKCS#11 and Win32 crypto provider support.
++ [Java] (PKI) Authenticode support added.
++ [.NET] (DAV) Added possibility to intergrate TElWebDAVServer with Microsoft IIS. 
+
+* [All] (DAV) TElWebDAVServer improved to work with NetDrive client.
+* [All] (SSH) Improved compatibility with mod_sftp/0.9.7 server
+* [All] (PKI) Added better control over insertion of certificate references and values to TElCAdESProcessor class
+
+- [.NET] (Base) SecurityCritical attribute was not set for TElX509Certificate.FromX509Certificate2/ToX509Certificate2 methods. Fixed. The attribute is needed in .NET 4.0 to convert the certificate from/to .NET class.
+
+---
+May 21, 2012
+Version 10.0.218. Beta version
+
++ [All] (HTTPS) Added OAuth2 authentication
++ [All] (Base) Added support for CNG (Cryptographic API / New Generation) keys on Windows Vista and later
++ [All] (PKI) TElSymmetricKeyMaterial extended with password-to-key conversion methods
+
+* [All] (DAV) Minor improvements made to TElWebDAVClient to process buggy servers responses.
+* [All] (PKI) Added an option to perform revocation check for root CA certificates
+* [All] (PKI) Validation of certificates of CRL and OCSP services now respects revocation element creation times
+* [All] (FTPS) Changed TElSimpleFTPSClient.Login method to a function that returns welcome message as a result
+
+* [.NET] Added Silverlight 5 assembly set that works on non-Windows platforms (previously SL5 assemblies could work only on Windows due to platform-specific functionality used).
+
+- [All] (Base) TElX509CertificateValidator chose inappropriate CRL retriever under some conditions. Fixed.
+- [All] (PGP) Changed mistyped property names and a constant from "preffered" to "preferred"
+- [All] (DAV) Client digest authentication didn't work properly. Fixed.
+
+- [.NET] (PGP) Fixed a bug with 4Gb+ TAR files.
+
+---
+May 9, 2012
+Version 10.0.217. Beta version
+
++ [All] (Base) Added support for JSON format (parser and composer)
++ [All] (SSH) Added support for the "null" host key algorithm for GSS-API key exchange methods (RFC 4462).
++ [All] (PKI) Added support for GOST R34.10-2001 algorithms in CMS (ElMessageSigner/Verifier/Encryptor/Decryptor)
++ [All] (HTTPS) Added OAuth2 authentication in HTTP client
+
++ [Java] (Base) JCE cryptoprovider added.
+
+* [All] (Base) TElSocket now has Nagle algorithm disabled by default (and it can be re-enabled if needed). This slightly (a little bit) improves speed of command-response protocols such as FTP, SMTP and POP3. 
+* [All] (HTTPS) Improved handling of PUT request with IIS 7.5 with keep-alive enabled (IIS didn't send anything in response and kept connection, which prevented PUT from completion).
+* [All] (SSH) SSH/SFTP clients improved to work with ZFTP Server.
+
+* [.NET] (Base) Mono assemblies improved to work on Windows.
+
+- [All] (HTTPS) Fixed a bug when TElHTTPSClient failed to receive compressed and chunked server responses properly.
+- [All] (MIME) Removed incorrect quotation for encoded international characters for non-addresses fields
+- [All] (XML) Fixed how an XML decryptor component behaves when an empty content is encrypted.
+
+- [.NET] (PGP) Fixed a bug when Close method was not called for streams inside TElPGPWriter.*Files methods.
+- [.NET] (MIME) Fixed time zone parsing error in messages dates
+
+---
+April 1, 2012
+Version 10.0.216. Beta version
+
+
+! [All] (Socket) ListenAddress, ListenPort, ListenPortRangeFrom, ListenPortRangeTo have been deprecated in favor of new ListenBinding property. Deprecated properties will fade away in SecureBlackbox 11.
+
+! [.NET] SecureBlackbox.SSLSocket.dll has been deprecated and moved to extra Classes folder. It is now available in complete source code and should be compiled manually. You are recommended to migrate to TElSimpleSSLClient for SSL-enabled client transport.
+
+! [AX] All controls properly handle Unicode now
+! [AX] 64-bit versions of controls added
+
+! [All] TElSecureClient and TElSecureServer have been renamed to TElSSLClient and TElSSLServer respectively
+
++ [All] (Base) Added 29 new charset tables and fixed some bugs in existing tables. 
+
++ [All] (Base) SymmetricCrypto sample added. It demonstrates how to encrypt/decrypt a string using symmetric cipher.
++ [All] (Base) Added support for parsing data from JSON format and storing data in JSON format with or without indendation
++ [All] (Base) TElMessageProcessor.AlignEncryptedKey property added that allows to align encrypted key object length to a public key length. This option should be turned on to produce an output compatible with buggy ASN.1 processors.
+
++ [All] (Socket) ListenBinding property has been added. It replaces now deprecated ListenAddress, ListenPort, ListenPortRangeFrom and ListenPortRangeTo properties.
+
++ [All] (Mail) Added TElPOP3Client.OnProgress event with ability to interrupt message downloading process
+
++ [All] (MIME) Armor headers were hardcoded in PGP/MIME. Changed to allow armor headers modification.
++ [All] (MIME) Added ability to change default content type for message parts with no content type field specified
+
++ [AX] (Base) Added support for IDN (Unicode domain names).
++ [AX] (PKI) Added loCompareRDNAsStrings certificate lookup option.
+  
++ [AX] (FTPS) Added UploadStream and DownloadStream methods
++ [AX] (FTPS) Added UploadFile and DownloadFile metods
++ [AX] (FTPS) Added UploadFiles and DownloadFiles methods
++ [AX] (FTPS) Added ListDirectory method
++ [AX] (FTPS) Added FileExists, DirectoryExists and CreateCompletePath methods
++ [AX] (FTPS) Added RemoteCharset property for better charset conversion control
++ [AX] (FTPS) Added regular expressions (regex) and multiple wildcards support to group operations (UploadFiles, DownloadFiles and ListDirectory methods) in ElSimpleFTPSClientX class.
+
++ [AX] (SFTP) Added RemoteCharset property for better charset conversion control
++ [AX] (SFTP) Added regular expressions (regex) and multiple wildcards support to group operations (UploadFiles, DownloadFiles, RemoveFiles and ListDirectory methods) in ElSimpleSFTPClientX class.
++ [AX] (SFTP) TElSimpleSFTPClient is now capable of talking SFTP via a command SSH channel if no SFTP subsystem is available
+
++ [AX] (HTTPS) Added an option to suppress contents of transitional redirection pages (30X responses) in the general output
+
+* [All] (XML) Speed of XML loading dramatically (10x and more) improved.
+
+* [All] (SFTP) UploadStream() method now can upload streams with undefined length (pipe streams etc)
+
+* [All] (FTPS) UploadStream() method now can upload streams with undefined length (pipe streams etc)
+* [All] (FTPS) UploadFiles() method will do much less directory traversal operations during recursive upload
+
+* [AX] (FTPS) Extended GetFileSize to retrieve the size using MLST or even LIST command
+* [AX] (FTPS) Extended GetFileTime to retrieve the time using MLST or even LIST command
+
+- [All] (Base) Fixed a bug when HTTP digest authentication didn't work on some systems.
+
+- [All] (ZIP) Fixed problem with empty FilenamesCharset value
+
+- [.NET] Some string comparison were case-sensitive where they would be case-insensitive. Consequently, some functionality could work incorrectly in case when the case was unexpected in the source data. Fixed.
+- [.NET] FileNameMatchesMask function didn't match filenames without extentions to "*.*" Mask. Fixed.     
+- [.NET] (PKI) OCSP Server wrote NextUpdate value incorrectly if NextUpdate was not initialized explicitly to some value later than 1st January 1000. Fixed.
+- [.NET] (PKI) TElWinCertStorage in some cases didn't read certificates from Windows in Silverlight 5.0. Fixed. 
+- [.NET] (HTTPS) Fixed a bug that caused verification exception on WP7.
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 9.1 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+February 20, 2012
+Version 9.1.215. Maintenance update
+
++ [All] (Base) Added handling of protocol-relative URLs (the ones that start with double-slash, // )
++ [All] (HTTPS) TElHTTPSServer sample enhanced to demonstrate custom responses compression.
++ [.NET, VCL] (XML) Added xml advanced signer sample.
++ [All] (Cloud) Added GetFolder() method to Google Data storage component
+
+* [All] (DC) Added 64-bit version of ActiveX control
+* [All] (HTTPS) Compression improved to work with pipelined TElHTTPSServer responses.
+* [.NET, VCL] (HTTPS) Changed the order of fields in Post method to make a stream the last field
+* [.NET, VCL] Updated the code to follow RFC 6265 in regards to cookie handling
+
+- [.NET] (All) Internal socket-driven components didn't handle Silverlight client access policy correctly, leading to permissions issues. Fixed.
+- [All] (FTPS) Active mode had been broken in the previous build. Fixed.
+
+---
+January 30, 2012
+Version 9.1.214. Maintenance update
+
+* [All] (PKI) Made handling of PKCS#11 session-level notifications optional 
+* [All] (PKI) Made PKCS#11 components tolerant to HSMs supporting single sign-on mode (one login per multiple apps)
+* [All] (SFTP) Added /usr/libexec/sftp-server to the list of known sftp server executable locations (SFTP-over-command-channel mode)
+
+- [All] (FTPS, SFTP) UploadFiles didn't ignore subfolders and attempted to upload them as files, which attempt produced an error code in the end of method. Fixed. 
+- [All] (HTTPS) HEAD and OPTIONS requests, if connection was set to keep-alive, didn't return until disconnection. Fixed. 
+- [All] (Cloud) Updated TElAWSS3DataStorage.ObjectExists() method to report presense of zero-size files correctly
+
+- [.NET, Java] (PKI) If both loMatchAll and loExactMatch were set in options of certificate lookup, RDN comparison was performed in less strict manner (tag types were ignored). Fixed. 
+  Note that this fix can have an effect on various certificate validation procedures which will begin to fail due to "non-working" certificate lookups. 
+  However, this behaviour is standard-compliant and failures can happen only with malformed responses and CA certificates, which were reissued with different Subject RDN.
+  If you need to return old behaviour, the easiest way is to set SBRDN.__Global.IgnoreTagsWhenComparingRDNs = true; (in .NET) or SBRDN.IgnoreTagsWhenComparingRDNs = true; (Java)
+- [.NET] (All) (Silverlight and WP7 only) Fixed a socket issue causing various connectivity problems in higher level components
+- [.NET] (FTPS) RemoteCharset property was initialized by IDE's designer to null (instead of empty string), which caused an error in runtime. Workaround added.
+
+
+---
+January 15, 2012
+Version 9.1.213. Maintenance update
+
++ [All] (WebDAV) TElWebDAVClient enhanced with UploadStream/UploadFile and DownloadStream/DownloadFile methods
++ [All] (PKI) PKCS#11 components now support DSA and ECDSA algorithms
++ [All] (XML) Added TElXMLSigner.EnvelopingObjectID property to specify an Id for enveloping object when xstEnveloping signature type is used.
+
++ [.NET] Added assemblies for Mono 4 Android (currently in preview mode).
+
+* [All] (WebDAV) TElWebDAVClient improved to be compatible with DriveHQ.com provider
+* [VCL] (HTTPS) A few memory leaks related to responses compression code fixed in TElHTTPSServer
+* [All] (PKI) Made components more tolerant to incorrectly formed certificates, CRLs and other PKI elements (trash bytes after the end of an object are now ignored)
+* [All] (PKI) A number of compatibility improvements in PKCS#11 components. In particular, some compatibility issues noticed with LunaSA HSM have been eliminated.
+* [All] (PKI) Now TElX509CertificateValidator class can retrieve CRLs and send OCSP requests using HTTPS without extra tune-up
+
+- [.NET] (Base) Fixed a bug in TElSocket that caused ArgumentException when wrong web tunnel login credentials were set
+
+---
+December 15, 2011
+Version 9.1.212. Maintenance update
+
+! [VCL] (Base) Automatic parameter type check in TElHashFunction.Update() method is now disabled by default. 
+        Set SBHashFunction.G_CheckPointerIsNotAnObject to true to force the component do the check.
+
++ [All] (PDF) Added support VRI dictionaries to PAdES components
++ [All] (PDF) Added TElPDFAdvancedSecurityHandler.PAdESOptions property for more flexible tuning of the component
++ [All] (PDF) Added support for Seed Value Dictionaries and Legal Content Attestation attributes
+
+* [.NET] Assemblies rebuilt against Silverlight 5 release assemblies
+
+* [All] (PKI) TElCMSSignature extended with Assign() method, allowing to transfer signatures between CMS messages
+
+- [All] (SSH) Remote port forwarding didn't work in dynamic (server chooses the port) mode in client-side components. Fixed.
+- [All] (SSH) Fixed a server-side problem with incorrect hash algorithm selection in certain configurations
+- [All] (PDF) Fixed a duplicate /Type entry issue in PAdES document timestamps generation procedure
+- [All] (MIME) Fixed several bugs in parsing e-mail addresses
+- [All] (XML) Fixed a bug in XAdES archive timestamp for signatures that contains more than one object
+- [.Net] (Office) Fixed entry not found issue for a binary signature handler with URIs that contains special characters
+
+
+---
+November 28, 2011
+Version 9.1.211. Maintenance update
+
++ [All] (Base) TElSocket.WebTunnelResponseHeaders and TElSocket.WebTunnelResponseBody properties added providing access to the details of proxy response
++ [All] (Cloud) Added OnBeforeRequestSigning event allowing user to provide custom HTTP request headers or amend values assigned by the component (e.g. the value assigned by default to the Date header) before the request is signed
+
+* [All] (HTTPS) Improved setup of "default" host value when connecting to port 443 -- some servers got confused by port number and processed the request in a wrong way. Now port number is not included if it's 443 and we are connecting via HTTPS. 
+* [All] (XML) Changed type of TElXMLKeyInfoPGPData.PublicKey/SecretKey properties to TElPGPCustomPublicKey/TElPGPCustomSecretKey that allows using pgp subkey as a key.
+* [All] (ZIP) Improved compatibility with DynaZip engine with Strong Encryption setting
+
+- [All] (Base) Fixed a bug in TElX509CertificateValidator that sometimes caused invalid (false negative) validation results
+- [All] (Base) Fixed a bug when TElSocket.ProxyResult was not set properly.
+- [All] (PKI) KeyID and KeySubject properties were not returned correctly for keys originating from PKCS#11 hardware. Fixed.
+
+
+---
+November 8, 2011
+Version 9.1.210. Maintenance update
+
+! [All] (Base) IDEA algorithm has been included into main code. No more need to install IDEA additionally. Extended (IDEA-capable) cryptographic provider is now used by default.
+! [All] (PDF) MDP signatures are now checked in 'liberal' mode by default. Use the overloaded Validate() method to perform validation in normal mode.
+
++ [All] (DC) Java applet extended with PKCS#11 support
++ [All] (Cloud) Added support for iterative bucket/container contents listings
++ [All] (Cloud) S3 buckets with upper-case characters in their names are now supported
++ [All] (XML) Added GOST R 34.10-94/2001 signatures support
+
+* [All] (Base) Type of exception that is thrown in case of license related errors changed from ESecureBlackboxError to EElLicenseError.
+* [All] (PDF) Brought the timestamp information reported by advanced handler's Timestamps[] property to accordance with the information reported by standard handler's Timestamps[] property
+* [All] (PDF) A number of interoperability improvements have been introduced (the components become even more liberal to badly formatted documents)
+
+- [All] (FTPS) Parser for MLSD command didn't handle filenames with semocolons correctly. Fixed.
+
+---
+October 20, 2011
+Version 9.1.209. Maintenance update
+
+- [All] (ZIP) Fixed corruption of file names on compression, introduced in build 208
+- [All] (MIME) XMailer header field didn't survive replacing of main part with MultipartList. Fixed. 
+
+---
+October 16, 2011
+Version 9.1.208. Maintenance update
+
++ [VCL, .NET] (Base) TElX509Certificate.IgnoreVersion property added. It allows to read malformed v1 certificates that include extensions.
+
+- [All] (DC) Added missing UserData mirroring on DC server
+- [VCL] (Base) Several Delphi x64-specific issues caused by the differences in behavior of WinAPI functions on x64 platform have been fixed
+- [.NET] (Base) In Silverlight and Windows Phone assemblies charset resource was not loaded properly due to misnaming. Fixed.
+
+---
+September 30, 2011
+Version 9.1.207. Official Release
+
++ [All] (Misc) Inner TElSocket objects used by various "simple" components is now accessible for component user to allow access to low-level connection parameters
++ [All] (Cloud) Support for requests on behalf of federated users (via additional security token) is now available
++ [All] (SFTP) TElSimpleSFTPClient is now capable of talking SFTP via a command SSH channel if no SFTP subsystem is available
+
++ [VCL, .NET] (PDF) Added JPEG format and custom bitmap (RGB, CMYK or Gray streams) support for a signature widget background image.
++ [VCL, .NET] (PDF) Added explicit masking (stencil masking) and colour masking support for a signature widget background image.
++ [VCL, .NET] (PDF) Added ElPDFSignatureWidgetProps.CustomText and HideDefaultText properties, which allows to specify position and font size for a custom text and hide default automatically generated text for a signature widget.
++ [VCL, .NET] (PDF) Added ElPDFSignatureWidgetProps.CompressWidgetData property which enables compression of a signature widget data.
+
++ [VCL] Added Delphi XE2 (Win32 and Win64 platforms) and C++Builder XE2 (Win32 platform) support
+
+* [.NET / WP 7.5] Changed the type of by-reference boolean method parameters with built-in TSBBoolean type throughout the library to work around a bug in Windows Mobile version of the framework
+* [All] (SSH) Key renegotiation is now performed in more friendly way by TElSSHServer (older implementation confused certain SSH clients, making them close the connection)
+* [All] (SFTP) Added a workaround to accept wrong SFTP version numbers sent by SFTP server
+
+- [.NET, VCL] (Base) TElFileOCSPClient didn't work. Fixed. 
+- [All] (HTTPS) Decompression of compressed response didn't work for large compressed resources. Fixed.
+
+---
+August 29, 2011
+Version 9.1.206. Release Candidate 2
+
++ [.NET] Added Silverlight 5.0 and Windows Phone 7.1/7.5 (Mango) assembly sets
+
+* [All] (OpenPGP) Significantly improved speed of *File() methods (e.g. EncryptAndSignFile()) by introducing caching to underlying file stream processing
+* [All] (SSH, SFTP) Improved work with charsets in all components
+
+- [.NET ,VCL] (Cloud) Fixed a bug in shared access signature generation function (Azure component only)
+- [.NET] (Cloud) Fixed a bug in object padding generation function that resulted in corruption of uploaded data (Azure component only)
+
+---
+August 14, 2011
+Version 9.1.205. Release Candidate
+
++ [.NET, VCL] (HTTPS) Added an option to suppress the contents of transitional redirection pages (30X responses) in the general output
++ [.NET, VCL] (FTPS) Added RemoteCharset and LocalCharset properties for better charset conversion control
++ [.NET, VCL] (Cloud) Added support for Content-MD5 property
++ [.NET, VCL] (XML) Added DOCTYPE support. Added ElXMLDOMDocument.DocumentType property and ElXMLDOMDocumentType.ResolveExternalDTD method that maybe needed for canonicalization of attributes with a default value defined in DTD.
+
+! [All] Changed default settings of ElSSHCustomForwarding class. Only common key exchange algorithms are enabled now (like in ElSSHClient class)
+* [.NET, VCL] (MIME) Headers parser improved to support e-mail addresses enclosed in '"' instead of '<' with '>'.
+* [.NET, VCL] (XML) Extended XML parser to preserve whitespace characters outside a document element.
+
+- [.NET, VCL] (PKI) Certificate validator used to freeze when validating certificates of OCSP servers that provide revocation information for themselves. Fixed.
+
+---
+July 19, 2011
+Version 9.1.204. Beta version
+
+! [All] (HTTPS) Handling of redirection in the client has been changed. When the client receives response code 301 or 302, it fires OnRedirection event with AllowRedirection parameter. 
+  Previously this parameter was always set to true before the event was fired. Now it's set to true for GET and HEAD requests and to false for all other requests. 
+  This change was made to comply to RFC 2616 which required that no automatic redirection of POST and PUT requests is performed without user confirmation. 
+! [.NET] (HTTPS) HTTP client assembly (SecureBlackbox.HTTP.dll) now references XML assembly (SecureBlackbox.XML.dll). 
+
++ [.NET, VCL] (Base) Extended TElX509Certificate with methods that allow to read raw PKCS8 keys
+
++ [.NET, VCL] (HTTPS) Added TElCookieManager for automatic management of cookies in HTTP client
++ [.NET, VCL] (WebDAV) TElWebDAVClient.EncodeURL property added. The property provides means for enabling / disabling URL encoding.
++ [.NET, VCL] (WebDAV) LoadFromStream/SaveToStream methods added to TElWebDAVMemoryLockList class
++ [.NET, VCL] (Cloud) Added support for policies to Windows Azure data storage component
++ [.NET, VCL] (Cloud) Added support for shared access signatures to Windows Azure data storage component
++ [.NET, VCL] (Cloud) Added support for ACLs and policies to AWS S3 data storage component
++ [.NET, VCL] (Cloud) Added support for optional URLEncoding of object names to AWS S3 data storage component
++ [.NET, VCL] (Base) Added OnHTTPError event to TElHTTPTSPClient component.
++ [.NET, VCL] (SSH) Added GSS-API support to forwading components (ElSSHCustomForwarding class)
+
+* [All] (Base) TElUserNotice improved to read values in ASN.1 BMPString format correctly.
+* [All] (HTTPS) Added handling of 303 (redirection followed by GET request) and 307 (redirection followed by original request) response codes to the client component. 
+* [All] (SFTP) Added a workaround for malformed ACL processing
+* [All] (SSH) Dynamic port forwarding mode: made address resolution optional and switched it off by default (suitable for more sceneries of network environments now)
+* [.NET, VCL] (Base) Extended PKCS11 cryptographic provider with OnAttributesPrepared event, allowing to intercept and adjust attribute sets passed to the driver
+* [.NET, VCL] (Cloud) Added a workaround for proper support of "wise" service that is sometimes used by Google instead of the "writely" one
+* [.NET, VCL] (WebDAV) TElWebDAVServer compatibility with third-party clients improved.
+* [.NET, VCL] (WebDAV) Improved compatibility of TElWebDAVServer with third-party clients 
+
+- [All] (Base) TElSocket digest authentication issue fixed
+- [All] (SSH) TElSSHServer.SSH2SendChannelOpenFailure issue fixed
+- [All] (SSL) TElSimpleSSLClient.ReceiveData issue with external socket has been fixed
+- [.NET, VCL] (Base) TElCustomFileSystemAdapter: a bug resulting in incorrect processing of paths containing '..' has been fixed
+- [.NET, VCL] (FTPS) A bug in RETR command processing is fixed in TElSimpleFTPSServer
+- [.NET] (SSH) Fixed a bug in saving SSH private keys in Putty format
+- [.NET, VCL] (PDF) Fixed minor compliance issue with signing PDF/A document and issue with verifying a document with non-standard signature (custom data at the end of signature)
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 9.0 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+June 10, 2011
+Version 9.0.203. Maintenance update
+
++ [All] (Base) TElSocket class is enhanced with a WebTunnelRequestHeaders property that allows to customize WebTunnel HTTP request headers. All classes that have WebTunnel* properties are also updated.
+
+* [All] TElSocketTSPClient moved from SBTSPClient to SBSocketTSPClient namespace/unit. 
+* [All] (Base) TElHashFunction now supports CRC32 algorithm
+* [.NET, VCL] (WebDAV) TElWebDAVServer compatibility with native WebDAV client in Windows Vista/2008 Server/7/2008R2 Server improved.
+
+- [.NET, VCL] (Office) An issue with removing signature for OOXML and XPS documents has been fixed
+- [.NET] (PKI) A distributed signing issue in TElCMSSignature class has been fixed
+
+---
+May 31, 2011
+Version 9.0.202. Official Release
+
++ [.NET, VCL] (XML) Added XAdES version 1.4.1 support.
++ [.NET, VCL] (XML) Extended XAdES processor interface: added a bunch of methods/properties/events for manipulating of XAdES-C and XAdES-X-L forms, XAdES validation, adding timestamp validation data and support of AllDataObjects timestamps, Archive timestamps v1.4.1.
++ [.NET, VCL] (XML) Added canonicalization version 1.1 support.
++ [.NET, VCL] (PKI) Added loCompareRDNAsStrings certificate lookup option.
+
+* [All] (HTTPS) Put() and Post() methods now default to chunked encoding if indefinite length stream is passed
+* [All] (Cloud) Implemented correct understanding of GDocs' 302 responses
+
+- [.NET, VCL] (Office) Fixed creating a second signature for OpenDocument document that was previously signed with "old" OpenOffice version.
+- [.NET, VCL] (Cloud) Fixed an on-the-fly compression bug in AWS and Azure components
+- [.NET, VCL] (XML) Fixed processing numeric character entities in the getter of ElXMLDOMAttr.NodeValue/Value property.
+
+
+---
+May 23, 2011
+Version 9.0.201. Release Candidate 2
+ 
+! [All] (Socket) Default value for SocketTimeout property in all socket-based components (TElHTTPSClient, TElSimpleSSLClient, TElSimpleSSHClient, TElSimpleSFTPClient) has been changed from 0 (system-default timeout, usually 2 hrs) to 60000 (60 seconds)
+  This can affect your code if it works via pigeon mail or similar slow transports. 
+! [.NET] (Experimental) Added Windows Phone assembly set
+
++ [All] (PKI) Added TElCAdESProcessor class, a high-level CAdES signature creation and processing component
+
+* [All] (SSH) Added support for custom shell invocation to server-side shell SSH subsystem handler
+* [All] (SFTP) Improved compatibility with Cerberus SFTP server
+* [.NET, VCL] (Base) TElCustomFileSystemAdapter methods names changes because of incompatability with C++Builder.
+* [.NET, VCL] (PDF) Added a workaround that allows object loading without endobj keyword.
+* [.NET, VCL] (Cloud) Significantly improved progress reporting
+
+- [All] (Base) TElMessageDecryptor.Decrypt fixed. Not it does not fail if TElMessageDecryptor.CertStorage contains
+  recipient certificate without private key before recipient certificate with private key.
+
+- [.NET] (FTPS) TElSimpleFTPSServer samples fixed for both C# and VB.NET. 
+- [VCL] (XML) Fixed several memory leaks when XPath expression is processed
+
+
+---
+May 14, 2011
+Version 9.0.200. Release Candidate
+
+! [.NET, VCL] (SFTP) TSBSFTPCaseConversion type has been changed to be an alias of SBUtils.TSBCaseConversion
+! [.NET, VCL] (SFTP) TSBSFTPFileTransferMode type has been changed to be an alias of SBUtils.TSBFileTransferMode
+! [.NET, VCL] (SFTP) TSBOperationErrorHandling moved from SBSftpCommon to SBUtils
+! [.NET, VCL] (FTPS) TSBFTPProxySettings class has been renamed to TElFTPProxySettings
+
++ [.NET, VCL] (HTTP) Added possibility to PUT/POST data with undefined length using chunk encoding. 
+  This allows the application to stream the data as it becomes available, instead of providing the complete stream right on call to POST or PUT method. 
+
++ [.NET, VCL] (FTPS) Added UploadStream and DownloadStream methods
++ [.NET, VCL] (FTPS) Added UploadFile and DownloadFile metods
++ [.NET, VCL] (FTPS) Added UploadFiles and DownloadFiles methods
++ [.NET, VCL] (FTPS) Added TElFTPFileInfo class (similar to TSBFTPFileInfo record). TSBFTPFileInfo record is obsolete in favor of TElFTPFileInfo class.
++ [.NET, VCL] (FTPS) Added overloads for GetFileList to grab all results to TElStringList or to array of FTPFileInfo
++ [.NET, VCL] (FTPS) Added overloads for MLSD to grab all results to TElStringList or to arra of FTPFileInfo
++ [.NET, VCL] (FTPS) Added support for virtual file system adapters to TElSimpleFTPSClient class (DownloadFile, DownloadFiles, UploadFile, UploadFiles methods).
++ [.NET, VCL] (FTPS) Added ListDirectory method
++ [.NET, VCL] (FTPS) Added FileExists, DirectoryExists and CreateCompletePath methods
++ [.NET, VCL150+] (FTPS) Added regular expressions (regex) and multiple wildcards support to group operations (UploadFiles, DownloadFiles and ListDirectory methods) in TElSimpleFTPSClient class.
+* [.NET, VCL] (FTPS) Extended GetFileSize to retrieve the size using MLST or even LIST command
+* [.NET, VCL] (FTPS) Extended GetFileTime to retrieve the time using MLST or even LIST command
+                  
+
+---
+April 30, 2011
+Version 9.0.199. Beta version 2
+
++ [.NET, VCL] (Office) Added support for distributed client-server signing of Binary, OOXML, XPS and OpenDocument documents
++ [.NET, VCL] (SSH) TElShellSSHSubsystemHandler.CurrentDirectory property added. Can be used to specify shell working directory.
++ [.NET, VCL] (ZIP) Added FIPS mode support
++ [.NET] (PKI) Added Authenticode to PKIBlackbox
++ [.NET] Added three samples illustrating the use of SBB components (PDF, OpenPGP, DC) with Windows Azure platform. More samples are expected soon.
+
+- [All] (SSH) TElSSHKey.Generate method fixed. Now TElSSHKey.KeyMaterial is initialized correctly.
+- [.NET, VCL] (Office) Fixed reading specially formatted encryption info for OOXML documents
+- [.NET, VCL] (Office) Fixed compatibility issue with signing and setting signature time of OpenDocument documents
+
+
+---
+April 6, 2011
+Version 9.0.198. Beta version
+
+! [.NET, VCL] (XML) TElXMLSigner.Sign() method is deprecated. Use GenerateSignature() or GenerateSignatureAsync() method.
+
+! [.NET, VCL] (SSL, Mail) SMTP client has been excluded from SSLBlackbox client package and moved to a separate Mail package.
+
+! [.NET, VCL] (HTTP) ParseURL method has been moved from TElHTTPSClient to SBUtils namespace
+! [.NET, VCL] (HTTP) Declarations of HTTP error codes were moved from SBHTTPSClient to SBHTTPCommon namespace/unit.
+! [.NET] (HTTP) SecureBlackbox.HTTPCommon.dll assembly has been added. SBHTTPCommon namespace has been moved there.
+
++ [All] (Base) Added support for IDN (Unicode domain names).
++ [All] (Base) TElSocket now supports Digest and NTLM authentication in WebTunneling (HTTPS proxy, HTTP CONNECT proxy).
+
++ [All] (PKI) TElMessageSigner.IncludeChain property added. Now you can add one certificate to the list and set IncludeChain option. If added certificate has a Chain property set, then certificates will be taken from there.
+
++ [.NET, VCL] (XML) Added TElXMLUnsupportedTransform class that prevents exceptions on signature parsing.
++ [.NET, VCL] (XML) Added TElXMLReference.URINodes property.
++ [.NET, VCL] (XML) Added TElXMLVerifier.SignerCertificate and SignerKeyData properties. They set on ValidateSignature call and specify a certificate/key that was tested.
+
++ [.NET, VCL] (Cloud) Added support for on-the-fly object compression and decompression
++ [.NET, VCL] (Cloud) Object encryption capabilities extended with identity (no encryption) and stream-adjusted ("drop mode") RC4 algorithms
++ [.NET, VCL] (Cloud) Protected and unprotected custom user data elements can now be stored along with the object
++ [.NET, VCL] (Cloud) Added support for ContentEncoding attribute to AWS data storage component 
+
++ [.NET, VCL] (Mail) Added SASL support to TElSMTPClient.
++ [.NET, VCL] (PKI, PDF, XML) Added support for distributed client-server signing of data + separate client modules for in-browser execution 
+
++ [.NET, VCL] (WebDAV) Added WebDAV client and server components.
++ [.NET, VCL] (LDAP) Added LDAP client. It can be used to manage OpenPGP keys on keyservers (TElLDAPSKeyserverClient), retrieving CRLs from CRL distribution points (TElLDAPCRLRetriever) and retrieving user certificates from LDAP storages (TElLDAPCertStorage).
++ [.NET, VCL] (Mail) Added POP3 client. 
++ [.NET, VCL] (Mail) Added SASL authentication engine.
++ [.NET, VCL] Virtual file system adapters have been added. They provide an abstract layer for generic file system access. Adapters for disk file systems and for SolFS as well as the sample adapter are available out of the box. 
++ [.NET, VCL] (SFTP) Added support for virtual file system adapters to TElSimpleSFTPClient class (DownloadFile, DownloadFiles, UploadFile, UploadFiles methods).
++ [.NET, VCL] (PGP) Added support for virtual file system adapters to TElPGPWriter class (EncryptFile, SignFile, EnrcryptAndSignFile, ClearTextSignFile methods) and TElPGPReader class (VerifyFile and VerifyDetachedFile methods) 
++ [.NET, VCL] (ZIP) Added support for virtual file system adapters to TElZIPReader and TElZIPWriter classes
+
++ [.NET, VCL] (HTTP) Added HTTP/HTTPS server
++ [.NET, VCL] (FTPS) Simple FTP Server component got support for virtual file system adapters
++ [.NET, VCL] (SFTP) TElSftpStream added to both TElSftpClient and TElSimpleSFTPClient. You can open remote file with OpenStream function and work with it like it were a local file opened with TFileStream/FileStream.
+
++ [.NET, VCL150+] (SFTP) Added regular expressions (regex) and multiple wildcards support to group operations (UploadFiles, DownloadFiles, RemoveFiles and ListDirectory methods) in TElSimpleSFTPClient class.
+
+* [.NET] Unused references are nulled to speed up garbage collection.
+
+- [.NET, VCL] (PDF) Minor fixes in object streams processing and attachments extraction.
+- [All] (SSH) Fixed a bug when SSH key comment and subject were not saved correctly.
+
+- [VCL/FreePascal] (PKI) Fixed issues with opening windows certificate storages. Fixed issue with signing on 64-bit systems.
+- [VCL/FreePascal] (XML) Fixed issue with loading xml documents.
+
+- [VCL] (Base) Fixed a bug in TElRDNConverter.SaveToDNString(). Now it saves non-ansi characters correctly.
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 8.2 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+March 17, 2011
+Version 8.2.197. Maintenance update
+
+- [All] (HTTP) It appeared, that following the standard doesn't pay. The fix for tar.gz files handling appeared to be conflicting with some HTTP servers, which erroneously report compression via content-encoding header instead of transfer-encoding as required by the standard. Fixed.
+- [All] (SFTP) In some cases upload could be blocked if SocketTimeout was 0 (issue appeared in build 196). Fixed.
+- [.NET] (FTPS) Fixed bug in TElSimpleFTPSClient.ParseFileListEntry for some variants of DOS listing format.
+
+
+---
+March 13, 2011
+Version 8.2.196. Maintenance update
+
+* [All] (PDF) Basic PAdES signatures can be upgraded now
+* [All] (SSH) Improved compatibility with Password Manager Pro server
+
+- [All] (PDF) Fixed reading compressed DSS certificates, CRLs, OCSPs for PAdES signature handler.
+- [All] (PDF) Minor fixes in PDF parser: fixed reading of attachments (specially structured) and improved document processing with bad cross-reference table.
+
+- [All] (HTTP) If the URL for GET operation denoted  a .tar.gz file and the server reported "conent-encoding: gzip" for the file being downloaded, the client ungzipped the data during downloading. Fixed.
+- [All] (HTTP) Fixed HTTP 1.0 downloads, which threw an exception with error code 10058 if the server didn't provide data length in response headers and instead just closed connection to signal document end.
+
+
+---
+February 16, 2011
+Version 8.2.195. Official release
+
++ [All] (XML) Added ElXMLDOMElement.TextContent property (DOM 3) and InnerText method
+
+* [All] (PDF) Improved compatibility with PDF writers that incorrectly identify hash algorithm with signature algorithm identifiers
+
+- [All] (PKI) Minor bug in TElX509Certificate.DetectKeyFileFormat() routine fixed
+- [.NET] (PKI) Fixed minor security transparency issue in FIPS compliant mode on .NET 4.0
+- [Silverlight] (EDI, MIME, Office, XML) Fixed charsets loading from resources
+
+---
+February 5, 2011
+Version 8.2.194. Release Candidate
+
++ [.NET, VCL] (PKI) Added OnError event for GSS-API mechanisms and added TElGSSAPIMechanism.KRB5CredentialCacheName property
++ [All] (HTTP) Added handling of relative "Location" response header values starting with '.' (relative paths are not valid according to the standard, but still some servers produce them).
++ [All] (PDF) Added ElPDFDocument.Adobe8Compatibility property. For documents with MDP signature and second visible signature you may need to adjust it.
+
+* [All] (Base) TElHashFunction.Update(TStream/System.IO.Stream) renamed to UpdateStream(TStream/System.IO.Stream)
+* [All] (EDI)  Adding ContentType authenticated attribute in S/MIME signatures by default
+* [All] (PDF) Improved parsing of signature widget size and dimensions for documents created by Adobe 9.4
+* [All] (SSH, SFTP) Improved textual data encoding handling
+
+- [All] (MIME) Removed Content-Transfer-Encoding header field for multipart message parts
+- [All] (MIME) Duplication of MIME-Version header field
+
+---
+January 8, 2011
+Version 8.2.193. Beta version
+
+! [All] (PKI) Major changes to CAdES implementation. See release notes for details.
+
++ [.NET, VCL] (Base) Added TElStringTokenizer class
++ [.NET, VCL] (FTPS) Added FTP/FTPS server components
+
++ [VCL] Added experimental support for MacOS X FreePascal compiler. This includes source code compilable with the mentioned compiler, superficially tested with automated QA test tool. Please use Linux package files (*.pp) along with SB_MAC conditional define to build the packages. The mentioned conditional define should also be used with any MacOS X FreePascal project that uses SecureBlackbox code.
+
++ [All] (PDF) Added an option for duplicating PAdES revocation information in legacy PDF 1.X RevocationInfoArchival attribute
++ [All] (SFTP) Added OnBlockTransferPrepared event to allow catching/modifying transfer parameters (pipeline length, block sizes) on the fly
++ [.NET, VCL] (PKI) Added an overload for TElCustomCertStorage.BuildChain method which accepts an instance of TElX509Certificate as a parameter.
+
+* [All] (SSL) Improved protocol version negotiation algorithm on server side, making version fallback impossible
+* [.NET] (SSL) Socket classes got PSK support (which was exposed from internal SSL classes)
+* [.NET, VCL] (HTTP) URLEncode method made a public class method
+
+- [All] (HTTP) Content-Range header was not formed right with partial POST requests ("bytes=" was sent instead of "bytes " and total number of bytes was not sent). Fixed.
+- [All] (PDF) Fixed an issue with generation of deprecated X509RSASHA1 signatures, introduced a few builds ago
+- [All] (XML) Fixed a bug with assignment of one-character value to TElXMLDOMElement.InnerXML property
+- [NET] (EDI) Fixed bugs in parsing receipts content fields
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 8.1 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+December 10, 2010
+Version 8.1.192. Maintenance update
+
++ (PKI) Added support for PKCS7 files that contain header and footer
+
+* [All] (HTTP) Improved keep-alive support. Now the component attempts to detect the situation when the server has closed supposedly kept-alive connection and reconnect properly.
+
+* [VCL] (ZIP) ElZipWriter can now compress files that are opened with another process
+
+- [All] (PDF) Minor issues with PAdES signature handler and minor issue with PDF document decryption fixed
+- [All] (XML) Minor issue with XAdES interface in XMLTimestamp (non-common timestamp) fixed
+
+- [VCL] (Cloud) Fixed authorization issue on Unicode Delphi
+
+
+---
+November 8, 2010
+Version 8.1.191. Maintenance update
+
++ [All] (Base) Added transparent support for reading PEM files encrypted using DES-EDE3-CFB scheme
+
++ [.NET, VCL] (PDF) Added TinySignerPKCS11 demo
++ [.NET] (SSH) Added VB.NET SSHServer demo
+
+* [.NET, VCL] (Cloud) Added a "fast list" option to TElAWSS3DataStorage component
+* [.NET, VCL] (ZIP) Improved performance for large amount of files (10000+)
+* [.NET, VCL] (ZIP) Added methods to build archive dynamically
+* [.NET, VCL] (PKI) Added possibility to add duplicate certificates to system store using ElSBWinCertStorage
+
+- [.NET, VCL] (Office) Minor issues with binary signature handler for Office documents have been fixed
+- [.NET] (SSH) Public-key authentification for DSA keys (broken in build 8.1.189 due to compiler change) has been fixed
+- [.NET] (HTTP) The bug with NTLM proxy authentication has been fixed
+
+---
+October 4, 2010
+Version 8.1.190. Maintenance update
+
++ [All] (PKI) Added TElSocketTSPClient component which provides support for TCP-based timestamping protocol
+
+* [All] (SSH) Improved compatibility with Mocana SSH server
+* [All] (SSL) Improved compatibility with IIS 6 and 7 servers that require client key exchange message to be aligned on RSA modulus length
+* [.NET] (SSL) Added possibility to attach SSLSocket components to existing TCP connection
+* [.NET] (SSL) Reworked certain parts of SSLSocket code to increase sockets' efficiency
+* [AX] (SSL) Added Socks and WebTunnel proxies configuration properties to ElSimpleFTPSClientX component
+
+- [.NET] (HTTP) Fixed broken parsing of URLs that contained parameters (question mark) and no anchor
+
+---
+September 6, 2010
+Version 8.1.189. Official Release
+
++ [All] (PKI) SigningCertificateV2 type is now supported by TElCMSSignature
+
+* [All] (Base) Long (>2Gb) ASN.1 records are now supported
+* [All] (PKI) Added support for PEM-enveloped SPC certificates
+* [All] (PKI) Added support for buggy TSP servers that provide responses under "application/timestamp-query" content type
+* [All] (PDF) Compatibility issue with Adobe Reader when adding more than one attachments to a pdf document
+
+- [All] (Office) Fixed memory leak in OpenDocument component
+- [All] (MIME) Fixed mail address parsing bug that sometimes resulted in index out of bounds exception when preparing the mail message
+- [.NET] Fixed Silverlight-specific bug - absense of charset object caused NullReferenceException
+- [.NET] Fixed the bug in Features parsing (GetFeatures method) which caused the function to throw an exception if CCC was reported in one of the lines.
+
+
+!!! Build numbers 179-188 skipped due to numbering mistake.  
+
+---
+July 24, 2010
+Version 8.1.178. Release Candidate 2
+
++ [All] (PKI) Added possibility to set friendly names for system certificates
++ [All] (PKI) Customized setup of complete validation data in CMS is now supported
+
+- [VCL] (ZIP) Fixed broken string encoding conversion on Unicode-capable Delphi
+- [AX] (SSL) Fixed intermittent AV in client-side SSL components
+
+
+---
+July 17, 2010
+Version 8.1.177. Release Candidate 1
+
++ [All] (PKI) Added support for system-driven ("safe") keypair generation 
++ [All] (PDF) Added support for PAdES-compliant signatures
++ [All] (PDF) Added TElPDFSignatureWidgetProps.DateCaptionFormat property to control datetime formatting
++ [All] (Cloud) Added Google Docs data storage component
++ [All] (Cloud) Added enhanced listing capabilities
++ [All] (ZIP) Improved ElZipWriter performance and memory usage for a large number of files
++ [All] (ZIP) Added ElZipWriter.MakeDir & ElZipWriter.AddDirContents methods
++ [All] (EDI) Added support for data compression in AS2 and AS3 protocols
+
+* [All] (Base) Certificate validator opens Windows certificate storages in read-only mode now. This lets validator work correctly under certain limited accounts
+* [All] (Base) Proxy errors are now reported in more detail
+* [All] (PKI) Improved work with CRLs and OCSP responses in CMS messages
+* [All] (SSH) Improved compatibility with 'Internet Server SSHD' and '3.2.0 SSH OpenVMS V5.5 VMS_sftp_version 3' legacy servers
+* [All] (PDF) Workaround for non well-formed entries in the cross-reference section (may affect a signed PDF document)
+* [All] (MIME) E-mail addresses parsing rewritten
+
+- [All] (PKI) Fixed processing of custom CRL extensions
+- [VCL] (SSL) Fixed broken support for some ciphersuites in Delphi 2009 and later
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 8.0 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+---
+May 22, 2010
+Version 8.0.176. Maintenance update
+
++ [All] (Cloud) Added Windows Azure storage samples
+
+* [All] (SSH) Added special automatic setup for mod_sftp/0.9 server
+* [AX] (PGP) Added support for long (2Gb+) files
+* [All] (ZIP) Support for non-ASCII characters in filenames, support for utf8 filenames
+* [All] (PDF) Automatically fix documents with truncated document trailer
+
+- [All] (XML) Fixed canonicalization of simple inheritable attributes (like xml:space)
+- [All] (XML) Fixed processing of XPath expression with attribute comparing in some cases
+- [All] (XML) Fixed canonicalization of processing instructions after XPath transform 
+- [All] (XML) Fixed RDN parsing of a quoted attribute value with a comma
+- [All] (Office) Fixed signing of document properties for OOXML document
+- [VCL] (XML) Fixed minor memory leaks when XPath expression is processed
+- [VCL] (ZIP) Fixed some memory leaks
+- [AX] (SSH) Memory corruption occured using ElGSSAPIMechanism class for GSS-API/Kerberos V5 authentication
+
+
+---
+May 8, 2010
+Version 8.0.175. Maintenance update
+
+- [.NET] Charsets loading has been broken. Due to this, MIME, Office, XML and EDI components could have problems with functioning properly. Fixed. 
+
+
+---
+May 4, 2010
+Version 8.0.174. Official release
+
+! [All] The samples are now installed to the All Users\Documents\EldoS directory
+
++ [.NET] Added Silverlight samples for OpenPGP, PDF, ZIP
+
+- [.NET] Fixed ArrayList sorting issues in Silverlight
+- [.NET] Fixed issues with security restrictions that prevented p/invoke in .NET 4.0
+
+
+---
+April 28, 2010
+Version 8.0.173. Pre-release version
+
++ [All] Added DNSSEC support to all socket and socket-based components
++ [All] (ZIP) Added support for addition/removal of files from the existing archive
+
++ [.NET] Added Silverlight 4.0 assemblies.
++ [.NET] Added .NET Framework 4.0 assemblies
++ [.NET] Added .NET Framework 4.0 project files to sample projects.
+
+* [All] (PDF) Added a workaround for processing documents created by OKI Hotkey software
+
+- [All] (Base) Fixed an intermittent issue with purging of expired cached CRL responses in TElX509CertificateValidator. The problem could cause an Access Violation in VCL and ActiveX edition and deadlock in .NET edition. 
+
+
+---
+April 14, 2010
+Version 8.0.172. Beta version
+
+! [.NET] (XML) SBXMLAdES, SBXMLAdESIntf, SBXMLEnc, SBXMLSec, SBXMLSig and SBXMLTransform namespaces have been moved to SecureBlackbox.XMLSecurity assembly
+! [.NET, VCL] (XML) Common functions have been moved from SBXMLSec to SBXMLUtils
+
++ [.NET] Added Silverlight 3.0 assemblies. Silverlight 4.0 support to come later
++ [.NET, VCL] Added CloudBlackbox package (Amazon S3 and simple file storages are initially supported)
++ [.NET, VCL] Added OfficeBlackbox package (Office Binary, Office Open XML, OpenXPS document support)
+
++ [All] (PKI) Added support for NSS (Mozilla) certificate store access via PKCS#11 interface
++ [All] (PKI) Extended TElMessageEncryptor and TElMessageDecryptor with support for OriginatorInfos and UnprotectedAttributes fields
++ [All] (SSH) Added support for dynamic forwarding to simple forwarding components
++ [All] (SSH) Promoted GlobalKeepAlivePeriod property in simple forwarding components
++ [All] (SSH) TElSimpleSSHClient now supports connecting to a subsystem (besides running a shell and executing a command)
++ [.NET] (PKI) TElX509Certificate now supports casting to and from .NET X509Certificate2 type
+
+* [All] (PKI) Extended TElX509Certificate class with file-based serialization/deserialization capabilities
+* [All] (SSH) Improved compatibility with WinSSHD and Tru64 SSH servers
+* [All] (XML) Changed a default parameter normalize newline characters on load to true for ElXMLDOMDocument.LoadFromStream method
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 7.2 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+March 2, 2010
+Version 7.2.171 Maintenance update
+
+- [.NET] Certificate-based encryption of PDF documents got broken in build 169. Fixed.
+
+
+
+---
+February 23, 2010
+Version 7.2.170. Maintenance update
+
+- [.NET] (Base) WebTunneling (HTTPS Proxy) support got broken in build 169. Fixed.
+
+
+---
+February 1, 2010
+Version 7.2.169. Maintenance update
+
++ [All] (Base) Added workaround for buggy HTTP proxies, which sends LFLF instead of CRLFCRLF after reply string
++ [All] (Base) TElRelativeDistinguishedName.SaveToDNString() method has been added
++ [All] (FTPS) Code 230 is accepted now for CWD and PWD commands. 
++ [All] (FTPS) Added Windows style file list parser (tested with ftp.microsoft.com)
++ [All] (EDI) Added HTTP-authorization related properties to AS2 client component
++ [All] (EDI) Added ability to setup verification options before loading a message/receipt
++ [All] (EDI) Added Received-Content-MIC receipt field generation
++ [All] (XML) Added URIStream, URIStreamOffset, URIStreamCount properties for ElXMLReference class
++ [.NET, VCL] (PKI) Added TElX509CertificateEx.AltKeyID property that allows to specify custom key identifier values for PKCS#11-based certificates
+
+* [All] (SSH) Optimized compression subsystem (decreased the amount of used memory, increased decompression speed)
+* [.NET, VCL] Improved PKCS#11 on-board keypair/certificate generation routine
+
+- [All] (Base) Fixed minor client-side TSP issue causing intermittent WRONG NONCE errors 
+- [All] (EDI) Setting AS2Message.FileModified property did not work
+- [All] (SSH) Exit code was not returned correctly in some cases by TElSimpleSSHClient. Fixed.
+- [.NET] (EDI) Receipt request options parsing errors
+- [.NET] (HTTP) Bug in URL splitting method
+- [.NET] (PGP) Fixed MONO JIT specific issue with loading pgp keys
+- [VCL] (HTTP) Access violation on component destroy if an error occured while establishing a connection
+
+---
+December 26, 2009
+Version 7.2.168. Maintenance update
+
++ [All] (Base) Added global IgnoreTagsWhenComparingRDNs flag
++ [All] (SFTP) Added TreatZeroSizeAsUndefined property
++ [All] (PKI) Added tsoIgnoreNonce to TSPClient options (can be useful when working with some buggy servers)
+
+* [All] (Base) SecureBlackbox now understands incorrectly inserted timestamps (TimeStampResp instead of TimeStampToken)
+* [All] (Base) Improved JKS format handling
+* [All] (EDI) Miscellaneous AS2 components fixes
+
+* [All] (HTTP) TElHTTPSClient now encodes the path part of the URL if the URL contains spaces in it
+* [All] (HTTP) TElHTTPSClient now includes authentication header when no username is specified and the password is set. Such authentication scheme (password without username) is used by some popular hardware.
+
+---
+December 1, 2009
+Version 7.2.167. Maintenance update
+
+* [All] (Base) Improved handling of negative X.509 serial numbers
+* [All] (SSH) Improved work of X11 forwarding (increased compatibility with several third-party server implementations)
+* [All] (SFTP) Added a possibility to omit sending Truncate flag to server when uploading files 
+
+- [All] (SMTP) Error during SSL negotiation sometimes caused TElSMTPClient to hang
+- [All] (HTTP) Memory leaks in Digest authentication
+- [All] (SSH, SFTP, PDF) ZLib compression didn't work in some cases
+
+---
+November 20, 2009
+Version 7.2.166. Official Release
+
+! [All] (SSL) Added TLS renegotiation attack prevention mechanisms
+
++ [All] (ZIP) Added support for wilcard symbols (*, ?) to .Add, .Extract methods;
+
+* [All] (PDF) Improved compatibility with Adobe Reader 9.2 (in a case like adding a second or more signature for hybrid-reference file, or signing an AES-encrypted document)
+* [All] (SSH) Increased X11 channels creation compatibility
+* [All] (SSL) Improved TLS1.2 compatibility with IIS server
+* [VCL] (Base) Improved socket connection errors reporting
+* [.NET] (PKI) Improved speed of TElASN1*Tag.SaveToBuffer methods
+
+- [All] (SFTP) Fixed DownloadFiles and UploadFiles methods on Linux: the methods used hardcoded backslash (\) symbol as a path separator. Now platform-specific separator is used.
+- [All] (PKI) Fixed SHA2 signing issue with system certificates
+- [.NET] (SSH) Fixed DES encryption on SSHv1
+
+---
+October 26, 2009
+Version 7.2.165. Preview
+
++ [.NET, VCL] (XML) Added SignatureCompliance property to TElXMLSigner/TElXMLVerifier/TElXMLSignature classes, that enables support of EBICS signature.
++ [All] (ZIP) Added support for BZip2 compression method
++ [All] Added ValidateForTimestamping method to TElX509CertificateValidator class 
+
+* [All] (PKI) Added limitation of ASN.1 tree depth. The maximal depth is now set to 256 by default, but can be changed if needed.
+* [All] (PGP) Optimized memory management in TElPGPReader class; added MemoryConsumptionStrategy property
+* [All] (SSH) Improved work with certain SSH implementations (reporting themselves as "mod_sftp" and WinFIOL)
+* [All] (HTTP) If a connection goes over HTTPS and a proxy server is used but web tunnel is not configured, the component now automatically sets and uses web tunnel properties copied from http proxy properties.
+* [.NET, VCL] (XML) Added StrictMode property to TElXMLEnvelopedSignatureTransform class.
+* [.NET, VCL] (MIME) Added double quotes to the boundary line for better compatibility with web-mail services. 
+
+- [VCL, .NET] (HTTP) Fixed Basic authentication string formatting which included extra #0 at the end of the text
+- [VCL] (PKI) Minor memory leak removed from TElMessageDecryptor class
+- [.NET] (ZIP) Fixed some problems with ZIP encryption and archives handling
+
+---
+September 16, 2009
+Version 7.2.164. Beta version
+
++ [All] (PKI) Added TElX509CertificateValidator class for automatic complex validation of certificates
++ [.NET, VCL] (ZIP) Added components for ZIP compression and decompression
++ [VCL] Added support for CodeGear RAD Studio 2010
+
++ [.NET CF] (HTTP) Added NTLM and Digest authentication support
++ [.NET, VCL] (HTTP) Added ForceNTLMAuth property to TElHTTPSClient class
++ [.NET, VCL] (PKI) Added TElX509Certificate.Equals method to compare certificates
+
+! [All] (SSL) Elliptic curve ciphersuites support is now off by default
+
+* [All] (PDF) Improved liberal PDF validation mode
+* [All] (PKI) Improved work with Aladdin eTokens and Gemplus cards
+* [All] (SSH) Server-side connection handlers have been slightly reworked
+* [AX] (PGP) Progress is now reported correctly for large files (>2GB)
+
+- [All] (HTTP) Fixed POST issues when NTLM authentication is used
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 7.1 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+August 20, 2009
+Version 7.1.163. Maintenance update
+
+* [All] (FTPS) Improved compatibility with VShell server
+* [VCL] (PKI) Warnings and hints removed
+
+- [All] (HTTP) Fixed timeout exceeded issue under keep-alive connections
+- [.NET, VCL] (PKI) Fixed interface of TElHTTPOCSPClient class (HTTPSClient property was read-only), broken in 7.1.162 build
+- [AX] (HTTP) Fixed a bug in GetEx method
+
+---
+August 18, 2009
+Version 7.1.162. Maintenance update
+
++ [.NET, VCL] (PDF) Empty signature fields can be now added to the document
++ [.NET, VCL] (SSH) Added means for sending channel EOF before closing the channel
++ [.NET, VCL] (SSL) Added UseSSLSessionResumption property to TElSimpleSSLClient class and its descendants
++ [VCL] (MIME) Added hash algorithm selection in DKIM signer demo
+
+* [.NET, VCL] (PDF) Raw signature body is now accessible via SignatureContents property
+* [.NET, VCL] (PDF) Added aoAdjustTimesToUTC document assembly option
+* [.NET, VCL] (HTTP) Added ForceKeepAliveIfConnectionHeaderIsAbsent property
+* [All] (PKI) Added support for badly encoded CMS SignerLocation attribute
+
+- [All] (MIME) Fixed time zone issue in DomainKeys signature creation time
+- [All] (MIME) Fixed bug in relaxed canonicalization algorithm in DKIM
+
+---
+July 27, 2009
+Version 7.1.161. Maintenance update
+
+! [.NET, VCL] (PKI) TSBOCSPValidationNeededEvent parameter list was extended with URL parameter.
++ [.NET, VCL] (PDF) Added DecryptionMode property. That allows to sign an encrypted document or partially decrypt the document.
+
+* [All] (SFTP) Improved compatibility with Titan MFT and WS_FTP servers
+* [All] (SSH) Improved cipher renegotiation compatibility with older OpenSSH servers
+* [.NET, VCL] (PKI) URL property has been moved from TElHTTPOCSPClient class to TElOCSPClient class.
+* [VCL] (PKI) Win32CryptoProvider is updated to use unicode-enabled routines of Crypto API in Delphi 2009
+
+- [All] (SSH) Fixed minor bug in ElSSHKey generation/loading
+- [AX] (PGP) EncryptFile produced AV in use-old-packets mode. Fixed.
+
+- [All] (SSH) TElSimpleSSHClient.ExecuteCommand didn't always return all data, sent by the server. Fixed.
+
+July 8, 2009
+Version 7.1.160. Official Release
+
++ [.NET, VCL] (SSH) Added ExecuteCommand method to ElSimpleSSHClient class
++ [.NET, VCL] (PKI) Added support for on-demand token access mode
++ [.NET, VCL] (PKI) Added pcsoUniqueIDs PKCS11 option to prevent objects with same IDs from being created
++ [.NET, VCL] (PKI) Added support for synchronous slot event monitoring mode
++ [.NET, VCL] (SFTP) Added UseUTF8OnV3 property
++ [VCL] (SSL) Added support classes for kbmMW 3.0 and later. 
+
+* [All] (PKI) Implemented optional Win32 cryptographic context caching (results in significant performance increase of recurrent system certificate-based operations)
+* [All] (PKI) Improved compatibility with ActivClient token from ActivIdentity 
+
+- [All] (HTTP) When Gzip compression was enabled, redirection to other resource where both old and new resource were provided with GZip compression could cause "Invalid GZip header" exception. Fixed.
+- [All] (HTTP) Fixed a bug in Digest authentication ("MD5-sess" algorithm)
+- [All] (PDF) Fixed loading of pdf document with a comment object inside a dictionary object
+- [All] (PKI) Fixed minor OCSP response processing issue
+- [All] (FTPS) Fixed minor ASCII mode download bug
+- [.NET] (MIME) Fixed minor date encoding issue
+
+---
+June 7, 2009
+Version 7.1.159. Release Candidate 1
+
++ [All] (PDF) Added support for timestamping of existing signatures
++ [All] (FTPS) Added AccountInfo property, which allows to automatically issue the ACCT command on logon
++ [.NET, VCL] (SSH) Added PKCS#11 key storage component
+
+* [All] (PGP) Added special handling for buggy signatures created with PGPDesktop 9
+* [All] (PKI) Improved compatibility with OmniKey tokens
+* [All] (SFTP) Improved compatibility with WS_FTP 6 and 7 servers
+* [All] (FTPS) Added capabilities of establishing data channel in synchronous way
+
+- [All] (PKI) Fixed bug with JKS loading.
+- [AX, VCL] Created a workaround for compiler bug that resulted in intermittent (though quite rare) connection errors
+- [AX, VCL] (SSH) Fixed an error in UMAC64 calculation
+- [VCL] (SFTP, FTPS) Fixed 2Gb file size limitation on Delphi 4 and Delphi 5
+- [VCL] (PKI) Fixed PKCS#11 bugs for Delphi 2009
+
+
+---
+May 25, 2009
+Version 7.1.158. Internal build
+
+
+---
+May 18, 2009
+Version 7.1.157. Beta version
+
++ [All] (SSH, SFTP) Added GSSAPI user authentication and key exchange support to client-side components
++ [All] (PGP) Added SFX (self-extracting) files support
++ [All] (PDF) Added AutoAdjustEncoding property for the signature widget
++ [.NET, VCL] (EDI) Added support for AS2 protocol
++ [.NET, VCL] (PKI) Added SetKeyMaterial to TElX509Certificate and TElCertificateRequest classes, allowing to provide a predefined key material for certificate/request generation
++ [.NET, VCL] (All) Added TotalBytesSent and TotalBytesReceived properties indicating the amount of network traffic passed through the component
++ [.NET, VCL] (FTPS) ACCT command is now automatically sent to the server if requested
+
+* [All] (PDF) Improved signature insertion time for extra-large signature objects (big CRLs, OCSP responses or other revocation information embedded to the signature)
+* [All] (PDF) Added workaround for pdf documents with incorrect size value in the trailer
+* [.NET, VCL] (PKI) Improved work with several cryptographic token models
+* [.NET, VCL] (SSH) Added support for choosing a particular network interface to listen for incoming connections in simple remote port forwarding component
+
+- [All] (PGP) Improved support for large (>2Gb) files.
+- [All] (FTPS) GetFileTime command could produce an exception when parsing the reply from the server with the date. Fixed.
+- [All] (FTPS) Fixed Mode Z upload issue (incorrect compression result)
+- [All] (SSL) Fixed handling of server certificate chains consisting of 3+ certificates.
+- [All] (PKI) Fixed minor bug in TElCustomCertStorage.IsIssuerCertificate() method (the method occasionally returned False even though the real issuer certificate has been passed to it).
+- [All] (SSH) Resolved potential endless loop issue in the simple forwarding components
+- [.NET] (HTTP) Fixed bug in NTLM Authentication
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 7.0 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+April 20, 2009
+Version 7.0.156. Maintenance update
+
++ [All] (SSH) Added support for providing command exit status
++ [All] (FTPS) Added support for SOCKS and HTTP proxies
+
+* [All] (HTTP) Added OnSendData event
+* [All] (PGP) Improved Get*KeyByEmailAddress() search algorithm
+* [All] (SFTP) Improved directory listing compatibility with some SFTP6 client tools
+* [All] (FTPS) Improved CCC compatibility with some FTPS servers
+* [All] (PDF) Added liberal mode for MDP signature validation
+
+- [AX] Fixed minor certificate storage management-related issue
+- [All] (HTTP) Fixed minor POST'ing issue, which prevented some servers from processing multipart form data correctly
+
+---
+March 22, 2009
+Version 7.0.155. Official Release
+
++ [All] (PKI) Added support for CRLs in PKCS12 messages
+
++ [AX] Added IPv6 support
++ [AX] Added manifest for registration-free COM usage
++ [AX] (PKI, SSH, SFTP) Added support for FIPS-compliant mode
++ [AX] (PKI) Added support for file-based operations
++ [AX] (SSH, SFTP) Added experimental GSSAPI support
++ [AX] (SFTP) Extended SFTP file attributes support
++ [AX] (SFTP) Added support for auto-adjustment of file times after transfer operations
++ [AX] (FTPS) Added concurrent download support
++ [AX] (FTPS) Added support for allowed port ranges configuration
+
+* [All] (SSH) Improved work with HP-UX OpenSSH servers
+* [All] (SSH) Improved command execution handling by server-side SSH components
+* [.NET] (SFTP) UploadFile opened the local file in read/write mode. This could cause Access Denied error for read-only files or files already opened by other applications. Fixed.
+* [.NET, VCL] (PKI) Improved support for long-term CAdES signatures
+
+- [.NET, VCL] (PDF) Fixed encoding and decoding of signature field names
+                                                                               
+---
+March 1, 2009
+Version 7.0.154. Release Candidate 1
+
++ [All] (PKI) Added support for GOST R34.10-1994, R34.11-1994, R34.10-2001, 28147-89 algorithms
++ [All] (PKI) Added TElAlgorithmIdentifier properties and parameters to TElX509Certificate and TElX509CertificateEx
++ [All] (XML) Added new properties to ElXAdESVerifier class for AllDataObjectsTimestamps and IndividualDataObjectsTimestamps
++ [All] (PKI, SSH, PDF, XML) Operations can now be performed in FIPS-compliant mode (on Windows only)
++ [All] (PKI) Added support for signed timestamping requests
++ [All] (SSL, SSH, SFTP, FTPS, HTTPS) Added support for IPv6 protocol
+
+* [All] (SSH) Improved compatibility with Mikrotik 2.9 routers
+* [All] (SFTP) Improved file transfer compatibility with a server that identifies itself as SSHD
+
+- [All] (XML) Fixed issue with Base64 transform
+- [All] (SSH) Fixed two minor issues in simple forwarding components (timeout and proxy handling for tunneled connections)
+- [All] (SSL) Fixed client authentication handling on SSL3
+
+---
+February 3, 2009
+Version 7.0.153. Beta version
+
++ [All] (PDF) Added AES256 encryption algorithm supported by Acrobat 9.0 and later. 
+  This feature gives you additional level of security for your application.
++ [All] (PDF) Added ElPDFPublicKeyRecipientGroup.KeyEncryptionAlgorithm property
+
++ [All] (PKI) Added support for CMS-enveloped timestamping requests
++ [All] (PKI) Added support for GOST algorithms to low-level cryptography classes
++ [All] (PKI) Win32 cryptographic provider extended with symmetric and hash algorithms support
+
+- [All] (PDF) Fixed encryption of pdf document for multiple Recipient Groups.
+
+---
+January 11, 2009
+Version 7.0.152. Beta version
+
+* [All] (SFTP) Improved compatibility with GlobalScape FTP server.
+* [All] (SSH) Added support for multiline server identification strings
+
+---
+January 1, 2009
+Version 7.0.151. Beta version
+
+! Certain PKI functions have been moved to a separate PKIBlackbox package
+
++ [All] (PKI) Added support for PKCS#11 token insertion/removal notifications
++ [All] (PKI) Added extended cryptographic token support (token-based symmetric and hashing operations are now supported)
++ [All] (SSL) Added support for Elliptic Curve algorithms 
+
+* [All] (PDF) Improved empty signature fields compatibility with Adobe Reader 9
+* [All] (FTPS) Improved compatibility with servers that do not shut down SSL gracefully after CCC command
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 6.1 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+December 16, 2008
+Version 6.1.150. Maintenance update
+
++ [All] (FTPS) Added support for multipart downloads
+* [All] (PDF) Added support for documents with incorrect xref address
+
+- [All] (SSH) Fixed handling of MaxPacketSize in SSH server, caused 'Packet garbled on decryption' error of PuTTY-based SFTP clients (WinSCP).
+- [All] (PKI) Minor ECDSA certificate reading issue fixed
+
+- [VCL] (SSH) Fixed minor hangup issue in simple forwarding components
+
+
+---
+November 25, 2008
+Version 6.1.149. Official release
+
+* [All] (FTPS) Improved FTP proxy support
+* [VCL] (SSH) Removed high processor load in subsystem handler classes
+
+
+---
+November 3, 2008
+Version 6.1.148. Beta version
+
++ Added support for elliptic curves in Certificate & Certificate request demos (VCL, C#, VB.NET)
++ [.NET, VCL] (PDF) Published TElPDFDocument.PDFFile property that provides access to the underlying PDF document structure
+
+* [VCL] (PKI) Added workaround for BCB compiler bug that caused incorrect use of default cryptographic provider leading to various side effects
+* [VCL, .NET] (PDF) Improved signature CMS validation
+* [All] (PDF) Added workaround for documents generated by Oracle PDF Driver
+
+- [All] (Socket) Another fix of timeout handling
+- [All] (FTPS) Fixed CCC+encrypted data channel cooperation bug
+- [All] (XML) Fixed parsing of closing tags with spaces at the end
+- [All] (XML) Fixed zero-length data handling by TElXMLReference
+- [All] (DomainKeys) Fixed verifying and parsing of multiline DKIM-Signature header field
+- [.NET] (SFTP) Returned OnTransferCompleted event to the TElSFTPClient class
+- [VCL] Fixed SSH IOHandlers for Indy 10.1.5 
+
+---
+September 28, 2008
+Version 6.1.147. Beta version
+
++ [.NET, VCL] (FTPS) Added overloaded CCC method
++ [.NET, VCL] (SSH) Added TElSSHServer.BannerSendStage property
+
+* [All] (MIME) Improved speed for assembling message (especially with big attached files).
+* [All] (PDF) Improved MDP compatibility with Adobe Acrobat products
+* [All] (SSH) Added support for terminal window dimensions change notifications for SSHv1
+
+- [All] (PKI) (PKCS#11) Fixed decryption of data in case if its length is less than the key size (lead zeroes were removed). This applies to Rainbow iKey 1000 security token.
+- [All] (PKI) Fixed signing using DSA certificates from Windows System Storage.
+- [All] (PKI) Fixed bug in TElX509Certificate.SaveKeyToBufferPEM method
+- [All] (XML) Fixed parsing of DOCTYPE tag.
+- [.NET] (Socket) Fixed handling of connection timeout.
+
+---
+September 11, 2008
+Version 6.1.146. Beta version
+
++ [All] (SFTP) Added support for automatic file times adjustment after transfer operation
++ [All] (XML) Added GetOrder/SetOrder methods to RDNDescriptorMap to control the order of distinguished names formatting in Issuer and Subject of certificate.
++ [All] (XML) Added CompatibilityMode property to RDNDescriptorMap global list. Set it to cmDotNet to emulate .Net formatting of RDN. 
+
+* [All] (PKI) Added method OpenStream to ElAuthenticodeSigner/Verifier.
+* [All] (PDF) Improved extraction of signature information (Offset and Size properties)
+* [All] (PDF) Some software incorrectly specifies hashing algorithm in adbe.pkcs7 subfilter. Added a workaround in order to validate the signatures with this incorrect algorithm set.
+* [All] (PGP) Improved support for encrypted messages, generated by old PGP software.
+* [All] (PGP) Fixed some problems with decryption of messages, encrypted with passphrase.
+* [All] (SSH) Added w/a for incorrect window size handling by some OpenSSH server versions that might cause session hangup
+* [All] (XML) Implemented TElXMLDOMDocument.GetElementByID method.
+
+- [All} (PGP/MIME) PGP MIME handler incorrectly reported an error for multi part messages.
+- [All] (SFTP) Fixed upload error handling (in particular, handling of quota exceeded errors)
+- [.NET] (Charsets) Fixed parsing issues with ISO-2022-JP charset.
+
+---
+August 3, 2008
+Version 6.1.145. Beta version
+
++ [All] (PKI) Added pre-release EC support for X.509 certificates.
++ [All] (XML) Added RDNDescriptorMap global list to control how Issuer and Subject of certificate is formatted
+
+* [All] (SFTP) Improved ASCII mode emulation for SFTP V3
+* [All] (SSH) Improved compatibility with Roumen Petrov's X.509 OpenSSH patch
+
+* [All] (PKI) Improved compatibility with Bit4id tokens
+* [All] (PDF) Improved extraction of signature information (Page and Invisible properties)
+
+- [All] (PKI) Fixed bug with CRL signing with system certificates
+- (MIME) Fixed MIME mail address encoding bug
+- [All] (PDF) Fixed signature removing in case if non-existent object is referenced
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 6.0 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+July 3, 2008
+Version 6.0.144. Maintenance update
+
+* [VCL] Added possibility of disposing of global objects on application termination
+* [All] (SSH) Improved compatibility with old versions of Tectia for Windows server
+- [All] (PDF) Fixed reading of the Encrypt entry if it is not an indirect reference
+- [All] (SFTP) Fixed big files ASCII mode issue 
+- [All] (MIME) Fixed non-ASCII file names corruption
+- [All] (PKI) Fixed the problem in TElCertificateRequest, caused writing of all RDN fields as printablestring.
+- [AX] (PKI) Destroying the PKCS11 storage without closing it removed all certificates from the storage device. Fixed.
+
+June 15, 2008
+Version 6.0.143. Maintenance update
+
+* [All] (SSH) Improved AutoAdjustCiphers mode in SSH components in order to ensure flawless connection with any (even badly behaving) SSH servers
+* [All] (PKI) Improved generation of certain certificate extensions
+* [.NET, VCL] (XML) Changed the order of some elements in XAdES to follow the schema
+* [.NET] (SSH) Updated SSHServerDemo
+* [VCL] (SSH) Updated SimpleSFTPDemo demo
+* [VCL] (SSH) Improved SynchronizeGUI mode in simple forwarding components
+
+- [.NET, VCL] (PDF) Fixed widget appearance when AutoFontSize and AutoSize set to false.
+- [.NET, VCL] (PDF) Fixed TPDFDictionary to distinguish name objects with different case sensitivity.
+- [VCL] (PDF) Fixed memory leak when document was closed without saving.
+- [.NET] (SMTP) Fixed the error with incorrect parsing of EHLO reply.
+- [.NET] (SSH) Fixed problems with hanging sessions in C# SSH/SFTP server sample.
+
+---
+May 28, 2008
+Version 6.0.142. Maintenance update
+
+- (FTPS) MDTM command returned incorrect date/time due to incorrect parsing of the returned date.
+- [.NET] (SFTP) The application could not be closed after transfer due to newly added keep-alive functionality that created a thread. This is a .NET Framework issue, for which workaround has been added.
+
+---
+May 23, 2008
+Version 6.0.141. Maintenance update
+
+
+- [.NET, VCL] (SFTP) SSH/SFTP server could report the error when trying to send the data after connection is closed. Fixed.
+- (PGP) Fixed loading of armored messages with spaces in header-dividing line.
+
+---
+April 29, 2008
+Version 6.0.140. Private build.
+
+- [All] (SSH) Fixed compatibility of re-keying operation with some SSH/SFTP servers.
+
+---
+April 16, 2008
+Version 6.0.139. Minor update.
+
++ [All] (SFTP) ASCII mode is now supported for SFTP versions prior to 4
+
+* [All] (PDF) Improved compatibility with Adobe Reader 7 with document attachments handling
+* [All] (PDF) Document version is now auto-adjusted for encrypted documents
+
+- [AX] (HTTPS, FTPS) Fixed serialization problem in VB6
+- [AX] (SFTP) Removed minor resource leakage that might lead to component hangup in some cases
+- [All] (MIME) Several message assembling issues fixed
+
+---
+April 5, 2008
+Version 6.0.138. Maintenance update.
+
++ [All] (SSH) Added UMAC support
++ [All] (PKI) Added support for RSA2 and SHA2 support to OCSP components
++ [All] (PDF) Added CertIDs property to TElPDFPublicKeySecurityHandler class
++ [.NET] Added Tag property to all the components to allow state storing
+
+* [All] (HTTP) Now OnPreparedHeaders and OnReceivedHeaders report *all* headers including the previously omited first line of request or response and request cookies.
+* [All] (SFTP) Improved file download from servers that do not report file size
+* [All] (SSL) Fixed minor DHE key exchange incompatibility between SBB client and OpenSSL server
+
+- [All] (HTTP) Repaired basic authentication support, broken in build 137.
+- [All] (SSL) Fixed minor TLS1.2 version negotiation issue
+
+---
+March 15, 2008
+Version 6.0.137. Maintenance update.
+
+* [.NET, VCL] (PDF) The documents could not be encrypted and signed using MDP (certification) signature. Now this is possible.
+* [.NET, VCL] (MIME) Some software incorrectly specifies hashing algorithm in S/MIME parameters. Added a workaround in order to validate the signatures with this incorrect algorithm set.
+- [.NET] PEM decoding was broken. This could lead to impossibility to load SSH keys and PEM-encoded PKI files. Fixed.
+- [.NET] In .NET 1.1 Socket class couldn't set KeepAlive option for the socket due to the bug in .NET Framework (the fix was added in .NET 2.0). Workaround for the issue has been added.
+
+---
+March 9, 2008
+Version 6.0.136. Official release.
+
++ [All] (SSL) Added StartTLS and StopTLS methods to ElSimpleSSLClient class. These methods let one implement explicit TLS management with ElSimpleSSLClient.
+
+---
+March 6, 2008
+Version 6.0.135. Internal build.
+
+! Exception classes were renamed to EEl*Error (asterisk denotes the exception own name). 
++ [All] (SFTP) Added simplified ListDirectory method which accepts path as parameter
++ [All] (SFTP) Added an overloaded version of Upload*/Download* methods to support resuming of transfer with possibility to specify restart position
+
+---
+February 24, 2008
+Version 6.0.134. Release Candidate 2
+
+* [.NET] (SSL) Changes in behaviour of Available property in ElSocket
+- [.NET] (FTPS) Active mode was broken by recent change in ElSocket.Bind() method implementation. Fixed. 
+- [VCL] (SFTP) Fixed some memory leaks.
+
+
+---
+February 14, 2008
+Version 6.0.133. Release Candidate 1
+
+
++ [All] (SFTP) Added bandwidth control properties to ElSimpleSFTPClient (AX: properties added only to V6 interfaces)
++ [All] (SSH) Added bandwidth control properties to ElSimpleSSHClient (AX: properties added only to V6 interfaces)
++ [All] (SSL) Added bandwidth control properties to ElSimpleSSLClient, ElSimpleFTPSClient, ElHTTPSClient, ElSMTPClient (AX: properties added only to V6 interfaces)
++ [All] (PDF) Added Rotate property to ElPDFSignatureWidgetProps and ElPDFPageInfo.
+
+
+---
+January 26, 2008
+Version 6.0.132. Beta 3
+
++ [All] (SSH) Added support for OpenPGP authentication in SSH
+
++ [.NET, VCL] (PGP) Added support for processing multiple files when signing or encrypting the files
++ [.NET, VCL] (PDF) Added possibility to sign attachments to PDF documents
++ [.NET] Added Visual Studio 2008 project files for sample projects
+
+- [.NET] Fixed integration of the components into Visual Studio 2008 IDE
+- [AX] Fixed PGPBBox6.dll which could not be properly registered.
+- [AX] Included proper .h files in VCWrappers folder.
+
+---
+January 19, 2008
+Version 6.0.131. Beta 2
+
++ [All] (HTTP) Added Digest authentication
++ [.NET] (HTTP) Added NTLM authentication
+
++ [.NET] (FTPS) Added RemoteCodePage property to control charset conversion between local and remote systems
++ [.NET] (FTPS) Added OnTextDataLineAsString, OnControlSendAsString, OnControlReceiveAsString events. These events are similar to OnTextDataLine, OnControlSend, OnControlReceive however they contain strings converted from the byte array using RemoteCodePage property
++ [.NET] (SSL) Added ElSSLSocket.CloseSocket() method to close the blocking connection from the other thread.
++ [All] (PKI) Added ElPublicKeyMaterial.LoadFromXML and SaveToXML methods to load and save the keys from/to XML strings.
+
+* [All] (SSH) Improved compatibility of X.509-based authentication with OpenSSH servers
+* [All] (SFTP) Improved work with servers which do not return file sizes
+* [All] (FTPS) Added a workaround for WS_FTP server which returns incorrect error code in response to FEAT command
+
+- [All] (PKI) Fixed bug in handling signatures using certificates with negative serial number
+- [.NET] (HTTP) Fixed a bug with incorrect request created when request cookies were set
+
+---
+December 29, 2007
+Version 6.0.130. Beta 1
+
+* [.NET] (SSH) Improved detection of old servers, which don't understand newer encryption algorithms correctly and close connection. 
+
+---
+December 3, 2007
+Version 6.0.127. Internal build
+             
++ [.NET, VCL] (FTPS) Added UseFEATCmd property to ElSimpleFTPSClient. Some servers don't support FEAT command correctly. 
+
+* [.NET, VCL] (PDF) Improved support for non-standard TSP replies
+
+- [All] (HTTP) Improved handling of code 100 (Continue)
+- [All] (HTTP) In some rare cases OnDocumentEnd could be fired without previous OnDocumentBegin. Now they always come in pairs. 
+
+---
+October 18, 2007
+Version 6.0.126. Internal build
+
++ [.NET, VCL] (MIME) Added ElSimpleMIMEAttachment.AttachFile method to attach the data from the file
+
+---
+October 18, 2007
+Version 6.0.125. Internal build
+
++ [.NET, VCL] (SSH) Added support for specifying custom order of SSH authentication types to try
++ [.NET, VCL] (SSH) Added support for password change requests
++ [.NET, VCL] (SSH) Several authentication attempts are now supported
++ [.NET, VCL] (SSH) Added keep-alive support to simple forwarding components
+
+* [All] (SSH) Improved compatibility with some buggy servers
+
+- [All] (SSH) Fixed minor bug in simple forwarding components which could lead to session freezing
+- [All] (PKI) It was not possible to create a PSS signature with Win32 system certificate. Fixed.
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 5.2 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+October 9, 2007
+Version 5.2.124. Internal build
+
++ [.NET, VCL] (MIME) Fixed ElSMTPClient to send EHLO again after SENDTLS as suggested by the RFC
+
+---
+October 3, 2007
+Version 5.2.123. Maintenance update
+
++ [.NET, VCL] (FTPS) Added GetNameList method with parameters (to work around the bug of some servers which don't understand NLST command without parameters)
++ [All] (SSH) Added UTF8 support
++ [All] (SSH) Added KbdIntName and KbdIntInstruction properties for accessing corresponding keyboard-interactive authentication parameters
++ [All] (SSH) Added ExitStatus and ExitMessage properties to TElSimpleSSHClient
++ [.NET, VCL] (SSH) Added support for password change requests
++ [All] (SSH) Simple forwarding components: Added support for tunneling of multiple ports through a single SSH connection
+
+* [All] (SSH) Simple forwarding components: Improved speed and CPU usage level
+- [All] Fixed a bug in ElSocket.CanSend method which could cause slowdown with some components (including simple SSH port forwarding components)
+
+
+---
+September 25, 2007
+Version 5.2.122. Maintenance update
+
+* [All] (SSH, SFTP) Keyboard authentication was not enabled by default in ElSimpleSSHClient and ElSimpleSFTPClient.
+
+
+---
+September 14, 2007
+Version 5.2.121. Major update
+
++ [All] (PKI) Added lcCertificateHash search criteria to TElCertificateLookup
+
+---
+September 6, 2007
+Version 5.2.120. Release Candidate 3
+
++ [All] (PGP) Added a constructor TElPGPSignature (Source : ElPGPSignature; CopySigMaterial : boolean), which copies one signature to another for later re-signing
++ [All] (PGP) Added TElPGPSignature.SignatureClass property 
++ [All] (PGP) Added TElPGPSignature.CertificationType property 
++ (SSH) Implemented support for automatic port assignment for simple forwarding components
+
+* [All] (All) Removed several minor memory leaks
+* [All] (SSH) Optimized server-side connection handlers
+* [VCL] (SFTP) Improved the implementation of TElIdSFTP component
+
+- [All] (PGP) Fixed problems with key and subkey revocation
+- [All] (SSL) Implemented correct error handling in cases when the IDEA algorithm support is not available
+- [All] (PKI) Fixed key size calculation problem in ElCertificateRequest
+- [All] (PKI) Fixed verification of ElCertificateRequest signature for base64-encoded requests. The bug could lead to improper denial of the valid requests.
+- [.NET] (FTPS) Fixed socket issue with transferring small files on multi-core CPU.
+- [AX] (SFTP) SftpFileAttributesX.UserWrite property could not be set. This could lead to inability to properly adjust file or directory permissions. Fixed.
+
+---
+August 28, 2007
+Version 5.2.119. Internal build
+
+
+---
+August 16, 2007
+Version 5.2.118. Release Candidate 2
+
++ (PKI) Implemented complete CMS (cryptographic message syntax) support (RFCs 2630, 3126)
++ (PKI) Introduced TElMemoryCRLStorage class
++ (SSH) Added support for keep-alive messages 
++ (XML) Added timestamp methods (till XAdES-A) to XAdES interface classes
+* (PGP) Improved ASCII mode support for encrypted messages
+* (FTPS) Improved compatibility with some specific servers
+* (SFTP) Improved compatibility with some specific servers
+* (SSL) Improved compatibility with some specific clients
+* (PDF) Improved compatibility with Acrobat-generated certificates
+- (PKI) Several minor OCSP bugs fixed
+
+
+---
+July 25, 2007
+Version 5.2.117. Release Candidate 1
+
+! [.NET, VCL] DomainKeys changed to DKIM release implementation
++ [VCL] Added C++Bulder 2007 support
+* ElGamal algorithm implementation has been significantly improved
+* Improved speed of asymmetric cryptography functions
+* (PGP) Improved speed of cleartext operations
+- (PGP) Fixed cleartext signing issues
+
+
+
+---
+June 19, 2007
+Version 5.2.116. Beta version
+
++ [.NET, VCL] (SSH) Added support for SSH rekeying initiation
++ [.NET, VCL] (PKI) Added support for PKCS#7 signature timestamping [without performing signing operation]
+
+* [.NET, VCL] (PDF) Improved processing of hybrid-reference PDF documents
+* [All] (PKI) Improved compatibility with XEnroll-generated CSRs
+
+- [.NET, VCL] (PDF) Fixed minor PDF decryption issue (several kinds of objects were not decrypted properly)
+- [All] (PKI) Fixed minor CSR generation issue (incorrect hash algorithm prefix was used for MD5 and SHA2 requests)
+
+
+---
+June 10, 2007
+Version 5.2.115. Beta version
+
+* (All) (FTPS) Improved compatibility with some FTP servers (namely WS_FTP)
+- [.NET] (MIME) DayOfWeek was not written properly to a MIME message. FIxed.
+- [VCL] (SSH) Server-side components had certain memory leaks. Fixed.
+
+---
+June 6, 2007
+Version 5.2.114. Beta version
+
+- [All] ElSocket sometimes didn't receive all the data from WebTunneling proxy.
+- [.NET, VCL] (PKI) Fixed work with Java Key Store
+- [.NET, VCL] (MIME) MessagePart.SetData didn't properly copy the data, if MakeCopy parameter was set to true. Fixed.
+
+
+---
+May 28, 2007
+Version 5.2.113. Beta version
+
++ [All] (SSH) Added notifications about server-side remote port forwarding restrictions
++ [.NET, VCL] (SSL) Added support for OpenPGP authentication in TLS
++ [.NET, VCL] (SSL) Added support for stateless TLS (RFC 4507)
++ [.NET, VCL] (SSL) Added ClientCertStorage property to client-side SSL classes for easier client-side authentication
++ [.NET, VCL] (SSH) Added TElSSHForwardingIntercept class
++ [.NET, VCL] (SFTP) Implemented advanced file removal features (recursive directory deletion and mask-based file removal)
+
+* [All] (SSH) Improved compatibility with some buggy servers
+* [All] (SSH) Improved SSH forwarding speed
+* [.NET, VCL] (SSH) Added flush-before-close feature to TElSimpleSSHClient
+* [All] ElFileCertStorage and ElWinCertStorage attempted to check the license key when the property values were changed in design-time. 
+
+- [All] Fixed ElSocket which could not connect to SOCKS4 server due to a recently made typo mistake
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 5.1 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+---
+May 12, 2007
+Version 5.1.112. Minor update
+
+!!! Removed IDEA algorithm from standard distribution. IDEA is available as a separate download now.
+
++ [.NET, VCL] (PDF) Added SignAndEncrypt operation to PDF
++ [.NET, VCL] (PKI) Added ErrorInfo property to TElMessage* classes
+
+* [All] (FTPS) Added compatibility with some servers, which send reply for data channel open command after establishing SSL / TLS on the channel
+* [All] (FTPS) MODE Z is now switched when needed and not just during Login
+* [All] (SFTP) Improved compatibility with F-Secure SSH server
+- [All] (FTPS) Fixed a possible decompression problem if the compressed file had compression ratio of over 32:1
+
+- [.NET, VCL] (XML) Encoding could be omited when writing the XML document. Fixed.
+- [.NET, VCL] (XML) Fixed a bug when reading some XML documents, formatted with extra spaces. 
+
+---
+May 4, 2007
+Version 5.1.111. Minor update
+
++ [.NET, VCL] (SFTP) Added ExtensionCmd method to ElSimpleSFTPClient
++ [.NET, VCL] (PDF) Added 'adbe.pkcs7.sha1' subfilter to PDF signatures
+- [.NET, VCL] (PKI) Fixed reporting of OnProgress event in TElMessageSigner.Countersign method
+- [.NET] Now the assemblies can be loaded to MS SQL Server 2005
+- [All] (PGP) Revoked property of the key was not always loaded from the key data
+
+---
+April 26, 2007
+Version 5.1.110. Major update
+
+* [.NET, VCL] (PKI) Implement TElMessageSigner.Countersign(Stream, Stream) method correctly 
+* [.NET, VCL] (PKI) Implement support for 64 bit streams for TElSymmetricCrypto
+- [AX] (SFTP) Fix miscellaneous errors in SimpleSftpDemo (ActiveX/VC++) 
+- [.NET, VCL] (XML) Problems decrypting 3DES-encrypted document on Windows 2000
+
+---
+April 11, 2007
+Version 5.1.109. Release Candidate 1
+
++ [All] (SSL) Added SRP (Secure Remote Password) cipher suites
+
++ [All] (FTPS) Added support for MLSD (machine-parseable list directory) command
+
++ [.NET, VCL] (SSL) Added Datagram TLS client and server
+
++ [.NET, VCL] Added License Manager component to store the license key in it
+
++ [AX] (SSL) Added FTPS and HTTP clients
+
+- [.NET, VCL] (PKI) Fixed design-time editing of Certificate Storages
+- [.NET, VCL] (MIME) Fixed attachment processing in ElSimpleMIME class
+
+- [.NET] (MIME) Fixed various .NET-specific issues caused by change of the compiler in SecureBlackbox 5
+
+---
+March 22, 2007
+Version 5.1.108. Beta version
+
+! [.NET] (SSL) El*SSLSocket classes now support on-the fly changing of SSL mode with automatic handshake carried when SSLEnabled is set to true.
+
++ [.NET, VCL] (XML) Added support for XAdES-T for digital timestamping of the XML signatures
+
+* [.NET, VCL] (XML) Improved behavior of ElXMLVerifier.RemoveSignature method. Now it can remove both enveloping and enveloped signatures.
+
+* [VCL] (PKI) Improved Authenticode components to work with 64-bit PE files.
+
+- [.NET] (PKI) Fixed cryptoprovider classes to provide correct garbage collection of keys and hash contexts
+- [.NET, VCL] (XML) Fixed the issue with incorrect quote (") character conversion during canonicalization
+
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 5.0 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+
+---
+February 25, 2007
+Version 5.0.107. Minor update
+
+! [All] (SSH) Changed the way ElSimpleSSHClient.ReceiveData method works. Now the method returns as soon as any data are read.
+
++ [All] (SSH) added support for HMAC-SHA2/RIPEMD
++ [All] (PKI) added support for HMAC-SHA2 to SBMessages and S/MIME
++ [All] (PGP) added support for SHA2/RIPEMD hash algorithms for cleartext signing/verifying
+
++ [AX] (SSH) Added Commands property to ElSimpleSSHClientX
++ [AX] (SSH) Added an overload for ReceiveText method to ElSimpleSSHClientX
++ [AX] (SSH) Added CanReceive method to ElSimpleSSHClientX
++ [AX] (SSH) Added VBScript sample for ElSimpleSSHClientX
+
+---
+February 11, 2007
+Version 5.0.106. Minor update
+
++ [All] (PGP) Added some properties to PGPReader to get information about the encrypted or signed data.
++ [All] (SFTP) Added FileExists method to check file presense. 
+
++ [AX] (PGP) Added recent properties of ElPGPCustomSecretKey and ElPGPCustomPublicKey to ActiveX controls
++ [AX] (SFTP) Added ReadDirectoryAsString and ReadDirectoryAsStringList to ElSimpleSftpClientX class for use in FoxPro and scripting environments.
+
++ [.NET, VCL] (SSH) Added OnSendCommandRequest event to track, what command of the Commands property is being executed next.
+
+- [All] (PGP) Fixed clear-text signing of the text, which doesn't contain end-of-line characters (i.e. consists of just one line of text). 
+- [All] (SSH) Multiple commands in Commands property didn't work. Fixed.
+- [All] (HTTP) Fixed the incorrect formatting of Cookie header.
+
+- [.NET] (HTTP) Fixed the issues with wrong command being called under .NET CF 1.0.
+- [.NET] (MIME) Date/time timezone offset was not written properly. Fixed.
+- [.NET] (MIME) Content charset parameter was not set due to compiler bug. Fixed (using a workaround).
+- [.NET] (Base) Fixed Socks and WebTunneling connections via ElSocket, broken due to change of compiler.
+
+---
+January 27, 2007
+Version 5.0.105. Minor update
+
++ [AX] (SFTP) ASCIIMode added to ElSimpleSFTPClient using IElSimpleSFTPClientX4 interface.
++ [All] (SSH) Added the possibility of executing remote commands without requesting a terminal
+
+* [All] (SSH) Improved compatibility with SSH Extreme Router
+
+- [All] (PGP) Enabled property of the key was not copied when the key was duplicated.  Fixed.
+- [All] (PGP) If the file has more than one armored block, only the first block was loaded. Fixed.
+- [All] (HTTP) If the server reported a relative path in Location: field of 302 (Object Moved) response, the new path was not correctly re-created as an absolute path. Fixed.
+
+- [.NET] (SSH, SFTP) The prompt dialog for keyboard authentication didn't work in most of the samples due to non-functioning OK button. Fixed.
+- [.NET] (SFTP) UploadFiles could insert a backslash to the beginning of the file name. The bug appeared in SBB 5 due to change of compiler. Fixed.
+- [.NET, VCL] (XML) Fixed processing of ampersand when saving the file
+
+- [VCL, AX] (PKI) Memory corruption occured when trying to load the CER (certificate) file over 4KB large, or use ElX509Certificate.DetectCertFileFormat() method on such file. Fixed.
+
+---
+December 25, 2006
+Version 5.0.104. Official Release
+
++ [All] (OpenPGP) Added DSA2 support
++ [All] (PKI) Added HMAC-SHA2 support
+
+* [.NET, VCL] (FTPS) Improved error handling during data transfer
+* [.NET, VCL] (XML) Changed some TElXMLDOMDocument methods for easier use of DelayLoadModes.
+
+- [.NET, VCL] (FTPS) Fixed the problem with upload speed (broken in one of previous builds)
+
+---
+December 16, 2006
+Version 5.0.103. Release Candidate 2
+
+---
+December 9, 2006
+Version 5.0.102. Release Candidate 1
+
+* (PDF) PDF classes now process the data without loading them completely to memory
+
+* [.NET] SecureBlackbox can now be used from partially trusted assemblies
+* [All] (SSH) Keyboard-interactive authentication is now handled automatically, if nothing was handled by the application. This is done by passing a password.
+
+- [All] (PDF) several miscellaneous minor errors fixed
+- [All] (SSH) fixed remote port forwarding functionality (broken in the previous build)
+- [All] (SSH) fixed thread-safety problem in simple forwarding components
+
+---
+November 10, 2006
+Version 5.0.101. Beta version
+
+* [.NET] (FTPS) Fixed the issue with parsing FEAT reply from the server
+
+
+---
+November 6, 2006
+Version 5.0.100. Beta version
+
++ [All] (PKI) Added stMemory storage type in ElWinCertStorage class. 
+
+* [VCL] Improved nag screen display behaviour to not show the nag screen in design-time
+
+* [.NET, VCL] (FTPS) Improved MODE Z request sending
+
+- [All] Fixed socket class, which could not be reused if previous connect attempt failed under certain circumstances.
+- [All] (PKI) Fixed ElWinCertStorage.Add method when it was used to add the certificate to registry or LDAP stores.
+
+- [VCL] Fixed various C++Builder-specific issues which happened due to compiler bugs
+- [.NET] (SFTP) SimpleSFTPClient.MessageLoop event was not working correctly. Fixed. 
+- [.NET] (SSL) Updated RemObjects InternetPack classes and samples
+- [.NET, VCL] (FTPS) Fixed the data transfer abort procedure
+
+
+---
+October 19, 2006
+Version 5.0.99. Beta version
+
++ [All] (PKI) Added support for unencrypted private keys in PFX files
++ [All] (PKI) Added support for DSA2 algorithm
++ [All] (PKI) Added support for id-ea-rsa algorithm in certificates
++ [.NET, VCL] (OpenPGP) Added algorithm properties to PGP/MIME classes. 
++ [.NET, VCL] (PDF) Added support for the documents with encrypted object streams
++ [.NET, VCL] (PKI) Added improved support for countersignatures
++ [.NET, VCL] (PKI) Added ElPKCS11Manager class
++ [.NET, VCL] (PKI) Added support for Java KeyStore format in certificate storages
+
++ [All] (SSH) Added support for keep-alive signals
+* [.NET, VCL] (HTTP) Username and password can now be specified in the URL
+* [.NET, VCL] (PKI) Added compatibility with several types of PKCS#11 tokens
+* [All] (SSH) Added workaround for compatibility with Tectia clients
+* [.NET, VCL] (PDF) Added workaround for greater signature compatibility with Adobe Acrobat software
+
+- [All] (Base) Fixed minor bug in Elgamal implementation
+- [.NET, VCL] (PDF) Fixed minor bug in PDF certificate encryption
+- [.NET, VCL] (HTTP) Multiple cookies, set using RequestCookies, were sent to the server incorrectly. Fixed. 
+- [.NET, VCL] (PDF) Fixed minor bug in PDF certificate encryption
+- [.NET] (Base) Fixed minor bug in Serpent implementation
+- [All] (SFTP) Fixed minor bug in ElSimpleSFTPClient.DownloadFile method
+- [AX] (SFTP) Fixed minor bug in ElSftpClientX.RemoveFile method
+- [AX] (PKI) Fixed minor bug in certificate request processing
+
+---
+September 19, 2006
+Version 5.0.98. Beta version
+
++ [.NET, VCL] (PDF) Added read-only support for the documents, which are both signed and encrypted.
++ [AX] Added ElSocketX class
++ [.NET, VCL] (FTPS) Added passive mode IP address adjustment for NATted servers
+
+* [All] (PKI) Improved work with huge (over 2Gb) documents in PKCS#7 (SBMessages)
+* [All] (OpenPGP) optimized decryption code
+
+- [All] (OpenPGP) fixed several memory leaks in key management routines
+- [.NET, VCL] (MIME) fixed several MIME parsing problems
+- [.NET, VCL] (HTTP) fixed minor hangup issue
+- [All] (PKI) fixed minor CRLDistributionPoints writing error
+- [All] (FTPS) Fixed the issue with passive mode and some servers, which erroneously send 226 during Receive procedure before the actual transfer takes place. 
+- [All] (SSL) ElSimpleSSLClient (and also ElSMTPClient and ElHTTPSClient) could go into an infinite loop in certain conditions, if SSL handshake could not be completed. Fixed.
+
+---
+September 2, 2006
+Version 5.0.97. Beta version
+
+! [.NET, VCL] FTPS and HTTPS are now part of SSLBlackbox Client-Only package.
+
++ [.NET, VCL] (FTPS) Added MODE Z (compression) support
++ [All] (OpenPGP) Added TElPGPPublicKey.PrefferedSymAlgs/TElPGPPublicKey.PrefferedSymAlgCount, TElPGPPublicKey.PrefferedHashAlgs/TElPGPPublicKey.PrefferedHashAlgCount, TElPGPPublicKey.PrefferedComprAlgs/TElPGPPublicKey.PrefferedComprAlgCount properties
++ [AX] (SSL) Added IElSimpleSSLClient interface with ReceiveDataEx method
+
+- [.NET] (SFTP) DownloadFiles and UploadFiles didn't work due to the error in file name handling code. Fixed.
+- [.NET] (OpenPGP) Fixed error in SBPGPMD, which caused SHA2/RIPEMD hashes to work incorrectly.
+- [VCL] (SSH) Fixed critical error in TElSSHServer, which caused incorrect DSA signature generation.
+
+---
+August 13, 2006
+Version 5.0.96. Beta version
+
++ [.NET] (PKI) PKCS#11 support added
+
+- [AX] (SSH, SFTP) Some components could not be created in ASP environment. Fixed.
+- [.NET] (SFTP) File Attribtes were not always obtained correctly. Fixed.
+
+August 6, 2006
+Version 5.0.95. Beta version
+
+! TSBCertificateValidity and TSBCertificateValidityReason types have been moved from SBCustomCertStorage to SBX509.
+
++ [.NET, VCL] (MIME) Added TElSimpleMIMEMessage class for easy creation of mail messages. Also added TElSimpleSMIMEMessage and TElSimplePGPMIMEMessage message for S/MIME and PGP/MIME accordingly.
++ [.NET, VCL] (MIME) Added TElSMTPClient component for mail delivery. Requires SSLBlackbox Client-Only or other licenses (which include SSLBlackbox Client-only) for use.
++ [.NET, VCL] (FTPS) Added support for SIZE command to obtain the size of the file being downloaded (in order to report correct OnProgress values).
++ [.NET, VCL] (PKI) Added TElX509CertificateChain class which represents a certificate chain. End-entity certificate has the index of 0, it's CA has index 1 and so on.
++ [.NET, VCL] (PKI) Added TElCRLDistributionPointExtension.Included property, which controls which of object's properties should be written to the certificate.
++ [.NET, VCL] (PKI) Added support for Authenticode timestamping to TElTSPServer classes
++ [VCL] (PKI) Added support for Authenticode timestamping to TElAuthenticode* classes
+
+* [All] (SSL) Improved the process of OnCertificateValidate and OnCertificateNeededEx event invokation
+* [All] (OpenPGP) Improved PGP operation speed.
+* [All] (OpenPGP) Changed TElPGPSecretKey.EndGenerated method - added  UseOldFormat parameter.
+* [All] (OpenPGP) Added TElPGPPublicKey.Version and TElPGPSecretKey.Version properties.
+* [.NET, VCL] (SSH) Added EOLMarker parameter to TElSSHKey.SavePublicKey. The parameter allows to specify the type of EOL marker (CRLF, CR, LF)
+* [.NET, VCL] (HTTP) Added RequestCookies and ResponseCookies properties to TElHTTPSClient
+
+- [All] (PKI) Signing, decryption and some key exchange operations with a certificate, located in LocalMachine Windows certificate storage with non-exportable private key didn't work. Fixed.
+- [All] (OpenPGP) Fixed compatibility with non-standard PGP 8.1 photo packet.
+- [AX]  (OpenPGP) TElPGPReader.OutputStream property didn't work. Fixed.
+- [.NET, VCL] (PKI) Fixed various minor standard-compliancy bugs in TSP components
+- [.NET, VCL] (PKI) Fixed various minor standard-compliancy bugs in OCSP components
+
+
+
+^^^^^^^^^^^^^^^^^^^
+^^^ Version 4.4 ^^^
+^^^             ^^^
+^^^^^^^^^^^^^^^^^^^
+
+
+---
+July 20, 2006
+Version 4.4.0.94. Minor update.
+- [All] (OpenPGP) Fixed the hanging in DecryptAndVerify() method.
+- [All] (OpenPGP) Fixed the problem with TElPGPSecretKey.Passphrase property being reset unexpectedly
+
+---
+July 16, 2006
+Version 4.4.0.93. Minor update.
+
++ [All] (SSH) FSecure private key format is supported.
+* [All] (SSH) Connecting to Tectia 5 servers didn't work due to the bug in the server. Workaround added.
+- [.NET] (PKI) OCSP client request didn't include a signature and responder name. Fixed.
+
+---
+July 12, 2006
+Version 4.4.0.92. Minor update.
+
+* [All] (PKI) Now TElX509Certificate.LoadFrom*SPC and TElX509Certificate.LoadFrom*PFX attempt to load the end-entity certificate, if more than one certificate is present in the input data.
+* [All] (PKI) Now base64-encoded certificate, certificate request and CRL files are detected and loaded.
+* [All] (SSH) SSH.com private keys, converted by F-Secure (from their private format) could not be loaded. Fixed.
+
+- [All] (SFTP) Downloading and uploading of 0-byte-long files in synchronous mode or using TElSimpleSFTPClient was fixed (didn't work since build 90)
+- [.NET] (SFTP) File renaming didn't work with SFTP versions 5 and 6. Fixed.
+
+---
+July 9, 2006
+Version 4.4.0.91. Minor update.
+
+! [.NET, VCL] (OpenPGP) Parameters of OnProgress event have been changed to support 64-bit files. Current code will be broken, unfortunately.
+
++ [VCL] (SSL) Added RealThinClient helper classes for SSL support
++ [AX] (SFTP) Added IElSimpleSFTPClientX3 interface (ElSimpleSFTPClientX class now implements this interface),
+  which provides access to recently added properties andd methods of ElSimpleSFTPClientX
++ [All] (SFTP) Added DownloadFiles/UploadFiles and DownloadStream/UploadStream methods to TElSimpleSFTPClient
+
+* [All] (PKI) Added ReplyCertificates to OCSP client
+* [.NET, VCL] (OpenPGP) Improved work with huge (over 2Gb) files
+
+- [All] (PKI) Fixed two minor bugs in OCSP client reply parser
+- [.NET] (OpenPGP) Fixed a bug with validating detached and clear-signed signatures
+- [All] (PDF) Fixed a bug with signing a document with timestamping, when timestamp server returned large timestamp.
+- [All] (PDF) Fixed a bug with signing a document with timestamping, when timestamp client returned an error.
+
+---
+June 25, 2006
+Version 4.4.0.90. Minor update.
+
++ [.NET, VCL] (FTPS) Added CCC (Clear Command Channel) command.
++ [.NET, VCL] (PKI/HTTP) Added HTTP OCSP client to HTTPSBlackbox
+
+* [.NET, VCL] (SFTP) improved SFTP download speed again
+* [.NET, VCL] (SFTP) improved compatibility with various SFTP servers
+
+* [All] (PKI) Now TElX509Certificate.LoadFrom*() detects and handles Base64-encoded certificates (not PEM-formatted!)
+
+* [All] (PKI) Re-implemented OCSP client and server in order to achieve better standard conformance.
+
+- [.NET, VCL] (SFTP) fixed attribute-handling bugs in SFTP server
+- [.NET, VCL] (FTPS) Active mode got broken in build 86. Fixed.
+- [.NET] (PKI) problem with opening System Certificate Storages on .NET CF were fixed.
+- [.NET, VCL] (OpenPGP) Fixed writing of armoured keyrings.
+
+---
+May 31, 2006
+Version 4.4.0.89. Minor update.
+
++ [.NET, VCL] (PKI) Added DefaultPolicy property to TSP server.
+
+- [.NET, VCL] (PKI) Fixed reading of PEM files with CRLF and LF mixed in a single data block.
+- [.NET, VCL] (PKI) Fixed certain Nonce- and Accuracy-related problems with TSP server.
+- [.NET] Fixed the problem with table-based charsets in SecureBlackbox.Charsets assembly.
+- [VCL] (SFTP) Fixed the memory leak, introduced in build 88 when uploading or downloading the files.
+
+---
+May 24, 2006
+Version 4.4.0.88. Minor update.
+
+! [All] (SFTP) Dramatically improved speed of file upload/download
+
++ [.NET, VCL] (SFTP) Added certain properties (UploadBlockSize, DownloadBlockSize, PipelineLength) for better control of upload/download operation speed
+
+* [.NET, VCL] (PKI) Added a workaround for handling reformatted MessageImprint, returned by some TSP servers.
+
+* [AX] (SSH) ElSSHKeyX.Headers now returns IUnknown (which you need to cast to IElStringListX)
+
+- [All] (SFTP) Fixed possible error, which could happen when the network connection is closed in SimpleSftpClient
+- [All] (OpenPGP) Read-only secret key could not be loaded from keyring correctly due to a problem with setting Expires field.
+- [AX] (SSH) ElSimpleSSHClientX.MessageLoop event was not correctly fired if no handler was attached. Fixed.
+- [AX] (SSH) ElSSHKeyX could not be viewed in Watch window of Visual Basic. Fixed.
+
+---
+May 18, 2006
+Version 4.4.0.87. Internal update
+
+---
+May 16, 2006
+Version 4.4.0.86. Major update.
+
++ [.NET, VCL] (SSL) Added ElSimpleSSLClient.CanReceive() method.
+
+* [All] (PKI) Now no exception is raised if the loaded certificate contains unknown algorithms
+* [.NET, VCL] (PDF) Added an exception which is raised during attempt to apply MDP signature to the document with templates. Previously incorrect signature was applied.
+* [.NET, VCL] (PDF) Improved signing of certain documents.
+* [.NET] (SSH) Fixed saving of SSH public key in OpenSSH format. Previously the prefix ended with 0x0 character, and this confused users.
+* [AX] (PKI) Now text-form OIDs can be passed to IElRelativeDistinguishedNameX.SetOID
+
+- [AX] (PKI) Fixed ElRelativeDistinguishedName class to write text data as PrintableString (otherwise the text is not displayed by Windows Certificate Manager)
+- [All] (PKI) Fixed TElRSAKeyMaterial which incorrectly saved PEM-encoded private key
+- [All] (PKI) Fixed ASN.1 writer which saved large integer values with leading zero (thus confusing some inflexible software like the one from RSA Security)
+- [All] Fixed the bug in ElSocket, which prevented connection of the socket, if LocalAddress was set for outgoing socket.
+
+---
+May 7, 2006
+Version 4.4.0.85. Major update for ActiveX.
+
+- (PKI) Fixed TElRSAKeyMaterial which incorrectly saved PEM-encoded private key
+- (PKI) Fixed ASN.1 writer which saved large integer values with leading zero (thus confusing some inflexible software like the one from RSA Security)
+
+---
+April 30, 2006
+Version 4.4.0.84. Release candidate.
+
++ [AX] (OpenPGP) Added PGPBlackbox to ActiveX edition. PGPBlackbox/AX is now in beta since ActiveX/VB6 declarations are not present in documentation.
+
+* [.NET, VCL] (PDF) Added possibility to Base16-encode the textual data in PDF signatures to avoid certain compatibility and charset management problems.
+* [.NET, VCL] (PDF) Added possibility to change appearance of existing signature fields.
+* [.NET, VCL] (SSH, SFTP) Now keyboard-interactive authentication can optionally be tried as the last authentication attempt (instead of the first, as before).
+- [VCL] (SSH, SFTP) minor fixes in SSH Indy IOHandlers.
+
+---
+April 19, 2006
+Version 4.4.0.83. Beta version.
+
+! [.NET] Changed installation procedures and deployment instructions
+
+! [.NET, VCL] Introduced new supplementary Charsets package (SecureBlackbox.Charsets assembly in .NET and ChsBBox in VCL).
+
++ [.NET, VCL] Added XMLBlackbox package to SecureBlackbox Professional
++ [.NET, VCL] Added BZip2 support (currently used in PGP)
+
+- [AX] (SSH, SFTP) Fixed a problem with accessing certain objects (SftpFileInfoX, SSHKeyX) from scripting environments or when using Variants (i.e. via IDispatch).
+
+---
+April 13, 2006
+Version 4.4.*.82. Beta version.
+
+! Speed optimization in most symmetric encryption algorithms
+
++ [.NET, VCL] (SSH) Added SimpleSSHPortForwarding components
++ [.NET, VCL] (PKI) Added asynchronous operations in ElX509Certificate (generation)
++ [.NET, VCL] (OpenPGP) Added asynchronous operations in PGP (key generation and signing / encryption)
+
+- [.NET, VCL] (HTTP) Fixed certain authentication issues (including NTLM POST/PUT problems).
+- [VCL] (SSH, SFTP) Fixed IndySSH and IndySFTP classes which wwere not properly created in Indy 10 in design-time
+
+---
+March 31, 2006
+Version 4.3.0.81. Minor update for ActiveX.
+- [.AX] (SSH, SFTP) Fixed keyboard authentication in SSH client
+
+---
+March 29, 2006
+Version 4.3.*.81. Release for .NET CF and Mono.
+
+- [.NET] Fixed some resource leaks.
+
+---
+March 24, 2006
+Version 4.3.1.80. Release Candidate for .NET CF and Mono.
+
+---
+March 11, 2006
+Version 4.3.80. Minor update.
+
++ [VCL, .NET] (PKI)  Added high-level classes for symmetric encryption
++ [.NET] (PKI)  Fixed certain ASN.1 issues, that caused some certificates to be written incorrectly
++ [AX] (SFTP) Added C++ and VB samples for SimpleSFTP component
+
+- [AX] (SFTP) Fixed the access violation error which happened upon reconnection
+- [VCL, .NET] (FTPS) Fixed some bugs in FTPS handling of the Passive mode
+- [VCL, .NET] (HTTP) Fixed a bug for 100-Continue response code handling
+- [VCL, .NET] (OpenPGP) Fixed minor bug in PGP keys (Expires property was not initialized).
+
+
+---
+February 20, 2006
+Version 4.3.79. Major update.
+
+!!! [.NET]
+!!!
+!!! Due to possible assembly conflicts in .NET 2.0, additional assemblies have been introduced.
+!!!
+!!! SecureBlackbox.SSLCommon is now required by SecureBlackbox.SSLClient, SecureBlackbox.SSLServer, SecureBlackbox.SSLSocket
+!!! SecureBlackbox.SSHCommon is now required by SecureBlackbox.SSHClient, SecureBlackbox.SSHServer, SecureBlackbox.Sftp, SecureBlackbox.SFTPServer
+!!! SecureBlackbox.SFTPCommon is now required by SecureBlackbox.Sftp, SecureBlackbox.SFTPServer
+!!!
+
++ [VCL, .NET] Now it's possible to globally disable patented IDEA algorithm
+
++ [VCL, .NET] (PDF) Now PKCS#1 signing is supported by PDF signer
++ [VCL, .NET] (PDF) Added timestamping capabilities to PDF signer
++ [VCL, .NET] (PKI) Added timestamping capabilities to ElMessageSigner
++ [VCL, .NET] (PKI/HTTPS) Added HTTP Timestamping Protocol Client component
++ [VCL, .NET] (SSL) Added TLS extensions
+
+- [.NET] Fixed PEM.Decode function which in certain cases incorrectly handled encrypted PEM data.
+- [All] (PKI) Fixed ElX509Certificate which didn't handle some EFS certificates correctly.
+
+---
+January 28, 2006
+Version 4.3.78. Beta version.
+
++ [VCL, .NET] (HTTP) Added HTTP / HTTPS client component
++ [VCL, .NET] (PKI) Added Timestamping Protocol components
++ [VCL, .NET] (PKI) Added higher-level classes for RSA encryption and signing and for DSA signing
++ [VCL, .NET] (SSL) Added pre-shared key cipher suites
+
+* [All] (PKI) Now when the data is signed with TElMessageSigner, and AuthenticatedAtributes are added, hash is written according to CMS specification. Previously the application had to write the hash itself (as defined in PKCS#7).
+
+- [VCL, .NET] (OpenPGP) AES 256 was disabled. Fixed.
+
+---
+January 18, 2006
+Version 4.2.77. Minor update.
+
++ [VCL, .NET] (PKI) Added SBPEMProcessor class for PEM encoding/decoding operations.
+
+- [All] (SSL) Fixed SetLicenseKey method which prevented server-side TLS 1.x from working properly.
+- [VCL, .NET] (PDF) Fixed an issue with PDF document signatures when multiple certificates were passed to the signing handler.
+
+---
+January 13, 2006
+Version 4.2.76. Minor update.
+
++ [All] (SSH) Added new key exchange algorithm: SSH_KEX_DH_GROUP_14
++ [VCL, .NET] (PKI) Added methods for loading/saving many certificates to/from PKCS#7 format to ElCustomCertStorage class. Note, that only binary PKCS#7 files are handled (i.e. not base64-encoded).
+
+- [All] Fixed MD2 support
+- [All] Fixed ElSharedResource implementation which could lead to problems with high multithreaded load on certificate storages, key storages and some other thread-safe classes.
+- [VCL, .NET] (FTPS) Fixed passive mode operations.
+- [VCL] (SSH) Fixed LocalPortForwarding demos
+- [.NET] Fixed installer which failed on the systems, which didn't have .NET Framework SDK 1.1 installed
+
+---
+December 24, 2005
+Version 4.2.75. Minor update.
+
+!!! [VCL, .NET]
+        (SSL) Certain event type declarations have been moved from SBClient and SBServer to SBSSLCommon.
+        SBClient.TSBValidateCertificateEvent has been renamed to SBSSLCommon.TSBCertificateValidateEvent.
+        Please see sample applications for details about the changes made.
+
+! [VCL] (SSL) SSLBBoxCli*.dpk packages have been added. Client-side SSL components have been moved from SSLBBoxSrv*.dpk to these new packages.
+  You need to install SSLBBoxCli*.dpk as well as SSLBBoxSrv*.dpk.
++ [VCL, .NET] (SSL) Added compression to SSL client and server
+
+---
+December 18, 2005
+Version 4.2.74. Minor update.
+
+* [VCL, .NET] (PDF) Added support for signing and decryption with non-exportable private keys, contained in Windows Certificate storage or in PKCS#11 storages.
+* [AX] (SSH) Fixed key validation routine
+* [.NET] (SSH) Added SSH Server sample for C#
+
+---
+December 08, 2005
+Version 4.2.73. Major update.
+
++ [VCL, .NET] (FTPS) Added FTP / FTPS Client component.
++ [VCL, .NET] (SFTP) Added SFTP 5 and SFTP 6 support.
++ [VCL, .NET] (SFTP) Added OnProgressEvent to ElSimpleSFTPSClient.
+* [All] (SSH) Fixed key re-exchange problems.
+- [VCL, .NET] (PDF) Fixed various bugs (mainly compatibility problems).
+
+---
+November 14, 2005
+Version 4.1.72. Minor update (.NET edition only)
+
++ Added .NET 2.0 and Mono support. Note, that support is provided in a separate, "experimental" installation. .NET CF support is to come later.
+
++ (PDF) Fixed some signing issues with large files.
+* (PKI) Generated certificates were not loaded by Java 1.4.x due to Java bug. Workaround added.
+
+---
+October 22, 2005
+Version 4.1.71. Major update
+
++ [VCL, .NET] (PDF) PDFBlackbox released
++ [All] (OpenPGP) Added support for V3 secret keys encrypted with CAST5, Blowfish and AES128
++ [All] (SSL) Added support for Camellia ciphersuites
+* [VCL, .NET] (SFTP) Added TElSftpClient.UseUTF8 and TElSimpleSftpClient.UseUTF8 properties.
+* [All] (OpenPGP) Added TElPGPReader.Passphrase and OutputStream properties
+- [All] (OpenPGP) ElPGPKeyring raised an exception on empty keyrings. Fixed.
+
+---
+October 6, 2005
+Version 4.1.70. Beta version
+
++ [VCL, .NET] (PDF) PDFBlackbox BETA released
++ [VCL] (SSL) Added ElSecureServerSocket demo application
+- [VCL] (SSL) Fixed a problem with ElSecureServerSocket.OnClientDisconnect event (the event did not fire)
+- [VCL] (SSL) Fixed minor memory leak in ElSessionPool class
+- [VCL] (PKI) Fixed minor error in ElPKCS11CertStorage component (illegal token removal case)
+- [All] (SSL) Fixed minor error in server-side SSL classes (bad handshake with some Java clients)
+
+---
+October 1, 2005
+Version 4.0.69. Minor update
+
+- (Help) MS Help 2.0 documentation didn't show keyword index correctly. Fixed.
+- [.NET] (SSL) Fixed an error that prevented SSLSocket from working correctly in asynchronous mode.
+- [VCL] (PKI) Fixed memory leak in ElX509Certificate.LoadFrom* methods.
+- [AX] (SSL) Fixed certificate processing error in ElSecureServerX.
++ [All] (PKI) Added support for RSASSA-PSS and RSA-OAEP algorithms
+
+---
+September 17, 2005
+Version 4.0.68. Minor update
+
+- [.NET, VCL] (OpenPGP) Fixed a problem with decrypting a file which was both encrypted and signed
+- [All] (SSH) Fixed a couple of minor bugs
+
+---
+August 26, 2005
+Version 4.0.67. Minor update
+
+- [VCL] Fixed a problem with setting the license key in evaluation version
+- [.NET] Fixed minor S/MIME problem with EncryptAndSign operation
+
+---
+August 15, 2005
+Version 4.0.66. Internal build
+
+- [VCL] (SSH) Fixed compatibility with Mocana server
+
+---
+August 15, 2005
+Version 4.0.65. Official release
+
+! MegaBlackbox has been renamed to SecureBlackbox Standard
+! License keys have been changed (.NET and ActiveX editions)
+
++ [.NET, VCL] (PKI) Added OCSP components
+
+---
+July 20, 2005
+Version 4.0.64. Beta version
+
++ [All] (SSL) TLS 1.1 support added
++ [All] (SSL) SimpleSSLClient component added
++ [.NET] (SSH) Added SSH server components
++ [.NET] (SSH) Added SFTP server components
++ [.NET] (MIME) Added DomainKeys for .NET
+
++ [.NET, VCL] (SSL) Added support for cipher renegotiation
++ [.NET, VCL] (SSL) Added OnError event
++ [.NET, VCL] (OpenPGP) Added RIPEMD and SHA 256/384/512 algorithms support
++ [.NET, VCL] (PKI) Added PKCS#5 and PKCS#8 support
++ [.NET, VCL] (PKI) TElGeneralName class got PermanentIdentifier member (RFC 4043)
+
+- [.NET, VCL] (OpenPGP) fixed a memory leak in decompression
+- [VCL] (PKI) ElAuthenticodeVerifier.RemoveAuthenticode() method didn't work. Fixed.
+- [VCL] (MIME) Fixed DomainKeys canonicalization and signing.
+
+---
+June 4, 2005
+Version 3.3.63. Internal release.
+
+---
+May 9, 2005
+Version 3.3.62. Minor update
++ [.NET] (OpenPGP) RSA keys didn't work. Fixed.
+
+---
+May 8, 2005
+Version 3.3.61. Minor update
++ [AX] (PKI) Added SystemStores and PhysicalStores to ElWinCertStorage' DLL interface
++ [.NET, VCL] (MIME) Added SecureMail sample that shows how to use PGP/MIME and S/MIME
+* [All] (SSH) Added a workaround for an RSA public key authentication bug in F-Secure SSH server
+* [.NET, VCL] (MIME) Added support for non-S/MIME-compliant messages and messages with broken signature (before they were not unsigned, now they are unsigned with the warning about broken signature)
+
+---
+April 29, 2005
+Version 3.3.60. Minor update
+- [.NET] (MIME) Fixed a bug (introduced in build 59) which caused MIME parser to go to infinite loop
+- [.NET] (SSH) Fixed a bug (introduced in build 59) when SimpleSSHClient didn't work correctly
+- [.NET] (PKI) Fixed a very specific problem with certain Windows Certificate Storage operations failing on storages, other than CurrentUser
+
+---
+April 25, 2005
+Version 3.3.59. Minor update
+
++ [All]  (PKI) Added support for HMAC and AuthenticatedData subtype to PKCS#7 messages
++ [All]  (PKI) Added support for SHA 256/384/512 as a hashing algorithm for ElMessageSigner
++ [.NET, VCL] (SSH) Added CommandList property to CommandSSHTunnel in SSH client
+* [.NET, VCL] (MIME) Parsing speed significantly improved
+* [VCL] (SSH, SFTP) SSH server now supports authentication using several authentication methods at once (using OnFurtherAuthNeeded event)
+* [VCL] (SSH, SFTP) Improved worker loop (in SSH server handlers), which could cause 100% CPU load in certain cases
+* [.NET, VCL] (OpenPGP) Implemented support for old PGP comment packet
+* [.NET, VCL] (OpenPGP) Implemented support for PGP private/experimental packets
+* [.NET, VCL] (OpenPGP) ElPGPKeyring class made thread-safe
+- [All]  (PKI) The library didn't work correctly with keys with integer length, which had a number of bytes, not divisible by 4.
+- [.NET, VCL] (MIME) Fixed an issue with duplicate charset writing of the message part.
+- [.NET, VCL] (MIME) Charset was added/changed also when assemling from source. Fixed.
+- [.NET, VCL] (MIME) SMIME handler didn't handle encrypted multi-part messages. Fixed.
+- [All] (SSH, SFTP) SSH key class was improved to strip leading zeros from key's long integer values
+- [VCL] (SSH, SFTP) SSH server incorrectly reported public-key algorithms, for which it didn't have keys. Fixed.
+- [VCL] (SSH, SFTP) Fixed a problem in SFTP client (which could set) and SFTP server (which didn't understand) file type value of 0. Now FileType of ftFile is always set for default attributes on the client and now 0 is treated as ftFile on the server.
+- [VCL] (SFTP) SFTP server incorrectly handled invalid directory names. Fixed.
+- [VCL] (SFTP) TElSFTPSSHSubsystemHandler.Execute caused 100% CPU load. Fixed.
+- [VCL] (SSH) TElCustomSocketForwardingSSHSubsystemHandler.Execute caused 100% CPU load. Fixed.
+
+
+---
+April 10, 2005
+Version 3.3.58. Minor update
+- [.NET] (All) AES encryption fixed (AES192 and AES256 didn't work due to specifics of .NET assembly linker).
+
+---
+April 5, 2005
+Version 3.3.57. Minor update
++ [All]  (SSH, SFTP) ElSimple*Client components got SOCKS and WebTunneling support
++ [All]  (SSH, SFTP) ElSimple*Client components support socket timeouts now
++ [All]  (SFTP) DownloadFile and UploadFile methods were added to ElSimple*Client component
++ [AX]   (All) Helper classes for array transformations and binary file read/write operations were added
++ [AX]   (SSH) Added support for dynamic tunnels (SSH 2 only)
++ [.NET, VCL] (MIME) EncoderSignTime and DecoderSignTime properties were added to TElMessageHandlerSMIME class
+* [VCL]  (SSL) ICS HTTPS Client has been fixed to work around recent ICS addition, which was made to prevent use of external (to ICS) SSL solutions like SecureBlackbox.
+* [VCL]  (SFTP) Improved compatibility of SFTP server code (and sample) with third-party clients (PuTTY and OpenSSH)
+- [.NET] (PKI) Fixed GetIssuerCertificate method which could produce OutOfRangeException
+- [.NET] (PKI) Fixed X509Certificate.DecryptWin32 metod (the bug which made it impossible to decrypt the data with Windows-contained certificate with non-exportable private key)
+- [.NET] (MIME) Fixed verification of S/MIME signed messages
+- [AX]   (PKI) Wrapper folder (necessary for DLL usage) was missing from PKIBlackbox installation.
+
+
+---
+Version 3.3.56. Major update
++ [All]  (PKI) Added CRL property to ElCustomCertStorage for easier validation of the certificates
++ [VCL]  (MIME) DomainKeys support added
++ [.NET] (OpenPGP) VB.NET samples for PGP.NET were added.
++ [.NET] (SSL) RemObjects.InternetPack classes and samples added.
++ [.NET] (SSL) RemObjects SDK.NET samples added.
++ [VCL]  (SSL) NexusDB 2 SSL transport and demo added.
+* [AX]         Controls have been split into new libraries.
+- [.NET] (SSH, SFTP) Use of built-in socket sometimes caused 100% load and dramatic slowdown of operations. Fixed.
+- [.NET] (PKI) Large (over 65K) ASN.1 sequences could not be parsed. This bug mainly affected Certificate Revokation Lists. Fixed.
+- [.NET] (MIME) Parsing of some multipart messages was done wrong. Fixed.
+- [All]  (SSL) Fixed a problem with client-side certificates in SSL3 (when both SSL3 and TLS1 were enabled with SSL3 being active).
+- [All]  (PKI) TElX509Certificate didn't correctly handle certain PEM files. Fixed.
+- [All]  (PKI) TElMessageDecryptor couldn't decrypt the data with certificate stored in WinCertStorage, if the private key couldn't be exported. Fixed.
+- [VCL]  (SFTP) Various fixes in SFTP server
+
+---
+Version 3.2.55. Minor update
++ [.NET] (OpenPGP) Various PGP.NET bugs fixed.
++ [VCL] (SSH) SSH Server improved.
++ [VCL] (SFTP) SFTP Server added.
++ [All] (PKI) Added PEM format to CRL
++ [All] (PKI) Added a sample for Certificate Request generation
+* [VCL] (SSL) RemObjects demo was updated for RemObjects 3 for VCL
+* [VCL] (SSL) Indy demos (client and server) were updated for Indy 10
+- [.NET, VCL] (MIME) XMailer header was not set in certain cases. Fixed.
+- [All] (SSH, SFTP) if Simple*Client component failed to connect, next connection attempt would fail. Fixed.
+
+---
+Version 3.2.54. Minor update
+
++ [ALL] (SFTP) Added internal socket support to SimpleSSHClient and SimpleSFTPClient components. Now one must not necessarily provide own socket object (although this is possible).
++ [.NET] (OpenPGP) PGP.NET beta is avaialble. Compression doesn't work in this beta.
++ [VCL] (SSH) SSH Server beta is available. Documentation is missing from this beta.
+- [ALL] (PKI) Fixed a memory leak in CRL class.

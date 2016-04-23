@@ -1,0 +1,585 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{17c17e97-20d7-42bd-8076-265796431b5d}</ProjectGuid>
+			<MainSource>CryptoBBoxB16.cpp</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<ProjectVersion>13.4</ProjectVersion>
+			<Base>True</Base>
+			<AppType>Library</AppType>
+			<FrameworkType>None</FrameworkType>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+			<TargetedPlatforms>1</TargetedPlatforms>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_Define>SB_CRYPTOPKG;$(DCC_Define)</DCC_Define>
+			<DCC_UnitSearchPath>..\Sources;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_Namespace>System;WinAPI;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<VerInfo_Locale>1058</VerInfo_Locale>
+			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+			<DCC_Optimize>false</DCC_Optimize>
+			<OutputExt>bpl</OutputExt>
+			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+			<Defines>NO_STRICT;SB_CRYPTOPKG;$(Defines)</Defines>
+			<DynamicRTL>true</DynamicRTL>
+			<ILINK_GenerateLibFile>true</ILINK_GenerateLibFile>
+			<BCC_InstructionSet>4</BCC_InstructionSet>
+			<DCC_IOChecking>false</DCC_IOChecking>
+			<ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
+			<DCC_Alignment>8</DCC_Alignment>
+			<UsePackages>true</UsePackages>
+			<ILINK_ObjectSearchPath>..\Sources;$(ILINK_ObjectSearchPath)</ILINK_ObjectSearchPath>
+			<FinalOutputDir>.</FinalOutputDir>
+			<ILINK_BpiLibOutputDir>.</ILINK_BpiLibOutputDir>
+			<ProjectType>CppPackage</ProjectType>
+			<BCC_wpar>false</BCC_wpar>
+			<ILINK_Description>EldoS CryptoBlackbox for C++ Builder</ILINK_Description>
+			<IncludePath>..\Sources\;$(BDS)\include\windows\crtl;$(BDS)\include\windows\rtl;$(BDS)\include\windows\sdk;$(BDS)\include\windows\vcl;..\Sources;$(IncludePath)</IncludePath>
+			<BCC_PCHUsage>None</BCC_PCHUsage>
+			<ILINK_LibraryPath>..\Sources\;$(BDS)\lib\win32\release;$(BDS)\lib\win32\release\psdk;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<Multithreaded>true</Multithreaded>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<Defines>_DEBUG;$(Defines)</Defines>
+			<ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+			<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+			<BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+			<IntermediateOutputDir>Debug</IntermediateOutputDir>
+			<TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+			<BCC_StackFrames>true</BCC_StackFrames>
+			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+			<ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<TASM_Debugging>Full</TASM_Debugging>
+			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Defines>NDEBUG;$(Defines)</Defines>
+			<IntermediateOutputDir>Release</IntermediateOutputDir>
+			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<TASM_Debugging>None</TASM_Debugging>
+		</PropertyGroup>
+		<ItemGroup>
+			<CppCompile Include="CryptoBBoxB16.cpp">
+				<BuildOrder>47</BuildOrder>
+			</CppCompile>
+			<PackageImport Include="rtl.bpi">
+				<BuildOrder>0</BuildOrder>
+			</PackageImport>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>1000</BuildOrder>
+			</PackageImport>
+
+    <DelphiCompile Include="..\Sources\SBAES.pas">
+      <BuildOrder>9</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBASN1.pas">
+      <BuildOrder>12</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBASN1Tree.pas">
+      <BuildOrder>13</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBBlowfish.pas">
+      <BuildOrder>24</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCamellia.pas">
+      <BuildOrder>25</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCAST128.pas">
+      <BuildOrder>26</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBConstants.pas">
+      <BuildOrder>10</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCRC.pas">
+      <BuildOrder>27</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCustomCrypto.pas">
+      <BuildOrder>36</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBDES.pas">
+      <BuildOrder>11</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBElgamal.pas">
+      <BuildOrder>31</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBHMAC.pas">
+      <BuildOrder>14</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBLicenseManager.pas">
+      <BuildOrder>46</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBMath.pas">
+      <BuildOrder>15</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBMD.pas">
+      <BuildOrder>16</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPEM.pas">
+      <BuildOrder>7</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRabbit.pas">
+      <BuildOrder>43</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRandom.pas">
+      <BuildOrder>17</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRC2.pas">
+      <BuildOrder>18</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRC4.pas">
+      <BuildOrder>19</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRDN.pas">
+      <BuildOrder>37</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRIPEMD.pas">
+      <BuildOrder>20</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSeed.pas">
+      <BuildOrder>44</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSerpent.pas">
+      <BuildOrder>29</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSHA.pas">
+      <BuildOrder>21</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSHA2.pas">
+      <BuildOrder>22</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSharedResource.pas">
+      <BuildOrder>35</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSocket.pas">
+      <BuildOrder>30</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBTimer.pas">
+      <BuildOrder>45</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBTwofish.pas">
+      <BuildOrder>34</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBUtils.pas">
+      <BuildOrder>23</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBWinCrypt.pas">
+      <BuildOrder>38</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBZCommonunit.pas">
+      <BuildOrder>41</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBZCompressUnit.pas">
+      <BuildOrder>42</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBZlib.pas">
+      <BuildOrder>40</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBZUncompressUnit.pas">
+      <BuildOrder>39</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBAlgorithmIdentifier.pas">
+      <BuildOrder>920</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCRL.pas">
+      <BuildOrder>1033</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCRLStorage.pas">
+      <BuildOrder>1036</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProv.pas">
+      <BuildOrder>1018</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvBuiltIn.pas">
+      <BuildOrder>1021</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvBuiltInHash.pas">
+      <BuildOrder>1022</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvBuiltInPKI.pas">
+      <BuildOrder>1023</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvBuiltInSym.pas">
+      <BuildOrder>1024</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvDefault.pas">
+      <BuildOrder>1020</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvManager.pas">
+      <BuildOrder>1026</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvUtils.pas">
+      <BuildOrder>1019</BuildOrder>
+    </DelphiCompile>
+	<DelphiCompile Include="..\Sources\SBCryptoProvRS.pas">
+		<BuildOrder>1101</BuildOrder>
+	</DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvWin32.pas">
+      <BuildOrder>1025</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCustomCertStorage.pas">
+      <BuildOrder>106</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBDSA.pas">
+      <BuildOrder>1028</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBHashFunction.pas">
+      <BuildOrder>1029</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBMessages.pas">
+      <BuildOrder>107</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBMSKeyBlob.pas">
+      <BuildOrder>1030</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBOCSPClient.pas">
+      <BuildOrder>1035</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBOCSPStorage.pas">
+      <BuildOrder>1135</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBOCSPCommon.pas">
+      <BuildOrder>1034</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKCS12.pas">
+      <BuildOrder>1013</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKCS5.pas">
+      <BuildOrder>1011</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKCS7.pas">
+      <BuildOrder>108</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKCS7Utils.pas">
+      <BuildOrder>109</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKCS8.pas">
+      <BuildOrder>1010</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKIAsync.pas">
+      <BuildOrder>1017</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPKICommon.pas">
+      <BuildOrder>1051</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPublicKeyCrypto.pas">
+      <BuildOrder>1015</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBRSA.pas">
+      <BuildOrder>1027</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSMIMESignatures.pas">
+      <BuildOrder>103</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSRP.pas">
+      <BuildOrder>1031</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSymmetricCrypto.pas">
+      <BuildOrder>1016</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBTSPClient.pas">
+      <BuildOrder>1038</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBTSPCommon.pas">
+      <BuildOrder>1037</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBWinCertStorage.pas">
+      <BuildOrder>1014</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBX509.pas">
+      <BuildOrder>104</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBX509Ext.pas">
+      <BuildOrder>105</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCMSUtils.pas">
+      <BuildOrder>1044</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBUMAC.pas">
+      <BuildOrder>1046</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBECCommon.pas">
+      <BuildOrder>1047</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBECMath.pas">
+      <BuildOrder>1048</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBECDSA.pas">
+      <BuildOrder>1049</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBStringList.pas">
+      <BuildOrder>1049</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBGOSTCommon.pas">
+      <BuildOrder>2001</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBGOST341194.pas">
+      <BuildOrder>2002</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBGOST341094.pas">
+      <BuildOrder>2003</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBGOST341001.pas">
+      <BuildOrder>2004</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBGOST2814789.pas">
+      <BuildOrder>2005</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCertValidator.pas">
+      <BuildOrder>2010</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBStreams.pas">
+      <BuildOrder>3001</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBEncoding.pas">
+      <BuildOrder>3002</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBPunycode.pas">
+      <BuildOrder>3009</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSASL.pas">
+      <BuildOrder>3010</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBHTTPSConstants.pas">
+      <BuildOrder>3011</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBHTTPAuth.pas">
+      <BuildOrder>3012</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBSocketTSPClient.pas">
+      <BuildOrder>3019</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBChSClasses.pas">
+      <BuildOrder>4005</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBChSConv.pas">
+      <BuildOrder>4006</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBChSConvBase.pas">
+      <BuildOrder>4007</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBChSConvCharsets.pas">
+      <BuildOrder>4008</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBChSConvConsts.pas">
+      <BuildOrder>4009</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBUnicode.pas">
+      <BuildOrder>4073</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBJKS.pas">
+      <BuildOrder>5001</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBIDEA.pas">
+      <BuildOrder>5005</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCryptoProvBuiltInEx.pas">
+      <BuildOrder>5006</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBStrUtils.pas">
+      <BuildOrder>7002</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBTypes.pas">
+      <BuildOrder>7003</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBCertRetriever.pas">
+      <BuildOrder>7004</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBBCrypt.pas">
+      <BuildOrder>7005</BuildOrder>
+    </DelphiCompile>
+    <DelphiCompile Include="..\Sources\SBWhirlpool.pas">
+      <BuildOrder>7007</BuildOrder>
+    </DelphiCompile>
+
+
+			<LibFiles Condition="'$(Platform)'=='Win32'" Include="$(BDS)\lib\win32\release\psdk\crypt32.lib">
+				<BuildOrder>189</BuildOrder>
+				<IgnorePath>true</IgnorePath>
+			</LibFiles>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')" Project="$(BDS)\Bin\CodeGear.Cpp.Targets"/>
+		<ProjectExtensions>
+			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+			<Borland.ProjectType>CppPackage</Borland.ProjectType>
+			<BorlandProject>
+				<CPlusPlusBuilder.Personality>
+					<Source>
+						<Source Name="MainSource">CryptoBBoxB16.cpp</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1058</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Debugging>
+						<Debugging Name="DebugSourceDirs"/>
+					</Debugging>
+					<Parameters>
+						<Parameters Name="RunParams"/>
+						<Parameters Name="Launcher"/>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="DebugCWD"/>
+						<Parameters Name="HostApplication"/>
+						<Parameters Name="RemoteHost"/>
+						<Parameters Name="RemotePath"/>
+						<Parameters Name="RemoteParams"/>
+						<Parameters Name="RemoteLauncher"/>
+						<Parameters Name="UseRemoteLauncher">False</Parameters>
+						<Parameters Name="RemoteCWD"/>
+						<Parameters Name="RemoteDebug">False</Parameters>
+						<Parameters Name="Debug Symbols Search Path"/>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<Linker>
+						<Linker Name="LibPrefix"/>
+						<Linker Name="LibSuffix"/>
+						<Linker Name="LibVersion"/>
+					</Linker>
+					<ProjectProperties>
+						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+						<ProjectProperties Name="ManagePaths">True</ProjectProperties>
+						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+					</ProjectProperties>
+					<HistoryLists_hlIncludePath>
+						<HistoryLists_hlIncludePath Name="Count">1</HistoryLists_hlIncludePath>
+						<HistoryLists_hlIncludePath Name="Item0">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\Sources</HistoryLists_hlIncludePath>
+					</HistoryLists_hlIncludePath>
+					<HistoryLists_hlILINK_LibraryPath>
+						<HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath>
+						<HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;..\Sources</HistoryLists_hlILINK_LibraryPath>
+					</HistoryLists_hlILINK_LibraryPath>
+					<HistoryLists_hlDefines>
+						<HistoryLists_hlDefines Name="Count">1</HistoryLists_hlDefines>
+						<HistoryLists_hlDefines Name="Item0">NO_STRICT</HistoryLists_hlDefines>
+					</HistoryLists_hlDefines>
+					<HistoryLists_hlBCC_MaxIdentifierLength>
+						<HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength>
+						<HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength>
+					</HistoryLists_hlBCC_MaxIdentifierLength>
+					<HistoryLists_hlILINK_MaxErrors>
+						<HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors>
+						<HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors>
+					</HistoryLists_hlILINK_MaxErrors>
+					<HistoryLists_hlILINK_FileAlignment>
+						<HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment>
+						<HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment>
+					</HistoryLists_hlILINK_FileAlignment>
+					<HistoryLists_hlILINK_ObjectAlignment>
+						<HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment>
+						<HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment>
+					</HistoryLists_hlILINK_ObjectAlignment>
+					<HistoryLists_hlILINK_BaseAddress>
+						<HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress>
+						<HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress>
+					</HistoryLists_hlILINK_BaseAddress>
+					<HistoryLists_hlILINK_HeapCommitSize>
+						<HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize>
+						<HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize>
+					</HistoryLists_hlILINK_HeapCommitSize>
+					<HistoryLists_hlILINK_HeapReserveSize>
+						<HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize>
+						<HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize>
+					</HistoryLists_hlILINK_HeapReserveSize>
+					<HistoryLists_hlILINK_StackCommitSize>
+						<HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize>
+						<HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize>
+					</HistoryLists_hlILINK_StackCommitSize>
+					<HistoryLists_hlILINK_StackReserveSize>
+						<HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize>
+						<HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize>
+					</HistoryLists_hlILINK_StackReserveSize>
+					<HistoryLists_hlDCC_CodePage>
+						<HistoryLists_hlDCC_CodePage Name="Count">1</HistoryLists_hlDCC_CodePage>
+						<HistoryLists_hlDCC_CodePage Name="Item0">0</HistoryLists_hlDCC_CodePage>
+					</HistoryLists_hlDCC_CodePage>
+					<HistoryLists_hlTASM_HashTableCapacity>
+						<HistoryLists_hlTASM_HashTableCapacity Name="Count">1</HistoryLists_hlTASM_HashTableCapacity>
+						<HistoryLists_hlTASM_HashTableCapacity Name="Item0">8192</HistoryLists_hlTASM_HashTableCapacity>
+					</HistoryLists_hlTASM_HashTableCapacity>
+					<HistoryLists_hlTASM_MaxSymbolLength>
+						<HistoryLists_hlTASM_MaxSymbolLength Name="Count">1</HistoryLists_hlTASM_MaxSymbolLength>
+						<HistoryLists_hlTASM_MaxSymbolLength Name="Item0">12</HistoryLists_hlTASM_MaxSymbolLength>
+					</HistoryLists_hlTASM_MaxSymbolLength>
+					<HistoryLists_hlTASM_Passes>
+						<HistoryLists_hlTASM_Passes Name="Count">1</HistoryLists_hlTASM_Passes>
+						<HistoryLists_hlTASM_Passes Name="Item0">1</HistoryLists_hlTASM_Passes>
+					</HistoryLists_hlTASM_Passes>
+					<HistoryLists_hlTASM_VersionId>
+						<HistoryLists_hlTASM_VersionId Name="Count">1</HistoryLists_hlTASM_VersionId>
+						<HistoryLists_hlTASM_VersionId Name="Item0">0</HistoryLists_hlTASM_VersionId>
+					</HistoryLists_hlTASM_VersionId>
+				</CPlusPlusBuilder.Personality>
+				<Platforms>
+					<Platform value="OSX32">False</Platform>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+	</Project>

@@ -1,0 +1,125 @@
+<html>
+<body>
+This is example HTML page to test interoperability of <a href="http://www.eldos.com/sbb/">EldoS SecureBlackbox</a> and <a href="http://crypto-js.googlecode.com/">crypto-js</a> JavaScript encryption library.<br/>
+It uses following cipher parameters, which can be easily changed: cipher is AES-256, CBC mode with PKCS#5 (PKCS #7) padding. PBKDF2 is used to derive key and iv from password.<br/><br/>
+
+<script src="http://crypto-js.googlecode.com/svn/tags/3.0.1/build/rollups/core.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.0.1/build/rollups/aes.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.0.1/build/rollups/pbkdf2.js"></script>
+
+<script>
+
+function generateKey(form)
+{
+	var salt, key, iv, keyAndIv;
+	if (form.theSalt.value.length == 0)
+	{
+		salt = CryptoJS.lib.WordArray.random(64/8);
+		form.theSalt.value = salt;
+	}
+	else
+		salt = CryptoJS.enc.Hex.parse(form.theSalt.value);
+
+    // Generating key and IV
+	keyAndIv = CryptoJS.PBKDF2(form.thePassword.value, salt, { keySize : (256 + 128)/32 });
+
+	// Separate key and IV
+	form.theKey.value = keyAndIv.toString().substr(0, 64);
+	form.theIV.value = keyAndIv.toString().substr(64, 32);
+}
+
+function encrypt(form)
+{
+ 	if ((form.theKey.value.length != 64) || (form.theIV.value.length != 32))
+ 	{
+ 		alert("Invalid key or iv value! They should be 64-char and 32-char string respectively!");
+ 		return;
+ 	}
+
+ 	if (form.theInput.value.length == 0)
+ 	{
+ 		alert("Enter message to encrypt!");
+ 		return;
+ 	}
+
+	var key, iv;
+
+	key = CryptoJS.enc.Hex.parse(form.theKey.value);
+	iv = CryptoJS.enc.Hex.parse(form.theIV.value);
+
+	var encrypted = CryptoJS.AES.encrypt(form.theInput.value, key, { iv : iv });
+	form.theEncrypted.value = encrypted;
+}
+
+function decrypt(form)
+{
+	form.theDecrypted.value = "";
+
+ 	if ((form.theKey.value.length != 64) || (form.theIV.value.length != 32))
+ 	{
+ 		alert("Invalid key or iv value! They should be 64-char and 32-char string respectively!");
+ 		return;
+ 	}
+
+ 	if (form.theEncrypted.value.length == 0)
+ 	{
+ 		alert("Enter encrypted message (or press Encrypt button) first!");
+ 		return;
+ 	}
+
+	var key, iv, cipherText;
+
+	key = CryptoJS.enc.Hex.parse(form.theKey.value);
+	iv = CryptoJS.enc.Hex.parse(form.theIV.value);
+
+	cipherText = CryptoJS.enc.Base64.parse(form.theEncrypted.value);
+
+	var decrypted = CryptoJS.AES.decrypt(form.theEncrypted.value, key, { iv : iv });
+	form.theDecrypted.value = CryptoJS.enc.Utf8.stringify(decrypted);
+}
+
+/*function fastEncrypt(form)
+{
+    var encrypted = CryptoJS.AES.encrypt(form.theInput.value, form.thePassword.value);
+
+    form.theKey.value = encrypted.key;
+    form.theIV.value = encrypted.iv;
+    form.theSalt.value = encrypted.salt;
+    form.theEncrypted.value = encrypted;
+}*/
+
+</script>
+
+<form>
+  Text to encrypt:<br/>
+  <input id="theInput" type="text" size="100"/><br/>
+
+  <table>
+  <tr valign="top">
+    <td>Password</td>
+    <td><input id="thePassword" type="text"/>&nbsp;&nbsp;<input type="button" value="Generate key" onClick="generateKey(this.form)"/></td>
+  </tr>
+  <tr valign="top">
+    <td>Salt</td>
+    <td><input id="theSalt" type="text" size="50"/><br/>* clear salt value to generate new salt and key</td>
+  </tr>
+  <tr valign="top">
+    <td>Key</td>
+    <td><input id="theKey" type="text" size="50"/></td>
+  </tr>
+  <tr valign="top">
+    <td>IV</td>
+    <td><input id="theIV" type="text" size="50"/></td>
+  </tr>
+  </table>
+
+  Encrypted, base64-encoded output:<br/>
+  <input id="theEncrypted" type="text" size="100"/><br/>
+  Decrypted string:<br/>
+  <input id="theDecrypted" type="text" size="100"/><br/>
+  <input type="button" value="Encrypt" onClick="encrypt(this.form)"/>&nbsp;<input type="button" value="Decrypt" onClick="decrypt(this.form)"/>&nbsp;<br/>
+  <input type="reset" value="Reset"/>
+</form>
+
+</body>
+</html>
