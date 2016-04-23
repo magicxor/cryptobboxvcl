@@ -641,8 +641,8 @@ procedure SetLength(var Arr: SmallIntArray; aLength: integer; Stub: boolean = fa
 
 procedure ReleaseString(var S : AnsiString);  overload; 
 procedure ReleaseString(var S : AnsiString; Zeroize : boolean);  overload; 
-procedure ReleaseString(var S : UnicodeString);  overload; 
-procedure ReleaseString(var S : UnicodeString; Zeroize : boolean);  overload; 
+procedure ReleaseString(var S : string);  overload;
+procedure ReleaseString(var S : string; Zeroize : boolean);  overload;
 
 procedure ReleaseArray(var aBytes : ByteArray);  overload; 
 procedure ReleaseArray(var aBytes : ByteArray; Zeroize : boolean);  overload; 
@@ -4412,14 +4412,14 @@ begin
 end;
 
 // Done 7 / XE5(32) / XE5(64) / Android
-procedure ReleaseString(var S : UnicodeString);
+procedure ReleaseString(var S : string);
 begin
   SetLength(S, 0);
   S := '';
 end;
 
 // Done 7 / XE5(32) / XE5(64) / Android
-procedure ReleaseString(var S : UnicodeString; Zeroize : boolean);
+procedure ReleaseString(var S : string; Zeroize : boolean);
 var I : integer; // DeN 16.10.2013
 begin
   // TODO

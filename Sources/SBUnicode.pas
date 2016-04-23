@@ -142,6 +142,8 @@ end;
 function TElUnicodeConverter.Utf8ToStr(const Source : ByteArray) : string;
 {$ifdef SB_ANSI_VCL}
 var TmpStr : AnsiString;
+{$else}
+var TmpStr: UnicodeString;
  {$endif}
 begin
   {$ifndef SB_UNICODE_VCL}
@@ -149,7 +151,8 @@ begin
   FUtf8ToAnsi.Convert(TmpStr, Result, []);
    {$else}
   //Result := UTF8ToUnicodeString(Source);
-  ConvertUTF8ToUTF16(Source, Result, lenientConversion, false);
+  ConvertUTF8ToUTF16(Source, TmpStr, lenientConversion, false);
+  Result := TmpStr;
    {$endif}
 
 
